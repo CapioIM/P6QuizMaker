@@ -6,7 +6,9 @@
         {
             UIMethods.WelcomeText();
             Texts.GetQuestion();
-            QuizQuestions.StoreQuestions(UIMethods.GetUserInput());
+            ObjectTest newObject = new ObjectTest();
+            newObject.Question = UIMethods.GetUserInput();
+
         }
     }
 }
