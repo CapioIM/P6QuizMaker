@@ -2,7 +2,7 @@
 {
     internal class Texts
     {
-        public static void GetQuestion()
+        public static void PrintAskToGetQuestionForQuiz()
         {
             Console.WriteLine("Please write question for Quiz !");
         }

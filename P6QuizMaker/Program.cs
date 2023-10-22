@@ -16,18 +16,35 @@ namespace P6QuizMaker
 
 
             UIMethods.WelcomeText();
-            Texts.GetQuestion();
-            ObjectTest newObject = new ObjectTest();
-            newObject.QuestionTest = testQuestion;
-            newObject.AnswersList = testAnswerList;
-            newObject.CorrectAnswers = testCorrectAnswer;
 
-            Console.WriteLine(newObject.QuestionTest);
-            foreach (string answer in newObject.AnswersList)
+            while (true)
             {
-            Console.WriteLine(answer);
+                Texts.PrintAskToGetQuestionForQuiz();
+                QuizQuestionAndAnswers quiz = new QuizQuestionAndAnswers();
+                quiz.QuestionTest = testQuestion;
+                quiz.AnswersList = testAnswerList;
+                quiz.CorrectAnswers = testCorrectAnswer;
+
+
+                Console.WriteLine(quiz.QuestionTest);
+                foreach (string answer in quiz.AnswersList)
+                {
+                    Console.WriteLine(answer);
+                }
+                Console.WriteLine(quiz.CorrectAnswers);
+
+                Console.WriteLine("Would you like to enter another Question ?");
+                
+                if (char.ToLower(Console.ReadKey().KeyChar) != 'n')
+                {
+                    continue;
+                }
+                else
+                {
+                    break;
+                }
             }
-            Console.WriteLine(newObject.CorrectAnswers);
+
         }
     }
 }
