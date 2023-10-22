@@ -12,9 +12,8 @@
 
         public static string GetUserInput()
         {
-           string textMessage = Console.ReadLine();
-
-            throw new NotImplementedException();
+            string textMessage = Console.ReadLine();
+            return textMessage;
         }
     }
 }
