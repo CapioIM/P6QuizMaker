@@ -7,42 +7,34 @@ namespace P6QuizMaker
 
         static void Main(string[] args)
         {
-            string testQuestion = "What Color is sky ? ";               //Lazy Test things
-            List<string> testAnswerList = new List<string>();
-            testAnswerList.Add("blue");
-            testAnswerList.Add("green");
-            testAnswerList.Add("gray");
-            string testCorrectAnswer = "blue";
-
-
             UIMethods.WelcomeText();
 
-            while (true)
+            bool addQuestions = true;
+            while (addQuestions)
             {
-                Texts.PrintAskToGetQuestionForQuiz();
+                UIMethods.PrintAskToGetQuestionForQuiz();
                 QuizQuestionAndAnswers quiz = new QuizQuestionAndAnswers();
-                quiz.QuestionTest = testQuestion;
-                quiz.AnswersList = testAnswerList;
-                quiz.CorrectAnswers = testCorrectAnswer;
+                quiz.QuestionText = Console.ReadLine();
 
 
-                Console.WriteLine(quiz.QuestionTest);
-                foreach (string answer in quiz.AnswersList)
+                bool moreAnswers = true;
+                while (moreAnswers)
                 {
-                    Console.WriteLine(answer);
-                }
-                Console.WriteLine(quiz.CorrectAnswers);
+                    Console.Write("Type answer : ");
+                    quiz.AnswersList.Add(Console.ReadLine());
+                    Console.WriteLine("Is this correct answer ?");
+                    if (UIMethods.MakeDecision() == true)
+                    {
+                        quiz.CorrectAnswersIndex.Add(quiz.AnswersList.Count());
+                    }
 
-                Console.WriteLine("Would you like to enter another Question ?");
-                
-                if (char.ToLower(Console.ReadKey().KeyChar) != 'n')
-                {
-                    continue;
+
+                    UIMethods.PrintAddAnswer();
+                    moreAnswers = UIMethods.MakeDecision();
                 }
-                else
-                {
-                    break;
-                }
+
+                UIMethods.PrintAddQuestion();
+                addQuestions = UIMethods.MakeDecision();
             }
 
         }

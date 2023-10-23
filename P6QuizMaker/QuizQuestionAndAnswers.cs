@@ -2,8 +2,8 @@
 {
     public class QuizQuestionAndAnswers
     {
-        public string QuestionTest;
-        public List<string> AnswersList;
-        public string CorrectAnswers;
+        public string QuestionText;
+        public List<string> AnswersList = new List<string>();
+        public List<int> CorrectAnswersIndex = new List<int>();
     }
 }
