@@ -1,10 +1,7 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
-namespace P6QuizMaker
+﻿namespace P6QuizMaker
 {
     internal class Program
     {
-
         static void Main(string[] args)
         {
             UIMethods.WelcomeText();
@@ -30,7 +27,6 @@ namespace P6QuizMaker
                 UIMethods.DisplayAddQuestionText();
                 addQuestions = UIMethods.MakeDecision();
             }
-
         }
     }
 }
