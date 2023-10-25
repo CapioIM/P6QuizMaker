@@ -12,26 +12,22 @@ namespace P6QuizMaker
             bool addQuestions = true;
             while (addQuestions)
             {
-                UIMethods.PrintAskToGetQuestionForQuiz();
+                UIMethods.DisplayAskToTypeQuestionText();
                 QuizQuestionAndAnswers quiz = new QuizQuestionAndAnswers();
-                quiz.QuestionText = Console.ReadLine();
+                Logic.AddQuestionInput(quiz.QuestionText);
 
-
-                bool moreAnswers = true;
-                while (moreAnswers)
+                bool addMoreAnswers = true;
+                while (addMoreAnswers)
                 {
-                    Console.Write("Type answer : ");
-                    quiz.AnswersList.Add(Console.ReadLine());
-                    Console.WriteLine("Is this correct answer ?");
-
-                    //add correct answers index to list of correct answers
-                    Logic.SetCorrectAnswerIndex(quiz.CorrectAnswersIndexList,quiz.AnswersList); 
-
-                    UIMethods.PrintAddAnswer();
-                    moreAnswers = UIMethods.MakeDecision();
+                    UIMethods.DisplayTypeAnswerText();
+                    Logic.AddTextToAnswerList(quiz.AnswersList);
+                    UIMethods.DisplayIsCorrectAnswerText();
+                    Logic.SetCorrectAnswerIndex(quiz.CorrectAnswersIndexList,quiz.AnswersList);
+                    UIMethods.DisplayAddAnswerText();
+                    addMoreAnswers = UIMethods.MakeDecision();
                 }
 
-                UIMethods.PrintAddQuestion();
+                UIMethods.DisplayAddQuestionText();
                 addQuestions = UIMethods.MakeDecision();
             }
 

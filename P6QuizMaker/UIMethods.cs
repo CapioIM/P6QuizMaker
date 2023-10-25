@@ -15,37 +15,47 @@
             string textMessage = Console.ReadLine();
             return textMessage;
         }
-        public static void PrintAskToGetQuestionForQuiz()
+        public static void DisplayAskToTypeQuestionText()
         {
-            Console.WriteLine(" Please write question for Quiz !");
+            Console.Write("Please write question for Quiz ! : ");
         }
 
         public static bool MakeDecision()
         {
+            PrintPressYesOrNo();
             if (char.ToLower(Console.ReadKey().KeyChar) != 'n')
             {
-                Console.WriteLine();
                 return true;
             }
             else
             {
-                Console.WriteLine();
                 return false;
             }
         }
 
         public static void PrintPressYesOrNo()
         {
-            Console.WriteLine(" Press Y if want to continue or N to stop! ");
+            Console.WriteLine("Press Y if want to continue or N to stop! : ");
         }
 
-        public static void PrintAddQuestion()
+        public static void DisplayAddQuestionText()
         {
-            Console.WriteLine(" Would you like to add another Question ?\n");
+            Console.WriteLine("Would you like to add another Question ?\n");
         }
-        public static void PrintAddAnswer()
+        public static void DisplayAddAnswerText()
         {
-            Console.WriteLine(" Would you like to add another Answer ?\n");
+            Console.WriteLine("Would you like to add another Answer ?\n");
         }
+        public static void DisplayTypeAnswerText()
+        {
+            Console.Write("Type answer : ");
+        }
+        public static void DisplayIsCorrectAnswerText()
+        {
+            Console.WriteLine("Is this correct answer ? : ");
+
+        }
+
+
     }
 }

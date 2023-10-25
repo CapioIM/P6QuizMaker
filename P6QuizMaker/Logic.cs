@@ -5,17 +5,28 @@
         /// <summary>
         /// ask if answer is correct and add List index number to another CorrectAnswersIndex list
         /// </summary>
-        /// <param name="correctAnswersIndex"> Correct answers list of indexes </param>
+        /// <param name="correctAnswersIndexList"> Correct answers list of indexes </param>
         /// <param name="AnswerList"> list of answers </param>
-        public static void SetCorrectAnswerIndex(List<int> correctAnswersIndex,List<string> AnswerList)
+        public static void SetCorrectAnswerIndex(List<int> correctAnswersIndexList, List<string> AnswerList)
         {
             if (UIMethods.MakeDecision() == true)
             {
-               correctAnswersIndex.Add(AnswerList.Count());
+                correctAnswersIndexList.Add(AnswerList.Count());
             }
         }
+        /// <summary>
+        /// type text which is added to Answers List
+        /// </summary>
+        /// <param name="answersList"> List name where to add text </param>
+        public static void AddTextToAnswerList(List<string> answersList)
+        {
+            answersList.Add(Console.ReadLine());
+        }
 
-
+        public static void AddQuestionInput(string questionText)
+        {
+          questionText = Console.ReadLine();
+        }
 
     }
 }
