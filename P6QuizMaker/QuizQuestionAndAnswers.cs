@@ -6,4 +6,5 @@
         public List<string> AnswersList = new List<string>();
         public List<int> CorrectAnswersIndexList = new List<int>();
     }
+
 }

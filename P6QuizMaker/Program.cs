@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography.X509Certificates;
+using System.Threading.Channels;
 
 namespace P6QuizMaker
 {
@@ -16,7 +17,7 @@ namespace P6QuizMaker
                 UIMethods.DisplayAskToTypeQuestionText();
                 QuizQuestionAndAnswers quiz = new QuizQuestionAndAnswers();
                 QuizList.Add(quiz);
-                Logic.AddQuestionInput(quiz.QuestionText);
+                quiz.QuestionText = UIMethods.GetUserInput();
 
                 bool addMoreAnswers = true;
                 while (addMoreAnswers)
@@ -32,10 +33,12 @@ namespace P6QuizMaker
                 UIMethods.DisplayAddQuestionText();
                 addQuestions = UIMethods.MakeDecision();
 
-                foreach (var question in QuizList)
+                /*
+                foreach (var item in QuizList)
                 {
-                    Console.WriteLine(question.QuestionText);
+                    Console.WriteLine(item);
                 }
+                */
             }
         }
     }
