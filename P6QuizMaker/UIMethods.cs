@@ -40,11 +40,11 @@
 
         public static void DisplayAddQuestionText()
         {
-            Console.WriteLine("Would you like to add another Question ?\n");
+            Console.WriteLine("Would you like to add another Question ?");
         }
         public static void DisplayAddAnswerText()
         {
-            Console.WriteLine("Would you like to add another Answer ?\n");
+            Console.WriteLine("Would you like to add another Answer ?");
         }
         public static void DisplayTypeAnswerText()
         {

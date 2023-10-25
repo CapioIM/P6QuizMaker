@@ -11,7 +11,7 @@
         {
             if (UIMethods.MakeDecision() == true)
             {
-                correctAnswersIndexList.Add(AnswerList.Count());
+                correctAnswersIndexList.Add(AnswerList.LastIndexOf(AnswerList.Last()));
             }
         }
         /// <summary>

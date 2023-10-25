@@ -1,4 +1,6 @@
-﻿namespace P6QuizMaker
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace P6QuizMaker
 {
     internal class Program
     {
@@ -6,11 +8,14 @@
         {
             UIMethods.WelcomeText();
 
+            List<QuizQuestionAndAnswers> QuizList = new List<QuizQuestionAndAnswers>();
+
             bool addQuestions = true;
             while (addQuestions)
             {
                 UIMethods.DisplayAskToTypeQuestionText();
                 QuizQuestionAndAnswers quiz = new QuizQuestionAndAnswers();
+                QuizList.Add(quiz);
                 Logic.AddQuestionInput(quiz.QuestionText);
 
                 bool addMoreAnswers = true;
@@ -19,13 +24,18 @@
                     UIMethods.DisplayTypeAnswerText();
                     Logic.AddTextToAnswerList(quiz.AnswersList);
                     UIMethods.DisplayIsCorrectAnswerText();
-                    Logic.SetCorrectAnswerIndex(quiz.CorrectAnswersIndexList,quiz.AnswersList);
+                    Logic.SetCorrectAnswerIndex(quiz.CorrectAnswersIndexList, quiz.AnswersList);
                     UIMethods.DisplayAddAnswerText();
                     addMoreAnswers = UIMethods.MakeDecision();
                 }
 
                 UIMethods.DisplayAddQuestionText();
                 addQuestions = UIMethods.MakeDecision();
+
+                foreach (var question in QuizList)
+                {
+                    Console.WriteLine(question.QuestionText);
+                }
             }
         }
     }
