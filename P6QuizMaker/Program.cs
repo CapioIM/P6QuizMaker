@@ -23,11 +23,9 @@ namespace P6QuizMaker
                     Console.Write("Type answer : ");
                     quiz.AnswersList.Add(Console.ReadLine());
                     Console.WriteLine("Is this correct answer ?");
-                    if (UIMethods.MakeDecision() == true)
-                    {
-                        quiz.CorrectAnswersIndex.Add(quiz.AnswersList.Count());
-                    }
 
+                    //add correct answers index to list of correct answers
+                    Logic.SetCorrectAnswerIndex(quiz.CorrectAnswersIndexList,quiz.AnswersList); 
 
                     UIMethods.PrintAddAnswer();
                     moreAnswers = UIMethods.MakeDecision();
