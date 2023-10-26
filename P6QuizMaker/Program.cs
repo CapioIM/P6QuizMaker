@@ -1,8 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using System.Threading.Channels;
-using System.Xml.Serialization;
-
-namespace P6QuizMaker
+﻿namespace P6QuizMaker
 {
     internal class Program
     {
@@ -12,6 +8,7 @@ namespace P6QuizMaker
 
             List<QuizQuestionAndAnswers> QuizList = new List<QuizQuestionAndAnswers>();
             QuizQuestionAndAnswers quiz = null;
+
             bool addQuestions = true;
             while (addQuestions)
             {
@@ -34,21 +31,6 @@ namespace P6QuizMaker
                 UIMethods.DisplayAddQuestionText();
                 addQuestions = UIMethods.MakeDecision();
 
-                /*
-                foreach (var item in QuizList)
-                {
-                    Console.WriteLine(item);
-                }
-                */
-            }
-
-
-            XmlSerializer write = new XmlSerializer(typeof(List<QuizQuestionAndAnswers>));
-            var serializerPath = @"C//:tmp/QuizQuestionsList.xml";
-
-            using (FileStream serializeFile = File.Create(serializerPath))
-            {
-                write.Serialize(serializeFile, quiz);
             }
         }
     }
