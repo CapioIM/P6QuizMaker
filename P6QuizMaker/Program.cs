@@ -1,4 +1,6 @@
-﻿namespace P6QuizMaker
+﻿using System.Xml.Serialization;
+
+namespace P6QuizMaker
 {
     internal class Program
     {
@@ -31,6 +33,13 @@
                 UIMethods.DisplayAddQuestionText();
                 addQuestions = UIMethods.MakeDecision();
 
+            }
+
+            XmlSerializer writer = new XmlSerializer(typeof(List<QuizQuestionAndAnswers>));
+            var path = @"C:\\QuizXML\QuestionsAndAnswers.xml";
+            using (FileStream file = File.Create(path)) 
+            {   
+                writer.Serialize(file, QuizList);
             }
         }
     }
