@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 using System.Threading.Channels;
+using System.Xml.Serialization;
 
 namespace P6QuizMaker
 {
@@ -10,12 +11,12 @@ namespace P6QuizMaker
             UIMethods.WelcomeText();
 
             List<QuizQuestionAndAnswers> QuizList = new List<QuizQuestionAndAnswers>();
-
+            QuizQuestionAndAnswers quiz = null;
             bool addQuestions = true;
             while (addQuestions)
             {
                 UIMethods.DisplayAskToTypeQuestionText();
-                QuizQuestionAndAnswers quiz = new QuizQuestionAndAnswers();
+                quiz = new QuizQuestionAndAnswers();
                 QuizList.Add(quiz);
                 quiz.QuestionText = UIMethods.GetUserInput();
 
@@ -39,6 +40,15 @@ namespace P6QuizMaker
                     Console.WriteLine(item);
                 }
                 */
+            }
+
+
+            XmlSerializer write = new XmlSerializer(typeof(List<QuizQuestionAndAnswers>));
+            var serializerPath = @"C//:tmp/QuizQuestionsList.xml";
+
+            using (FileStream serializeFile = File.Create(serializerPath))
+            {
+                write.Serialize(serializeFile, quiz);
             }
         }
     }
