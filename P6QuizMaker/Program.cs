@@ -30,7 +30,6 @@
 
                 UIMethods.DisplayAddQuestionText();
                 addQuestions = UIMethods.MakeDecision();
-
             }
 
             ReadWriteFile.writeXMLfile(QuizList);

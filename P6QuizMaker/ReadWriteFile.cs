@@ -26,6 +26,7 @@ namespace P6QuizMaker
             using (XmlReader file = XmlReader.Create(path)) 
             {
                 reader.Deserialize(file);
+             // test ?   Console.Out.WriteLine();
             }
         }
     }
