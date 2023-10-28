@@ -1,6 +1,4 @@
-﻿using System.Xml.Serialization;
-
-namespace P6QuizMaker
+﻿namespace P6QuizMaker
 {
     internal class Program
     {
@@ -8,7 +6,7 @@ namespace P6QuizMaker
         {
             UIMethods.WelcomeText();
 
-            List<QuizQuestionAndAnswers> QuizList = new List<QuizQuestionAndAnswers>();
+            List<QuizQuestionAndAnswers> QuizList = new List<QuizQuestionAndAnswers>(); 
             QuizQuestionAndAnswers quiz = null;
 
             bool addQuestions = true;
@@ -35,12 +33,10 @@ namespace P6QuizMaker
 
             }
 
-            XmlSerializer writer = new XmlSerializer(typeof(List<QuizQuestionAndAnswers>));
-            var path = @"C:\\QuizXML\QuestionsAndAnswers.xml";
-            using (FileStream file = File.Create(path)) 
-            {   
-                writer.Serialize(file, QuizList);
-            }
+            ReadWriteFile.writeXMLfile(QuizList);
+
+            ReadWriteFile.readXmlFile();
+            Console.ReadLine();
         }
     }
 }
