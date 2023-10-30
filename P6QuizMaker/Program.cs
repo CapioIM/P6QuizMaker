@@ -7,13 +7,12 @@
             UIMethods.WelcomeText();
 
             List<QuizQuestionAndAnswers> QuizList = new List<QuizQuestionAndAnswers>(); 
-            QuizQuestionAndAnswers quiz = null;
 
             bool addQuestions = true;
             while (addQuestions)
             {
                 UIMethods.DisplayAskToTypeQuestionText();
-                quiz = new QuizQuestionAndAnswers();
+                QuizQuestionAndAnswers quiz = new QuizQuestionAndAnswers();
                 QuizList.Add(quiz);
                 quiz.QuestionText = UIMethods.GetUserInput();
 
