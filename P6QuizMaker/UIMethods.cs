@@ -23,14 +23,7 @@
         public static bool MakeDecision()
         {
             PrintPressYesOrNo();
-            if (char.ToLower(Console.ReadKey().KeyChar) != 'n')
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (char.ToLower(Console.ReadKey().KeyChar) != 'n');
         }
 
         public static void PrintPressYesOrNo()
