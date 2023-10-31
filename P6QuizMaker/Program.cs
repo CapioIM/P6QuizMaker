@@ -22,7 +22,10 @@
                     UIMethods.DisplayTypeAnswerText();
                     UIMethods.AddTextToAnswerList(quiz.AnswersList);
                     UIMethods.DisplayIsCorrectAnswerText();
+                    if (UIMethods.MakeDecision())
+                    {
                     Logic.SetCorrectAnswerIndex(quiz.CorrectAnswersIndexList, quiz.AnswersList);
+                    }
                     UIMethods.DisplayAddAnswerText();
                     addMoreAnswers = UIMethods.MakeDecision();
                 }

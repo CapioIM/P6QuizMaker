@@ -9,10 +9,7 @@
         /// <param name="AnswerList"> list of answers </param>
         public static void SetCorrectAnswerIndex(List<int> correctAnswersIndexList, List<string> AnswerList)
         {
-            if (UIMethods.MakeDecision())
-            {
-                correctAnswersIndexList.Add(AnswerList.LastIndexOf(AnswerList.Last()));
-            }
+            correctAnswersIndexList.Add(AnswerList.LastIndexOf(AnswerList.Last()));
         }
 
     }
