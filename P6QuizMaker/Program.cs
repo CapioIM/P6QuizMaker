@@ -20,7 +20,7 @@
                 while (addMoreAnswers)
                 {
                     UIMethods.DisplayTypeAnswerText();
-                    Logic.AddTextToAnswerList(quiz.AnswersList);
+                    UIMethods.AddTextToAnswerList(quiz.AnswersList);
                     UIMethods.DisplayIsCorrectAnswerText();
                     Logic.SetCorrectAnswerIndex(quiz.CorrectAnswersIndexList, quiz.AnswersList);
                     UIMethods.DisplayAddAnswerText();

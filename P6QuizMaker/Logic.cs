@@ -14,13 +14,6 @@
                 correctAnswersIndexList.Add(AnswerList.LastIndexOf(AnswerList.Last()));
             }
         }
-        /// <summary>
-        /// type text which is added to Answers List
-        /// </summary>
-        /// <param name="answersList"> List name where to add text </param>
-        public static void AddTextToAnswerList(List<string> answersList)
-        {
-            answersList.Add(Console.ReadLine());
-        }
+
     }
 }
