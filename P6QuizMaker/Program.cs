@@ -6,7 +6,7 @@
         {
             UIMethods.WelcomeText();
 
-            List<QuizQuestionAndAnswers> QuizList = new List<QuizQuestionAndAnswers>(); 
+            List<QuizQuestionAndAnswers> QuizList = new List<QuizQuestionAndAnswers>();
 
             bool addQuestions = true;
             while (addQuestions)
@@ -20,12 +20,20 @@
                 while (addMoreAnswers)
                 {
                     UIMethods.DisplayTypeAnswerText();
-                    UIMethods.AddTextToAnswerList(quiz.AnswersList);
+                    quiz.AnswersList.Add(UIMethods.GetUserInput());
+
                     UIMethods.DisplayIsCorrectAnswerText();
                     if (UIMethods.MakeDecision())
                     {
-                    Logic.SetCorrectAnswerIndex(quiz.CorrectAnswersIndexList, quiz.AnswersList);
+                        for (int i = 0; i < quiz.AnswersList.Count; i++)
+                        {
+                            // if(answerText == quiz.AnswersList[i])
+                            {
+                                //   quiz.CorrectAnswersIndexList.Add(quiz.AnswersList.FindIndex(answerText));
+                            }
+                        }
                     }
+
                     UIMethods.DisplayAddAnswerText();
                     addMoreAnswers = UIMethods.MakeDecision();
                 }
