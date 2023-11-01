@@ -32,10 +32,10 @@
 
                 addQuestions = UIMethods.GetAdditionalQuestions();
             }
-            /*
-                        ReadWriteFile.writeXMLfile(QuizList);
 
-            */
+        // in progress    FileOperations.writeXMLfile(QuizList);
+
+
             Console.ReadLine();
         }
     }
