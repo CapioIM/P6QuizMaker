@@ -9,14 +9,14 @@ namespace P6QuizMaker
         /// <summary>
         /// creates file in text format with values of object ....
         /// </summary>
-        /// <param name="QuizList"> List of objects </param>
-        public static void  writeXMLfile(List<QuizQuestionAndAnswers> QuizList)
+        /// <param name="QuizmakerList"> List of objects </param>
+        public static void  writeXMLfile(List<Question> QuizmakerList)
         {
-            XmlSerializer writer = new XmlSerializer(typeof(List<QuizQuestionAndAnswers>));
+            XmlSerializer writer = new XmlSerializer(typeof(List<Question>));
             string path = @"QuestionsAndAnswers.xml";
             using (FileStream file = File.Create(path))
             {
-                writer.Serialize(file, QuizList);
+                writer.Serialize(file, QuizmakerList);
             }
             Console.WriteLine(Path.GetFullPath(path));
         }

@@ -6,25 +6,25 @@
         {
             UIMethods.WelcomeText();
 
-            List<QuizQuestionAndAnswers> QuizList = new List<QuizQuestionAndAnswers>();
+            List<Question> QuizmakerList = new List<Question>();
 
             bool addQuestions = true;
             while (addQuestions)
             {
                 UIMethods.DisplayAskToTypeQuestionText();
-                QuizQuestionAndAnswers quiz = new QuizQuestionAndAnswers();
-                QuizList.Add(quiz);
-                quiz.QuestionText = UIMethods.GetUserInput();
+                Question quizmaker = new Question();
+                QuizmakerList.Add(quizmaker);
+                quizmaker.QuestionText = UIMethods.GetUserInput();
 
                 bool addMoreAnswers = true;
                 while (addMoreAnswers)
                 {
                     string answerText = UIMethods.GetAndDisplayTypeAnswerText();
-                    quiz.AnswersList.Add(answerText);
+                    quizmaker.AnswersList.Add(answerText);
 
                     if (UIMethods.IsCorrectAnswer())
                     {
-                        quiz.CorrectAnswersIndexList.Add(quiz.AnswersList.IndexOf(answerText));
+                        quizmaker.CorrectAnswersIndexList.Add(quizmaker.AnswersList.IndexOf(answerText));
                     }
 
                     addMoreAnswers = UIMethods.GetAdditionalAnswer();
