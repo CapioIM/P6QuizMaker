@@ -20,18 +20,13 @@
                 while (addMoreAnswers)
                 {
                     UIMethods.DisplayTypeAnswerText();
-                    quiz.AnswersList.Add(UIMethods.GetUserInput());
+                    string answerText = UIMethods.GetUserInput();
+                    quiz.AnswersList.Add(answerText);
 
                     UIMethods.DisplayIsCorrectAnswerText();
                     if (UIMethods.MakeDecision())
                     {
-                        for (int i = 0; i < quiz.AnswersList.Count; i++)
-                        {
-                            // if(answerText == quiz.AnswersList[i])
-                            {
-                                //   quiz.CorrectAnswersIndexList.Add(quiz.AnswersList.FindIndex(answerText));
-                            }
-                        }
+                        quiz.CorrectAnswersIndexList.Add(quiz.AnswersList.IndexOf(answerText));
                     }
 
                     UIMethods.DisplayAddAnswerText();
@@ -41,10 +36,10 @@
                 UIMethods.DisplayAddQuestionText();
                 addQuestions = UIMethods.MakeDecision();
             }
-
+/*
             ReadWriteFile.writeXMLfile(QuizList);
 
-            ReadWriteFile.readXmlFile();
+*/
             Console.ReadLine();
         }
     }
