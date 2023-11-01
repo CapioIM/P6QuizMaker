@@ -23,12 +23,12 @@
         public static bool MakeDecision()
         {
             PrintPressYesOrNo();
-            return (char.ToLower(Console.ReadKey().KeyChar) != 'n');
+            return (Console.ReadLine().ToLower() != "n");
         }
 
         public static void PrintPressYesOrNo()
         {
-            Console.WriteLine("Press Y if want to continue or N to stop! : ");
+            Console.Write("Press Y - if Yes or N - if No! : ");
         }
 
         public static bool GetAdditionalQuestions()

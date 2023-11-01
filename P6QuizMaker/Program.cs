@@ -29,7 +29,6 @@
 
                     addMoreAnswers = UIMethods.GetAdditionalAnswer();
                 }
-
                 addQuestions = UIMethods.GetAdditionalQuestions();
             }
 
