@@ -31,31 +31,29 @@
             Console.WriteLine("Press Y if want to continue or N to stop! : ");
         }
 
-        public static void DisplayAddQuestionText()
+        public static bool GetAdditionalQuestions()
         {
             Console.WriteLine("Would you like to add another Question ?");
+            bool additionalQuestion = MakeDecision();
+            return additionalQuestion;
         }
-        public static void DisplayAddAnswerText()
+        public static bool GetAdditionalAnswer()
         {
-            Console.WriteLine("Would you like to add another Answer ?");
+            Console.WriteLine("Would you like to add additional Answer ?");
+            bool addAnswer = MakeDecision();
+            return addAnswer;
         }
-        public static void DisplayTypeAnswerText()
+        public static string GetAndDisplayTypeAnswerText()
         {
             Console.Write("Type answer : ");
+            string text = GetUserInput();
+            return text;
         }
-        public static void DisplayIsCorrectAnswerText()
+        public static bool IsCorrectAnswer()
         {
             Console.WriteLine("Is this correct answer ? : ");
-
+            bool isAdditionalAnswer = MakeDecision();
+            return isAdditionalAnswer;
         }
-        /// <summary>
-        /// type text which is added to Answers List
-        /// </summary>
-        /// <param name="answersList"> List name where to add text </param>
-        public static void AddTextToAnswerList(List<string> answersList)
-        {
-            answersList.Add(Console.ReadLine());
-        }
-
     }
 }

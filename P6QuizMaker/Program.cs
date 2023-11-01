@@ -19,27 +19,23 @@
                 bool addMoreAnswers = true;
                 while (addMoreAnswers)
                 {
-                    UIMethods.DisplayTypeAnswerText();
-                    string answerText = UIMethods.GetUserInput();
+                    string answerText = UIMethods.GetAndDisplayTypeAnswerText();
                     quiz.AnswersList.Add(answerText);
 
-                    UIMethods.DisplayIsCorrectAnswerText();
-                    if (UIMethods.MakeDecision())
+                    if (UIMethods.IsCorrectAnswer())
                     {
                         quiz.CorrectAnswersIndexList.Add(quiz.AnswersList.IndexOf(answerText));
                     }
 
-                    UIMethods.DisplayAddAnswerText();
-                    addMoreAnswers = UIMethods.MakeDecision();
+                    addMoreAnswers = UIMethods.GetAdditionalAnswer();
                 }
 
-                UIMethods.DisplayAddQuestionText();
-                addQuestions = UIMethods.MakeDecision();
+                addQuestions = UIMethods.GetAdditionalQuestions();
             }
-/*
-            ReadWriteFile.writeXMLfile(QuizList);
+            /*
+                        ReadWriteFile.writeXMLfile(QuizList);
 
-*/
+            */
             Console.ReadLine();
         }
     }
