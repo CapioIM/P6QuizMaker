@@ -4,6 +4,7 @@
     {
         static void Main(string[] args)
         {
+
             UIMethods.WelcomeText();
 
             List<Question> QuizmakerList = new List<Question>();
@@ -32,8 +33,7 @@
                 addQuestions = UIMethods.GetAdditionalQuestions();
             }
 
-        // in progress    FileOperations.writeXMLfile(QuizList);
-
+             FileOperations.writeXMLfile(QuizmakerList);
 
             Console.ReadLine();
         }
