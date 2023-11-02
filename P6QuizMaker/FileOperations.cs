@@ -15,7 +15,7 @@ namespace P6QuizMaker
             string questionsFolderPath = createQuestionsFolder();
 
             XmlSerializer writer = new XmlSerializer(typeof(List<Question>));
-            string path = questionsFolderPath + @"\QuestionsAndAnswers.xml";  // willy nilly code time
+            string path = questionsFolderPath + @"\QuestionsAndAnswers.xml"; 
             using (FileStream file = File.Create(path))
             {
                 writer.Serialize(file, QuizmakerList);
@@ -25,7 +25,7 @@ namespace P6QuizMaker
 
         private static string createQuestionsFolder()
         {
-            var testFolderPath = @"..\..\..\..\" + @"\Questions";
+            var testFolderPath = @"..\..\..\..\Questions";
             if (!Directory.Exists(testFolderPath))
             {
                 Directory.CreateDirectory(testFolderPath);

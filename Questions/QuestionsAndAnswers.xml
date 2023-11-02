@@ -5,6 +5,8 @@
     <AnswersList>
       <string>1</string>
     </AnswersList>
-    <CorrectAnswersIndexList />
+    <CorrectAnswersIndexList>
+      <int>0</int>
+    </CorrectAnswersIndexList>
   </Question>
 </ArrayOfQuestion>
