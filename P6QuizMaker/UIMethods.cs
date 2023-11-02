@@ -15,15 +15,19 @@
             string textMessage = Console.ReadLine();
             return textMessage;
         }
-        public static void DisplayAskToTypeQuestionText()
+        public static string DisplayAskToTypeQuestionText()
         {
             Console.Write("Please write question for Quiz ! : ");
+            var text = GetUserInput();
+            return text;
         }
 
         public static bool MakeDecision()
         {
             PrintPressYesOrNo();
-            return (Console.ReadLine().ToLower() != "n");
+            var testString = Console.ReadLine().ToLower();
+            var testChar = testString.ToCharArray();
+            return (testChar[0] != 'n');
         }
 
         public static void PrintPressYesOrNo()

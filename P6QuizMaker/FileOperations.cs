@@ -10,9 +10,9 @@ namespace P6QuizMaker
         /// creates file in text format with values of object ....
         /// </summary>
         /// <param name="QuizmakerList"> List of objects </param>
-        public static void writeXMLfile(List<Question> QuizmakerList)
+        public static void CreateXMLfile(List<Question> QuizmakerList)
         {
-            string questionsFolderPath = createQuestionsFolder();
+            string questionsFolderPath = CreateQuestionsFolder();
 
             XmlSerializer writer = new XmlSerializer(typeof(List<Question>));
             string path = questionsFolderPath + @"\QuestionsAndAnswers.xml"; 
@@ -23,14 +23,14 @@ namespace P6QuizMaker
             Console.WriteLine(Path.GetFullPath(path));
         }
 
-        private static string createQuestionsFolder()
+        private static string CreateQuestionsFolder()
         {
-            var testFolderPath = @"..\..\..\..\Questions";
-            if (!Directory.Exists(testFolderPath))
+            var questionsFolderPath = @"..\..\..\..\Questions";
+            if (!Directory.Exists(questionsFolderPath))
             {
-                Directory.CreateDirectory(testFolderPath);
+                Directory.CreateDirectory(questionsFolderPath);
             }
-            return testFolderPath;
+            return questionsFolderPath;
         }
     }
 }

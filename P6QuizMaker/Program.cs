@@ -12,10 +12,10 @@
             bool addQuestions = true;
             while (addQuestions)
             {
-                UIMethods.DisplayAskToTypeQuestionText();
+                
                 Question quizmaker = new Question();
                 QuizmakerList.Add(quizmaker);
-                quizmaker.QuestionText = UIMethods.GetUserInput();
+                quizmaker.QuestionText = UIMethods.DisplayAskToTypeQuestionText();
 
                 bool addMoreAnswers = true;
                 while (addMoreAnswers)
@@ -31,9 +31,11 @@
                     addMoreAnswers = UIMethods.GetAdditionalAnswer();
                 }
                 addQuestions = UIMethods.GetAdditionalQuestions();
+                Console.Clear();
+                UIMethods.WelcomeText();
             }
 
-             FileOperations.writeXMLfile(QuizmakerList);
+            FileOperations.CreateXMLfile(QuizmakerList);
 
             Console.ReadLine();
         }
