@@ -2,12 +2,34 @@
 {
     internal class UIMethods
     {
+        /*
+        public static int MakeChoiceNumber()
+        {
+            bool success = int.TryParse(Console.ReadLine(), out int number);
+            if (success) 
+                {
+                return number;
+            }
+            else
+            {
+                Console.WriteLine("Please enter number !");
+            }
+
+            throw new NotImplementedException();
+        }
+        */
         public static void WelcomeText()
         {
             Console.WriteLine("                 Welcome to Quiz Maker Program !\n" +
                 " You will be asked to type questions and answers to these questions.\n" +
                 " After you will enter answers program will ask you to pick if answer is correct.\n" +
                 " And lastly program will bring random question with answers.\n");
+        }
+
+        public static void WelcomeAddQuestionsChoice()
+        {
+            Console.WriteLine("" +
+                "Type Question to add to list of Questions!");
         }
 
         public static string GetUserInput()
@@ -22,7 +44,7 @@
             return text;
         }
 
-        public static bool MakeDecision()
+        public static bool MakeDecisionYorN()
         {
             PrintPressYesOrNo();
             var testString = Console.ReadLine().ToLower();
@@ -38,13 +60,13 @@
         public static bool GetAdditionalQuestions()
         {
             Console.WriteLine("Would you like to add another Question ?");
-            bool additionalQuestion = MakeDecision();
+            bool additionalQuestion = MakeDecisionYorN();
             return additionalQuestion;
         }
         public static bool GetAdditionalAnswer()
         {
             Console.WriteLine("Would you like to add additional Answer ?");
-            bool addAnswer = MakeDecision();
+            bool addAnswer = MakeDecisionYorN();
             return addAnswer;
         }
         public static string GetAndDisplayTypeAnswerText()
@@ -56,7 +78,7 @@
         public static bool IsCorrectAnswer()
         {
             Console.WriteLine("Is this correct answer ? : ");
-            bool isAdditionalAnswer = MakeDecision();
+            bool isAdditionalAnswer = MakeDecisionYorN();
             return isAdditionalAnswer;
         }
     }

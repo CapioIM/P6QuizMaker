@@ -7,11 +7,13 @@
 
             UIMethods.WelcomeText();
 
+
             List<Question> QuizmakerList = new List<Question>();
 
             bool addQuestions = true;
             while (addQuestions)
             {
+                UIMethods.WelcomeAddQuestionsChoice();
                 
                 Question quizmaker = new Question();
                 QuizmakerList.Add(quizmaker);
