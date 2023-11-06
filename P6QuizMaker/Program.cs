@@ -10,6 +10,7 @@
 
             List<Question> QuizmakerList = new List<Question>();
 
+            /*
             bool addQuestions = true;
             while (addQuestions)
             {
@@ -36,9 +37,21 @@
                 Console.Clear();
                 UIMethods.WelcomeText();
             }
+            */
 
-            FileOperations.CreateXMLfile(QuizmakerList);
+            for (int i = 0; i <3; i++)
+            {
+                Question quizmaker = new Question();
+                QuizmakerList.Add(quizmaker);
+                quizmaker.QuestionText = $"{i}";
+                for (int j = 0; j < 3; j++)
+                {
+                    quizmaker.AnswersList.Add($"{i}");
+                }
+            }
 
+            FileOperations.CreateXMLSerializeFile(QuizmakerList);
+       //     FileOperations.Deserialized();
             Console.ReadLine();
         }
     }

@@ -2,22 +2,7 @@
 {
     internal class UIMethods
     {
-        /*
-        public static int MakeChoiceNumber()
-        {
-            bool success = int.TryParse(Console.ReadLine(), out int number);
-            if (success) 
-                {
-                return number;
-            }
-            else
-            {
-                Console.WriteLine("Please enter number !");
-            }
 
-            throw new NotImplementedException();
-        }
-        */
         public static void WelcomeText()
         {
             Console.WriteLine("                 Welcome to Quiz Maker Program !\n" +
