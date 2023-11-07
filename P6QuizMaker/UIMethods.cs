@@ -24,7 +24,7 @@
         }
         public static string DisplayAskToTypeQuestionText()
         {
-            Console.Write("Please write question for Quiz ! : ");
+            Console.Write("Please write question for QuizMaker ! : ");
             var text = GetUserInput();
             return text;
         }

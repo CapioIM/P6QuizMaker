@@ -51,7 +51,7 @@
             }
 
             FileOperations.CreateXMLSerializeFile(QuizmakerList);
-       //     FileOperations.Deserialized();
+           FileOperations.Deserialized();
             Console.ReadLine();
         }
     }

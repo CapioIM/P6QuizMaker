@@ -6,45 +6,42 @@ namespace P6QuizMaker
 {
     internal class FileOperations
     {
+        private const string QUESTIONS_FOLDER_PATH = @"..\..\..\..\Questions";
+        private const string QUESTIONS_FILE_NAME = @"\QuestionsAndAnswers.xml";
         /// <summary>
         /// creates file in text format with values of object ....
         /// </summary>
         /// <param name="QuizmakerList"> List of objects </param>
         public static void CreateXMLSerializeFile(List<Question> QuizmakerList)
         {
-            string questionsFolderPath = CreateQuestionsFolder();
-
+            CreateQuestionsFolder(QUESTIONS_FOLDER_PATH);
             XmlSerializer writer = new XmlSerializer(typeof(List<Question>));
-            string path = questionsFolderPath + @"\QuestionsAndAnswers.xml";
+            string path = QUESTIONS_FOLDER_PATH + QUESTIONS_FILE_NAME;
             using (FileStream file = File.Create(path))
             {
                 writer.Serialize(file, QuizmakerList);
             }
-            Console.WriteLine(Path.GetFullPath(path));
         }
 
-        private static string CreateQuestionsFolder()
+        private static void CreateQuestionsFolder(string path)
         {
-            string questionsFolderPath = @"..\..\..\..\Questions";
-            if (!Directory.Exists(questionsFolderPath))
+            if (!Directory.Exists(path))
             {
-                Directory.CreateDirectory(questionsFolderPath);
+                Directory.CreateDirectory(path);
             }
-            return questionsFolderPath;
         }
-/*
-        public static void Deserialized() 
+
+        public static void Deserialized()
         {
-            string questionsFolderPath = CreateQuestionsFolder();
-            string path = questionsFolderPath + @"\QuestionsAndAnswers.xml";
+            string path = QUESTIONS_FOLDER_PATH + QUESTIONS_FILE_NAME;
 
             XmlSerializer serializer = new XmlSerializer(typeof(List<Question>));
             using (FileStream file = File.OpenRead(path))
             {
-               List<Question> quesitonListName = serializer.Deserialize(file) as List<Question>;
+                List<Question> quesitonListName = serializer.Deserialize(file) as List<Question>;
             }
         }
-*/
+
 
     }
 }
