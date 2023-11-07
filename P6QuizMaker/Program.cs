@@ -1,5 +1,5 @@
 ﻿namespace P6QuizMaker
-{
+{                                                   // comented code is to speed up testing :)
     internal class Program
     {
         static void Main(string[] args)
@@ -38,25 +38,24 @@
                 UIMethods.WelcomeText();
             }
             */
+            /*
+                        for (int i = 0; i <3; i++)
+                        {
+                            Question quizmaker = new Question();
+                            QuizmakerList.Add(quizmaker);
+                            quizmaker.QuestionText = $"{i}";
+                            for (int j = 0; j < 3; j++)
+                            {
+                                quizmaker.AnswersList.Add($"{i}");
+                            }
+                        }
 
-            for (int i = 0; i <3; i++)
+                        FileOperations.CreateXMLSerializeFile(QuizmakerList);
+            */
+            QuizmakerList = FileOperations.Deserialize();
+            foreach (Question question in QuizmakerList)
             {
-                Question quizmaker = new Question();
-                QuizmakerList.Add(quizmaker);
-                quizmaker.QuestionText = $"{i}";
-                for (int j = 0; j < 3; j++)
-                {
-                    quizmaker.AnswersList.Add($"{i}");
-                }
-            }
-
-            FileOperations.CreateXMLSerializeFile(QuizmakerList);
-            Console.ReadLine();
-           FileOperations.Deserialized();
-            foreach (Question question in QuizmakerList) 
-            {
-            
-            Console.WriteLine(question);
+                Console.WriteLine(question.QuestionText);
             }
             Console.ReadLine();
         }

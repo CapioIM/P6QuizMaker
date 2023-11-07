@@ -1,6 +1,4 @@
-﻿using System.Xml;
-using System.Xml.Serialization;
-using System.IO;
+﻿using System.Xml.Serialization;
 
 namespace P6QuizMaker
 {
@@ -16,28 +14,42 @@ namespace P6QuizMaker
         /// <param name="QuizmakerList"> List of objects </param>
         public static void CreateXMLSerializeFile(List<Question> QuizmakerList)
         {
-            CreateQuestionsFolder(QUESTIONS_FOLDER_PATH);
+            CreateQuestionsFolder(DoesFolderExist(QUESTIONS_FOLDER_PATH));
             XmlSerializer writer = new XmlSerializer(typeof(List<Question>));
             using (FileStream file = File.Create(QUESTIONS_FILE_PATH))
             {
                 writer.Serialize(file, QuizmakerList);
             }
         }
-        private static void CreateQuestionsFolder(string folderPath)
+
+        private static void CreateQuestionsFolder(bool itDoesnt)
+        {
+            if (itDoesnt)
+            {
+                Directory.CreateDirectory(QUESTIONS_FILE_PATH);
+            }
+        }
+        private static bool DoesFolderExist(string folderPath)
         {
             if (!Directory.Exists(folderPath))
             {
-                Directory.CreateDirectory(folderPath);
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
-        public static void Deserialized()
+        public static List<Question> Deserialize()
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<Question>));
+            List<Question> quesitonListName;
             using (FileStream file = File.OpenRead(QUESTIONS_FILE_PATH))
             {
-                List<Question> quesitonListName = serializer.Deserialize(file) as List<Question>;
+                quesitonListName = serializer.Deserialize(file) as List<Question>;
             }
+            return quesitonListName;
         }
     }
 }

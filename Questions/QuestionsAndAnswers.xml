@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfQuestion xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Question>
-    <QuestionText>wtf</QuestionText>
+    <QuestionText>Do</QuestionText>
     <AnswersList>
       <string>0</string>
       <string>0</string>
@@ -10,7 +10,7 @@
     <CorrectAnswersIndexList />
   </Question>
   <Question>
-    <QuestionText>still</QuestionText>
+    <QuestionText>You</QuestionText>
     <AnswersList>
       <string>1</string>
       <string>1</string>
@@ -19,7 +19,7 @@
     <CorrectAnswersIndexList />
   </Question>
   <Question>
-    <QuestionText>Doesnt</QuestionText>
+    <QuestionText>Work</QuestionText>
     <AnswersList>
       <string>2</string>
       <string>2</string>
