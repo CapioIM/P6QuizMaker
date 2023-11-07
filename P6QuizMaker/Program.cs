@@ -51,7 +51,13 @@
             }
 
             FileOperations.CreateXMLSerializeFile(QuizmakerList);
+            Console.ReadLine();
            FileOperations.Deserialized();
+            foreach (Question question in QuizmakerList) 
+            {
+            
+            Console.WriteLine(question);
+            }
             Console.ReadLine();
         }
     }

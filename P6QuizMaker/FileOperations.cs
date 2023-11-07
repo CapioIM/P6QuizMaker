@@ -9,6 +9,7 @@ namespace P6QuizMaker
         private const string QUESTIONS_FOLDER_PATH = @"..\..\..\..\Questions";
         private const string QUESTIONS_FILE_NAME = @"\QuestionsAndAnswers.xml";
         private const string QUESTIONS_FILE_PATH = QUESTIONS_FOLDER_PATH + QUESTIONS_FILE_NAME;
+
         /// <summary>
         /// creates file in text format with values of object ....
         /// </summary>
@@ -22,11 +23,11 @@ namespace P6QuizMaker
                 writer.Serialize(file, QuizmakerList);
             }
         }
-        private static void CreateQuestionsFolder(string path)
+        private static void CreateQuestionsFolder(string folderPath)
         {
-            if (!Directory.Exists(QUESTIONS_FOLDER_PATH))
+            if (!Directory.Exists(folderPath))
             {
-                Directory.CreateDirectory(path);
+                Directory.CreateDirectory(folderPath);
             }
         }
 
