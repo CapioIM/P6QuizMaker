@@ -4,65 +4,53 @@
     {
         static void Main(string[] args)
         {
-
-            UIMethods.WelcomeText();
             List<Question> QuizmakerList = new List<Question>();
-            UIMethods.GetUserInputNum();
 
-
-            /*
-            bool addQuestions = true;
-            while (addQuestions)
+            while (true)
             {
-                UIMethods.WelcomeAddQuestionsChoice();
-                
-                Question quizmaker = new Question();
-                QuizmakerList.Add(quizmaker);
-                quizmaker.QuestionText = UIMethods.DisplayAskToTypeQuestionText();
+                UIMethods.WelcomeText();
+                int manageOrPlay = UIMethods.GetUserInputNum();
 
-                bool addMoreAnswers = true;
-                while (addMoreAnswers)
+                if (manageOrPlay == Convert.ToInt32(StartMode.ManageOrPlay.Manage))
                 {
-                    string answerText = UIMethods.GetAndDisplayTypeAnswerText();
-                    quizmaker.AnswersList.Add(answerText);
-
-                    if (UIMethods.IsCorrectAnswer())
+                    bool addQuestions = true;
+                    while (addQuestions)
                     {
-                        quizmaker.CorrectAnswersIndexList.Add(quizmaker.AnswersList.IndexOf(answerText));
+                        UIMethods.WelcomeAddQuestionsChoice();
+
+                        Question quizmaker = new Question();
+                        QuizmakerList.Add(quizmaker);
+                        quizmaker.QuestionText = UIMethods.DisplayAskToTypeQuestionText();
+
+                        bool addMoreAnswers = true;
+                        while (addMoreAnswers)
+                        {
+                            string answerText = UIMethods.GetAndDisplayTypeAnswerText();
+                            quizmaker.AnswersList.Add(answerText);
+
+                            if (UIMethods.IsCorrectAnswer())
+                            {
+                                quizmaker.CorrectAnswersIndexList.Add(quizmaker.AnswersList.IndexOf(answerText));
+                            }
+
+                            addMoreAnswers = UIMethods.GetAdditionalAnswer();
+                        }
+                        addQuestions = UIMethods.GetAdditionalQuestions();
+                        Console.Clear();
+                        UIMethods.WelcomeText();
                     }
 
-                    addMoreAnswers = UIMethods.GetAdditionalAnswer();
+                    FileOperations.CreateXMLSerializeFile(QuizmakerList);
+                    break;
                 }
-                addQuestions = UIMethods.GetAdditionalQuestions();
-                Console.Clear();
-                UIMethods.WelcomeText();
-            UIMethods.WelcomeAddQuestionsText();
-            }
-/*
-            for (int i = 0; i < 3; i++)
-            {
-                Question quizmaker = new Question();
-                QuizmakerList.Add(quizmaker);
-                quizmaker.QuestionText = $"Is Sky Blue";
-                for (int j = 0; j < 3; j++)
+
+                if (manageOrPlay == Convert.ToInt32(StartMode.ManageOrPlay.Play))
                 {
-                    quizmaker.AnswersList.Add($"{i}");
+                    QuizmakerList = FileOperations.Deserialize();
+
                 }
-                if (quizmaker.AnswersList.IndexOf(quizmaker.AnswersList[i]) == 0)
-                {
-                    quizmaker.CorrectAnswersIndexList.Add(quizmaker.AnswersList.IndexOf(quizmaker.AnswersList[i]));
-                }
+                Console.ReadLine();
             }
-
-*/
-
-  //          FileOperations.CreateXMLSerializeFile(QuizmakerList);
-
-
-            QuizmakerList = FileOperations.Deserialize();
-
-
-            Console.ReadLine();
         }
     }
 }
