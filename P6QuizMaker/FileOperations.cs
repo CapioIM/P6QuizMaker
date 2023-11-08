@@ -22,9 +22,9 @@ namespace P6QuizMaker
             }
         }
 
-        private static void CreateQuestionsFolder(bool @true)
+        private static void CreateQuestionsFolder(bool doesExist)
         {
-            if (!@true)
+            if (!doesExist)
             {
                 Directory.CreateDirectory(QUESTIONS_FILE_PATH);
             }

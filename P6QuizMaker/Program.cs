@@ -1,5 +1,5 @@
 ﻿namespace P6QuizMaker
-{                                                   // comented code is to speed up testing :)
+{                                                   
     internal class Program
     {
         static void Main(string[] args)
@@ -26,10 +26,7 @@
                             string answerText = UIMethods.GetAndDisplayTypeAnswerText();
                             quizmaker.AnswersList.Add(answerText);
 
-                            if (UIMethods.IsCorrectAnswer())
-                            {
-                                quizmaker.CorrectAnswersIndexList.Add(quizmaker.AnswersList.IndexOf(answerText));
-                            }
+                            Logic.AddCorrectAnswersToList(answerText,quizmaker);
 
                             addMoreAnswers = UIMethods.GetAdditionalAnswer();
                         }
@@ -44,8 +41,9 @@
                 if (manageOrPlay == Convert.ToInt32(StartMode.ManageOrPlay.Play))
                 {
                     QuizmakerList = FileOperations.Deserialize();
-
                 }
+
+                //
 
                 Console.ReadLine();
             }
