@@ -1,36 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfQuestion xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Question>
-    <QuestionText>well</QuestionText>
-    <AnswersList>
-      <string>0</string>
-      <string>0</string>
-      <string>0</string>
-    </AnswersList>
-    <CorrectAnswersIndexList>
-      <int>1</int>
-    </CorrectAnswersIndexList>
-  </Question>
-  <Question>
-    <QuestionText>Done</QuestionText>
+    <QuestionText>1</QuestionText>
     <AnswersList>
       <string>1</string>
-      <string>1</string>
-      <string>1</string>
     </AnswersList>
-    <CorrectAnswersIndexList>
-      <int>2</int>
-    </CorrectAnswersIndexList>
-  </Question>
-  <Question>
-    <QuestionText>Pal</QuestionText>
-    <AnswersList>
-      <string>2</string>
-      <string>2</string>
-      <string>2</string>
-    </AnswersList>
-    <CorrectAnswersIndexList>
-      <int>3</int>
-    </CorrectAnswersIndexList>
+    <CorrectAnswersIndexList />
   </Question>
 </ArrayOfQuestion>

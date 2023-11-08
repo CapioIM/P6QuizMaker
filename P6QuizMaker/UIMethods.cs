@@ -12,6 +12,12 @@ namespace P6QuizMaker
                 " And lastly program will bring random question with answers.\n");
         }
 
+        public static void DisplayChoiceManagePlay()
+        {
+            Console.WriteLine("Press 1 to manage Questions\n" +
+                "Press 2 to Play");
+        }
+
         public static int GetUserInputNum()
         {
             int choiceNumber;
@@ -61,8 +67,7 @@ namespace P6QuizMaker
         public static bool GetAdditionalQuestions()
         {
             Console.WriteLine("Would you like to add another Question ?");
-            bool additionalQuestion = MakeDecisionYorN();
-            return additionalQuestion;
+            return MakeDecisionYorN();
         }
         public static bool GetAdditionalAnswer()
         {
@@ -73,14 +78,12 @@ namespace P6QuizMaker
         public static string GetAndDisplayTypeAnswerText()
         {
             Console.Write("Type answer : ");
-            string text = GetUserInput();
-            return text;
+            return GetUserInput();
         }
         public static bool IsCorrectAnswer()
         {
             Console.WriteLine("Is this correct answer ? : ");
-            bool isAdditionalAnswer = MakeDecisionYorN();
-            return isAdditionalAnswer;
+            return MakeDecisionYorN();
         }
     }
 }

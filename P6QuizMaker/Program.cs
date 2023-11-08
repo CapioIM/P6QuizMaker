@@ -9,15 +9,13 @@
             while (true)
             {
                 UIMethods.WelcomeText();
+                UIMethods.DisplayChoiceManagePlay();
                 int manageOrPlay = UIMethods.GetUserInputNum();
-
                 if (manageOrPlay == Convert.ToInt32(StartMode.ManageOrPlay.Manage))
                 {
                     bool addQuestions = true;
                     while (addQuestions)
                     {
-                        UIMethods.WelcomeAddQuestionsChoice();
-
                         Question quizmaker = new Question();
                         QuizmakerList.Add(quizmaker);
                         quizmaker.QuestionText = UIMethods.DisplayAskToTypeQuestionText();
@@ -37,11 +35,10 @@
                         }
                         addQuestions = UIMethods.GetAdditionalQuestions();
                         Console.Clear();
-                        UIMethods.WelcomeText();
                     }
 
                     FileOperations.CreateXMLSerializeFile(QuizmakerList);
-                    break;
+                    continue;
                 }
 
                 if (manageOrPlay == Convert.ToInt32(StartMode.ManageOrPlay.Play))
@@ -49,6 +46,7 @@
                     QuizmakerList = FileOperations.Deserialize();
 
                 }
+
                 Console.ReadLine();
             }
         }
