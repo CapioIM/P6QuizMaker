@@ -1,40 +1,56 @@
-﻿namespace P6QuizMaker
+﻿using System.ComponentModel.Design;
+
+namespace P6QuizMaker
 {
     internal class UIMethods
     {
-
         public static void WelcomeText()
         {
             Console.WriteLine("                 Welcome to Quiz Maker Program !\n" +
-                " You will be asked to type questions and answers to these questions.\n" +
+                " You will be asked to type questions and answers or to answer these questions.\n" +
                 " After you will enter answers program will ask you to pick if answer is correct.\n" +
                 " And lastly program will bring random question with answers.\n");
         }
 
+        public static int GetUserInputNum()
+        {
+            int choiceNumber;
+            bool convertToInt = false;
+            while (!convertToInt)
+            {
+                convertToInt = int.TryParse(Console.ReadLine(), out choiceNumber);
+                if (convertToInt)
+                {
+                    return choiceNumber;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter Number !");
+                }
+            }
+            return 0; //not all code paths return a value
+        }
         public static void WelcomeAddQuestionsChoice()
         {
-            Console.WriteLine("" +
-                "Type Question to add to list of Questions!");
+            Console.WriteLine("Type Question to add to list of Questions!");
         }
 
         public static string GetUserInput()
         {
-            string textMessage = Console.ReadLine();
-            return textMessage;
+            return Console.ReadLine();
         }
         public static string DisplayAskToTypeQuestionText()
         {
             Console.Write("Please write question for QuizMaker ! : ");
-            var text = GetUserInput();
-            return text;
+            return GetUserInput();
         }
 
         public static bool MakeDecisionYorN()
         {
             PrintPressYesOrNo();
-            var testString = Console.ReadLine().ToLower();
-            var testChar = testString.ToCharArray();
-            return (testChar[0] != 'n');
+            string answer = Console.ReadLine().ToLower();
+            char[] firstChar = answer.ToCharArray();
+            return (firstChar[0] != 'n');
         }
 
         public static void PrintPressYesOrNo()

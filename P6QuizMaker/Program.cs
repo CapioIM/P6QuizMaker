@@ -6,9 +6,9 @@
         {
 
             UIMethods.WelcomeText();
-
-
             List<Question> QuizmakerList = new List<Question>();
+            UIMethods.GetUserInputNum();
+
 
             /*
             bool addQuestions = true;
@@ -36,27 +36,32 @@
                 addQuestions = UIMethods.GetAdditionalQuestions();
                 Console.Clear();
                 UIMethods.WelcomeText();
+            UIMethods.WelcomeAddQuestionsText();
             }
-            */
-            /*
-                        for (int i = 0; i <3; i++)
-                        {
-                            Question quizmaker = new Question();
-                            QuizmakerList.Add(quizmaker);
-                            quizmaker.QuestionText = $"{i}";
-                            for (int j = 0; j < 3; j++)
-                            {
-                                quizmaker.AnswersList.Add($"{i}");
-                            }
-                        }
-
-                        FileOperations.CreateXMLSerializeFile(QuizmakerList);
-            */
-            QuizmakerList = FileOperations.Deserialize();
-            foreach (Question question in QuizmakerList)
+/*
+            for (int i = 0; i < 3; i++)
             {
-                Console.WriteLine(question.QuestionText);
+                Question quizmaker = new Question();
+                QuizmakerList.Add(quizmaker);
+                quizmaker.QuestionText = $"Is Sky Blue";
+                for (int j = 0; j < 3; j++)
+                {
+                    quizmaker.AnswersList.Add($"{i}");
+                }
+                if (quizmaker.AnswersList.IndexOf(quizmaker.AnswersList[i]) == 0)
+                {
+                    quizmaker.CorrectAnswersIndexList.Add(quizmaker.AnswersList.IndexOf(quizmaker.AnswersList[i]));
+                }
             }
+
+*/
+
+  //          FileOperations.CreateXMLSerializeFile(QuizmakerList);
+
+
+            QuizmakerList = FileOperations.Deserialize();
+
+
             Console.ReadLine();
         }
     }
