@@ -4,6 +4,16 @@ namespace P6QuizMaker
 {
     internal class UIMethods
     {
+
+        public static void DisplayQuestionAndAnswers(List<Question> QuizmakerList, int randomQuestionIndex)
+        {
+            Console.WriteLine($"Please answer this Question: {QuizmakerList[randomQuestionIndex].QuestionText}");
+            foreach (string answers in QuizmakerList[randomQuestionIndex].AnswersList)
+            {
+                Console.Write($"{QuizmakerList[randomQuestionIndex].AnswersList.IndexOf(answers) + 1}" + "-");
+                Console.WriteLine(answers);
+            }
+        }
         public static void WelcomeText()
         {
             Console.WriteLine("                 Welcome to Quiz Maker Program !\n" +

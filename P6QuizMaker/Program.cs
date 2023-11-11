@@ -1,5 +1,5 @@
 ﻿namespace P6QuizMaker
-{                                                   
+{
     internal class Program
     {
         static void Main(string[] args)
@@ -7,12 +7,13 @@
             List<Question> QuizmakerList = new List<Question>();
             int score = 0;
 
+            bool interested = true;
             while (true)
             {
                 UIMethods.WelcomeText();
                 UIMethods.DisplayChoiceManagePlay();
                 int manageOrPlay = UIMethods.GetUserInputNum();
-               
+
                 if (manageOrPlay == Convert.ToInt32(StartMode.ManageOrPlay.Manage))
                 {
                     bool manageQuestions = true;
@@ -27,7 +28,7 @@
                         {
                             string answerText = UIMethods.GetAndDisplayTypeAnswerText();
                             quizmaker.AnswersList.Add(answerText);
-                            Logic.AddCorrectAnswersToList(answerText,quizmaker);
+                            Logic.AddCorrectAnswersToList(answerText, quizmaker);
                             addMoreAnswers = UIMethods.GetAdditionalAnswer();
                         }
                         manageQuestions = UIMethods.GetAdditionalQuestions();
@@ -42,35 +43,25 @@
                 {
                     QuizmakerList = FileOperations.Deserialize();
                 }
+
                 bool playingQuizMaker = true;
                 while (playingQuizMaker)
                 {
                     Random random = new Random();
-                    int randomQuestionIndex = random.Next(0,QuizmakerList.Count);
+                    int randomQuestionIndex = random.Next(0, QuizmakerList.Count);
                     Console.WriteLine("Please type number associated with answer");
-                    Console.WriteLine($"Please answer this Question: {QuizmakerList[randomQuestionIndex].QuestionText}");
-                    foreach (string answer in QuizmakerList[randomQuestionIndex].AnswersList)
-                    {
-                        Console.Write($"{QuizmakerList[randomQuestionIndex].AnswersList.IndexOf(answer)+1}" + " ");
-                        Console.WriteLine(answer);
-                    }
-                    int userAnswer = UIMethods.GetUserInputNum();
-                    foreach (int correctAnswer in QuizmakerList[randomQuestionIndex].CorrectAnswersIndexList)
-                    {
-                        if (correctAnswer == userAnswer)
-                        {
-                            score++;
-                        }
-                    }
 
+                    UIMethods.DisplayQuestionAndAnswers(QuizmakerList,randomQuestionIndex);
 
+                    score = Logic.UserAnswerCheckWithScore(QuizmakerList, score, randomQuestionIndex);
 
-                    playingQuizMaker = false;
+                    Console.WriteLine("Would you like to play another question ?");
+                    playingQuizMaker = UIMethods.MakeDecisionYorN();
+                    Console.Clear();
                 }
 
 
-
-                Console.ReadLine();
+                interested = UIMethods.MakeDecisionYorN();
             }
         }
     }

@@ -1,4 +1,7 @@
-﻿namespace P6QuizMaker
+﻿using static System.Formats.Asn1.AsnWriter;
+using System;
+
+namespace P6QuizMaker
 {
     internal class Logic
     {
@@ -13,6 +16,20 @@
             {
                 quizmaker.CorrectAnswersIndexList.Add(quizmaker.AnswersList.IndexOf(answerText));
             }
+        }
+        public static int UserAnswerCheckWithScore(List<Question> QuizmakerList, int score, int randomQuestionPick)
+        {
+            int userAnswer = UIMethods.GetUserInputNum();
+            foreach (int correctAnswer in QuizmakerList[randomQuestionPick].CorrectAnswersIndexList)
+            {
+                if (correctAnswer == userAnswer - 1)
+                {
+                    score++;
+                    Console.WriteLine("You are smartest!");
+                    Console.WriteLine($"Your Score : {score}");
+                }
+            }
+            return score;
         }
     }
 }
