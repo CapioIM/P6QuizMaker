@@ -4,8 +4,12 @@ namespace P6QuizMaker
 {
     internal class UIMethods
     {
-
-        public static void DisplayQuestionAndAnswers(List<Question> QuizmakerList, int randomQuestionIndex)
+        /// <summary>
+        /// CW display questions and answers text from object in a list at index of randomQuesitonIndex
+        /// </summary>
+        /// <param name="QuizmakerList"> List with object Question </param>
+        /// <param name="randomQuestionIndex"> random generated number variable </param>
+        public static void DisplayQuestionAndAnswersToPlayer(List<Question> QuizmakerList, int randomQuestionIndex)
         {
             Console.WriteLine($"Please answer this Question: {QuizmakerList[randomQuestionIndex].QuestionText}");
             foreach (string answers in QuizmakerList[randomQuestionIndex].AnswersList)
@@ -17,17 +21,21 @@ namespace P6QuizMaker
         public static void WelcomeText()
         {
             Console.WriteLine("                 Welcome to Quiz Maker Program !\n" +
-                " You will be asked to type questions and answers or to answer these questions.\n" +
-                " After you will enter answers program will ask you to pick if answer is correct.\n" +
-                " And lastly program will bring random question with answers.\n");
+                " You can add questions with answers or you can play Quizmaker and answer questions.\n");
         }
 
         public static void DisplayChoiceManagePlay()
         {
-            Console.WriteLine("Press 1 to manage Questions\n" +
-                "Press 2 to Play Quizmaker");
+            Console.WriteLine(
+                "Press 1 to manage Questions\n" +
+                "Press 2 to Play Quizmaker"
+                );
         }
 
+        /// <summary>
+        /// Asks user to enter integer, torture happens untill number is entered
+        /// </summary>
+        /// <returns> user entered integer </returns>
         public static int GetUserInputNum()
         {
             int choiceNumber;
@@ -46,11 +54,6 @@ namespace P6QuizMaker
             }
             return 0; //not all code paths return a value
         }
-        public static void WelcomeAddQuestionsChoice()
-        {
-            Console.WriteLine("Type Question to add to list of Questions!");
-        }
-
         public static string GetUserInput()
         {
             return Console.ReadLine();
@@ -76,14 +79,13 @@ namespace P6QuizMaker
 
         public static bool GetAdditionalQuestions()
         {
-            Console.WriteLine("Would you like to add another Question ?");
+            Console.WriteLine("Would you like to add more Questions ?");
             return MakeDecisionYorN();
         }
         public static bool GetAdditionalAnswer()
         {
-            Console.WriteLine("Would you like to add additional Answer ?");
-            bool addAnswer = MakeDecisionYorN();
-            return addAnswer;
+            Console.Write("Would you like to add additional Answer ? : ");
+            return MakeDecisionYorN();
         }
         public static string GetAndDisplayTypeAnswerText()
         {

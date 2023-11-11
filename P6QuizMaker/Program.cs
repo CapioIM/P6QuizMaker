@@ -7,8 +7,8 @@
             List<Question> QuizmakerList = new List<Question>();
             int score = 0;
 
-            bool interested = true;
-            while (true)
+            bool interestedToUseProgramm = true;
+            while (interestedToUseProgramm)
             {
                 UIMethods.WelcomeText();
                 UIMethods.DisplayChoiceManagePlay();
@@ -47,11 +47,10 @@
                 bool playingQuizMaker = true;
                 while (playingQuizMaker)
                 {
-                    Random random = new Random();
-                    int randomQuestionIndex = random.Next(0, QuizmakerList.Count);
+                    int randomQuestionIndex = Logic.GetRandomIndex(QuizmakerList);
                     Console.WriteLine("Please type number associated with answer");
 
-                    UIMethods.DisplayQuestionAndAnswers(QuizmakerList,randomQuestionIndex);
+                    UIMethods.DisplayQuestionAndAnswersToPlayer(QuizmakerList,randomQuestionIndex);
 
                     score = Logic.UserAnswerCheckWithScore(QuizmakerList, score, randomQuestionIndex);
 
@@ -60,8 +59,7 @@
                     Console.Clear();
                 }
 
-
-                interested = UIMethods.MakeDecisionYorN();
+                interestedToUseProgramm = UIMethods.MakeDecisionYorN();
             }
         }
     }
