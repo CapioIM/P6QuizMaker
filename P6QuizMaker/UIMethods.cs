@@ -15,7 +15,7 @@ namespace P6QuizMaker
         public static void DisplayChoiceManagePlay()
         {
             Console.WriteLine("Press 1 to manage Questions\n" +
-                "Press 2 to Play");
+                "Press 2 to Play Quizmaker");
         }
 
         public static int GetUserInputNum()
