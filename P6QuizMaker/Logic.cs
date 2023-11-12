@@ -1,7 +1,4 @@
-﻿using static System.Formats.Asn1.AsnWriter;
-using System;
-
-namespace P6QuizMaker
+﻿namespace P6QuizMaker
 {
     internal class Logic
     {

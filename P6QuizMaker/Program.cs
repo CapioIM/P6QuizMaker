@@ -19,18 +19,13 @@
                     bool manageQuestions = true;
                     while (manageQuestions)
                     {
-                        Question quizmaker = new Question();
-                        QuizmakerList.Add(quizmaker);
-                        quizmaker.QuestionText = UIMethods.DisplayAskToTypeQuestionText();
+                        Question quizmakerQuestion = new Question();
+                        QuizmakerList.Add(quizmakerQuestion);
 
-                        bool addMoreAnswers = true;
-                        while (addMoreAnswers)
-                        {
-                            string answerText = UIMethods.GetAndDisplayTypeAnswerText();
-                            quizmaker.AnswersList.Add(answerText);
-                            Logic.AddCorrectAnswersToList(answerText, quizmaker);
-                            addMoreAnswers = UIMethods.GetAdditionalAnswer();
-                        }
+                        quizmakerQuestion.QuestionText = UIMethods.DisplayAskToTypeQuestionText();
+
+                        ManageQuestions.AddAnswersToQuestion(quizmakerQuestion);
+
                         manageQuestions = UIMethods.GetAdditionalQuestions();
                         Console.Clear();
                     }

@@ -2,30 +2,46 @@
 {
     internal class ManageQuestions
     {
-/*
-        public static bool IsQuestionListEmpty(List<Question> list)
+
+        public static void AddAnswersToQuestion(Question quizmaker)
         {
-            if (list.Any())
+            bool addMoreAnswers = true;
+            while (addMoreAnswers)
             {
-                return true;
-            }
-            else
-            {
-                return false;
+                string answerText = UIMethods.GetAndDisplayTypeAnswerText();
+                quizmaker.AnswersList.Add(answerText);
+                Logic.AddCorrectAnswersToList(answerText, quizmaker);
+                addMoreAnswers = UIMethods.GetAdditionalAnswer();
             }
         }
 
-        public static bool IsAnswerListEmpty(List<string> list)
-        {
-            if (list.Any())
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-*/
+
+
+
+        /*
+                public static bool IsQuestionListEmpty(List<Question> list)
+                {
+                    if (list.Any())
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+                public static bool IsAnswerListEmpty(List<string> list)
+                {
+                    if (list.Any())
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+        */
     }
 }

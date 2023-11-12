@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.Design;
-
-namespace P6QuizMaker
+﻿namespace P6QuizMaker
 {
     internal class UIMethods
     {
