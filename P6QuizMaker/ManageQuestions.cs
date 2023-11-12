@@ -2,7 +2,10 @@
 {
     internal class ManageQuestions
     {
-
+        /// <summary>
+        /// add answer to specified object
+        /// </summary>
+        /// <param name="quizmaker"> object name, if in list where to find specific object </param>
         public static void AddAnswersToQuestion(Question quizmaker)
         {
             bool addMoreAnswers = true;
@@ -24,7 +27,7 @@
         {
             if (UIMethods.IsCorrectAnswer())
             {
-                quizmaker.CorrectAnswersIndexList.Add(quizmaker.AnswersList.IndexOf(answerText));
+                quizmaker.CorrectAnswersIndexList.Add(answerText);
             }
         }
 
@@ -49,11 +52,21 @@
             }
         }
 
-        public static void ShowListOfAnswers(List<Question> QuizmakerList, int questionToAmend)
+        public static void ShowListOfAnswers(List<Question> QuizmakerList, int questionToAmend,int amendChoice)
         {
-            foreach (string answer in QuizmakerList[questionToAmend].AnswersList)
+            if (amendChoice == 2)
             {
-                Console.WriteLine($"{QuizmakerList[questionToAmend].AnswersList.IndexOf(answer) + 1}" + " " + answer);
+                foreach (string answer in QuizmakerList[questionToAmend].AnswersList)
+                {
+                    Console.WriteLine($"{QuizmakerList[questionToAmend].AnswersList.IndexOf(answer) + 1}" + " " + answer);
+                }
+            }
+            if (amendChoice == 3)
+            {
+                foreach (string answer in QuizmakerList[questionToAmend].CorrectAnswersIndexList)
+                {
+                    Console.WriteLine($"{QuizmakerList[questionToAmend].CorrectAnswersIndexList.IndexOf(answer) + 1}" + " " + answer);
+                }
             }
         }
 

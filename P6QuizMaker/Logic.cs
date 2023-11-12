@@ -12,10 +12,10 @@
         /// <returns> updated score </returns>
         public static int UserAnswerCheckWithScore(List<Question> QuizmakerList, int score, int randomQuestionPick)
         {
-            int userAnswer = UIMethods.GetUserInputNum();
-            foreach (int correctAnswer in QuizmakerList[randomQuestionPick].CorrectAnswersIndexList)
+            int userAnswer = UIMethods.GetUserInputNum() -1;
+            foreach (string correctAnswer in QuizmakerList[randomQuestionPick].CorrectAnswersIndexList)
             {
-                if (correctAnswer == userAnswer - 1)
+                if (correctAnswer == QuizmakerList[randomQuestionPick].AnswersList[userAnswer])
                 {
                     score++;
                     Console.WriteLine("You are smartest!");
