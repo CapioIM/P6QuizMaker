@@ -2,12 +2,22 @@
 {
     internal class UIMethods
     {
-        /// <summary>
-        /// CW display questions and answers text from object in a list at index of randomQuesitonIndex
-        /// </summary>
-        /// <param name="QuizmakerList"> List with object Question </param>
-        /// <param name="randomQuestionIndex"> random generated number variable </param>
-        public static void DisplayQuestionAndAnswersToPlayer(List<Question> QuizmakerList, int randomQuestionIndex)
+        public static void DisplayAddNumberText()
+        {
+            Console.WriteLine("Please type number associated with answer");
+        }
+
+        public static void DisplayPlayAnotherQuestionText()
+        {
+            Console.WriteLine("Would you like to play another question ?");
+        }
+
+    /// <summary>
+    /// CW display questions and answers text from object in a list at index of randomQuesitonIndex
+    /// </summary>
+    /// <param name="QuizmakerList"> List with object Question </param>
+    /// <param name="randomQuestionIndex"> random generated number variable </param>
+    public static void DisplayQuestionAndAnswersToPlayer(List<Question> QuizmakerList, int randomQuestionIndex)
         {
             Console.WriteLine($"Please answer this Question: {QuizmakerList[randomQuestionIndex].QuestionText}");
             foreach (string answers in QuizmakerList[randomQuestionIndex].AnswersList)
@@ -31,7 +41,7 @@
         }
 
         /// <summary>
-        /// Asks user to enter integer, torture happens untill number is entered
+        /// Asks user to enter integer, untill number is entered
         /// </summary>
         /// <returns> user entered integer </returns>
         public static int GetUserInputNum()
@@ -52,6 +62,8 @@
             }
             return 0; //not all code paths return a value
         }
+
+
         public static string GetUserInput()
         {
             return Console.ReadLine();

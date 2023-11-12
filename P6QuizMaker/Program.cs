@@ -43,17 +43,15 @@
                 while (playingQuizMaker)
                 {
                     int randomQuestionIndex = Logic.GetRandomIndex(QuizmakerList);
-                    Console.WriteLine("Please type number associated with answer");
-
+                    UIMethods.DisplayAddNumberText();
                     UIMethods.DisplayQuestionAndAnswersToPlayer(QuizmakerList,randomQuestionIndex);
 
                     score = Logic.UserAnswerCheckWithScore(QuizmakerList, score, randomQuestionIndex);
 
-                    Console.WriteLine("Would you like to play another question ?");
                     playingQuizMaker = UIMethods.MakeDecisionYorN();
                     Console.Clear();
                 }
-
+                UIMethods.DisplayPlayAnotherQuestionText();
                 interestedToUseProgramm = UIMethods.MakeDecisionYorN();
             }
         }

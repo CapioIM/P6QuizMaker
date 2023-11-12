@@ -10,11 +10,23 @@
             {
                 string answerText = UIMethods.GetAndDisplayTypeAnswerText();
                 quizmaker.AnswersList.Add(answerText);
-                Logic.AddCorrectAnswersToList(answerText, quizmaker);
+                AddCorrectAnswersToList(answerText, quizmaker);
                 addMoreAnswers = UIMethods.GetAdditionalAnswer();
             }
         }
 
+        /// <summary>
+        /// if true adds index of matching string in AnswersList
+        /// </summary>
+        /// <param name="answerText">input string of Answer</param>
+        /// <param name="quizmaker">Object variable name</param>
+        public static void AddCorrectAnswersToList(string answerText, Question quizmaker)
+        {
+            if (UIMethods.IsCorrectAnswer())
+            {
+                quizmaker.CorrectAnswersIndexList.Add(quizmaker.AnswersList.IndexOf(answerText));
+            }
+        }
 
 
 
