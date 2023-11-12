@@ -28,32 +28,36 @@
             }
         }
 
+        public static bool IsNewQuestion()
+        {
+            return UIMethods.GetNewQuestion();
+        }
+
+        public static Question AddNewQuestion(bool yes, List<Question> QuizmakerList)
+        {
+            if (yes)
+            {
+                Question quizmakerQuestion = new Question();
+                QuizmakerList.Add(quizmakerQuestion);
+                return quizmakerQuestion;
+            }
+            
+            return null;
+        }
 
 
-        /*
-                public static bool IsQuestionListEmpty(List<Question> list)
-                {
-                    if (list.Any())
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
 
-                public static bool IsAnswerListEmpty(List<string> list)
-                {
-                    if (list.Any())
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-        */
+        /// <summary>
+        /// WriteLine List with object
+        /// </summary>
+        /// <param name="list"> list with/of objects </param>
+        public static void ShowListOfQuestion(List<Question> list)
+        {
+            foreach (Question question in list)
+            {
+                Console.WriteLine($"{list.IndexOf(question)}" + " " + question.QuestionText);
+            }
+        }
+
     }
 }

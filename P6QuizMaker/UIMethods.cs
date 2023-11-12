@@ -89,7 +89,13 @@
 
         public static bool GetAdditionalQuestions()
         {
-            Console.WriteLine("Would you like to add more Questions ?");
+            Console.WriteLine("Would you like to add Questions ?");
+            return MakeDecisionYorN();
+        }
+
+        public static bool GetNewQuestion()
+        {
+            Console.WriteLine("Do you want to add new Question ?");
             return MakeDecisionYorN();
         }
         public static bool GetAdditionalAnswer()

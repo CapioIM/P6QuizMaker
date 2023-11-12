@@ -19,8 +19,10 @@
                     bool manageQuestions = true;
                     while (manageQuestions)
                     {
-                        Question quizmakerQuestion = new Question();
-                        QuizmakerList.Add(quizmakerQuestion);
+                        QuizmakerList = FileOperations.Deserialize();
+                        ManageQuestions.ShowListOfQuestion(QuizmakerList);
+
+                        Question quizmakerQuestion = ManageQuestions.AddNewQuestion(ManageQuestions.IsNewQuestion(), QuizmakerList);
 
                         quizmakerQuestion.QuestionText = UIMethods.DisplayAskToTypeQuestionText();
 
@@ -44,7 +46,7 @@
                 {
                     int randomQuestionIndex = Logic.GetRandomIndex(QuizmakerList);
                     UIMethods.DisplayAddNumberText();
-                    UIMethods.DisplayQuestionAndAnswersToPlayer(QuizmakerList,randomQuestionIndex);
+                    UIMethods.DisplayQuestionAndAnswersToPlayer(QuizmakerList, randomQuestionIndex);
 
                     score = Logic.UserAnswerCheckWithScore(QuizmakerList, score, randomQuestionIndex);
 
