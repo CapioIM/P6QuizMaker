@@ -28,21 +28,11 @@
             }
         }
 
-        public static bool IsNewQuestion()
+        public static Question AddNewQuestion(List<Question> QuizmakerList)
         {
-            return UIMethods.GetNewQuestion();
-        }
-
-        public static Question AddNewQuestion(bool yes, List<Question> QuizmakerList)
-        {
-            if (yes)
-            {
                 Question quizmakerQuestion = new Question();
                 QuizmakerList.Add(quizmakerQuestion);
                 return quizmakerQuestion;
-            }
-            
-            return null;
         }
 
 
@@ -55,7 +45,15 @@
         {
             foreach (Question question in list)
             {
-                Console.WriteLine($"{list.IndexOf(question)}" + " " + question.QuestionText);
+                Console.WriteLine($"{list.IndexOf(question)+1}" + " " + question.QuestionText);
+            }
+        }
+
+        public static void ShowListOfAnswers(List<Question> QuizmakerList, int questionToAmend)
+        {
+            foreach (string answer in QuizmakerList[questionToAmend].AnswersList)
+            {
+                Console.WriteLine($"{QuizmakerList[questionToAmend].AnswersList.IndexOf(answer) + 1}" + " " + answer);
             }
         }
 

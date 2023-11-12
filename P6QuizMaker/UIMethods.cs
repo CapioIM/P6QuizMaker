@@ -110,7 +110,7 @@
         }
         public static bool IsCorrectAnswer()
         {
-            Console.WriteLine("Is this correct answer ? : ");
+            Console.Write("Is this correct answer ? : ");
             return MakeDecisionYorN();
         }
     }
