@@ -1,4 +1,6 @@
-﻿namespace P6QuizMaker
+﻿using System.Xml.Serialization;
+
+namespace P6QuizMaker
 {
     internal class Program
     {
@@ -10,28 +12,33 @@
             bool interestedToUseProgramm = true;
             while (interestedToUseProgramm)
             {
-                UIMethods.WelcomeText();
+                UIMethods.WelcomeText();                                        //welcome text
                 UIMethods.DisplayChoiceManagePlay();
-                int manageOrPlay = UIMethods.GetUserInputNum();
+                int manageOrPlay = UIMethods.GetUserInputNum();                 //choice to manage quesitons or play
 
                 if (manageOrPlay == Convert.ToInt32(StartMode.ManageOrPlay.Manage))
                 {
-                    bool manageQuestions = true;
-                    while (manageQuestions)
+                    Console.WriteLine("Do you want to add new question or amend existing question");
+                    int newOrAmend = UIMethods.GetUserInputNum();               // choice to add new or amend existing
+
+                    if (newOrAmend == 1)                                        // add new question
                     {
-                        QuizmakerList = FileOperations.Deserialize();
-                        ManageQuestions.ShowListOfQuestion(QuizmakerList);
+                        bool addNewQuestions = true;
+                        while (addNewQuestions)
+                        {
+                            QuizmakerList = FileOperations.Deserialize();
+                            ManageQuestions.ShowListOfQuestion(QuizmakerList);
 
-                        Question quizmakerQuestion = ManageQuestions.AddNewQuestion(ManageQuestions.IsNewQuestion(), QuizmakerList);
+                            Question quizmakerQuestion = ManageQuestions.AddNewQuestion(ManageQuestions.IsNewQuestion(), QuizmakerList);
 
-                        quizmakerQuestion.QuestionText = UIMethods.DisplayAskToTypeQuestionText();
+                            quizmakerQuestion.QuestionText = UIMethods.DisplayAskToTypeQuestionText();
 
-                        ManageQuestions.AddAnswersToQuestion(quizmakerQuestion);
+                            ManageQuestions.AddAnswersToQuestion(quizmakerQuestion);
 
-                        manageQuestions = UIMethods.GetAdditionalQuestions();
-                        Console.Clear();
+                            addNewQuestions = UIMethods.GetAdditionalQuestions();
+                            Console.Clear();
+                        }
                     }
-
                     FileOperations.CreateXMLSerializeFile(QuizmakerList);
                     continue;
                 }
