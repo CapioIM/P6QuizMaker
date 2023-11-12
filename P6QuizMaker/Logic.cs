@@ -13,7 +13,7 @@
         public static int UserAnswerCheckWithScore(List<Question> QuizmakerList, int score, int randomQuestionPick)
         {
             int userAnswer = UIMethods.GetUserInputNum() -1;
-            foreach (string correctAnswer in QuizmakerList[randomQuestionPick].CorrectAnswersIndexList)
+            foreach (string correctAnswer in QuizmakerList[randomQuestionPick].CorrectAnswersList)
             {
                 if (correctAnswer == QuizmakerList[randomQuestionPick].AnswersList[userAnswer])
                 {

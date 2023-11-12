@@ -4,7 +4,7 @@
     {
         private string _questionText { get; set; }
         public List<string> AnswersList = new List<string>();
-        public List<string> CorrectAnswersIndexList = new List<string>();
+        public List<string> CorrectAnswersList = new List<string>();
 
         public override string ToString()
         {

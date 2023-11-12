@@ -27,7 +27,7 @@
         {
             if (UIMethods.IsCorrectAnswer())
             {
-                quizmaker.CorrectAnswersIndexList.Add(answerText);
+                quizmaker.CorrectAnswersList.Add(answerText);
             }
         }
 
@@ -63,9 +63,9 @@
             }
             if (amendChoice == 3)
             {
-                foreach (string answer in QuizmakerList[questionToAmend].CorrectAnswersIndexList)
+                foreach (string answer in QuizmakerList[questionToAmend].CorrectAnswersList)
                 {
-                    Console.WriteLine($"{QuizmakerList[questionToAmend].CorrectAnswersIndexList.IndexOf(answer) + 1}" + " " + answer);
+                    Console.WriteLine($"{QuizmakerList[questionToAmend].CorrectAnswersList.IndexOf(answer) + 1}" + " " + answer);
                 }
             }
         }

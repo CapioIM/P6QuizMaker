@@ -42,10 +42,49 @@ namespace P6QuizMaker
 
                         if (newOrAmend == 2)
                         {
+
                             ManageQuestions.ShowListOfQuestion(QuizmakerList);                              // show list of questions
+                            Console.WriteLine("Which Question to amend");
+                            int questionToAmend = UIMethods.GetUserInputNum();
+
+                            Console.WriteLine("Would you like to amend:\n" +
+                           " 1 - Question Text\n" +
+                           " 2 - Answers\n" +
+                           " 3 - Correct Answers\n");
+                            int whatToAmendChoice = UIMethods.GetUserInputNum();
+                            Options.DisplayList(QuizmakerList, questionToAmend, whatToAmendChoice);
+
+                            if (whatToAmendChoice == Convert.ToInt32(Options.List.QuestionsText))
+                            {
+                                Options.AmendQuestionText(QuizmakerList, questionToAmend);
+                            }
+
+                            if (whatToAmendChoice == Convert.ToInt32(Options.List.AnswerList) || whatToAmendChoice == Convert.ToInt32(Options.List.CorrectAnswerList))
+                            {
+                                Console.WriteLine(
+                                         "Press 1 to add answer \n" +
+                                         "Press 2 to remove answer" +
+                                         "Press 3 to amend answer");
+
+                                int addRemoveAmend = UIMethods.GetUserInputNum();
+                                if (addRemoveAmend == Convert.ToInt32(Options.OptionChoice.Add))
+                                {
+                                    Options.AddAnswer(QuizmakerList[questionToAmend], whatToAmendChoice);
+                                }
+                                if (addRemoveAmend == Convert.ToInt32(Options.OptionChoice.Remove))
+                                {
+
+                                }
+
+                            }
+
+                            /*
+
+                            
                             Console.WriteLine("Which question or answers for which question you would like to amend ?");
                             int questionToAmend = UIMethods.GetUserInputNum() - 1;                          //choice which question to amend
                             Console.WriteLine($"{QuizmakerList[questionToAmend].QuestionText}");
+                            ManageQuestions.ShowListOfQuestion(QuizmakerList);                              // show list of questions
 
                             bool amending = true;
                             while (amending)
@@ -72,11 +111,13 @@ namespace P6QuizMaker
                                             "Press 1 to amend answer \n" +
                                             "Press 2 to remove answer" +
                                             "Press 3 to add answer");
+
+                                        ManageQuestions.ShowListOfAnswers(QuizmakerList, questionToAmend, amendChoice);
+                                        Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
+
                                         int choiceAmendRemoveOrAddAnswer = UIMethods.GetUserInputNum();
                                         if (choiceAmendRemoveOrAddAnswer == 1)                                                         // amend answer
                                         {
-                                            Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
-                                            ManageQuestions.ShowListOfAnswers(QuizmakerList, questionToAmend, amendChoice);
                                             int answerToAmend = UIMethods.GetUserInputNum() - 1;
                                             Console.WriteLine("What this answer would you like to change to ?");
                                             QuizmakerList[questionToAmend].AnswersList[answerToAmend] = UIMethods.GetUserInput();
@@ -84,7 +125,6 @@ namespace P6QuizMaker
 
                                         if (choiceAmendRemoveOrAddAnswer == 2)                                                             //remove answer
                                         {
-                                            ManageQuestions.ShowListOfAnswers(QuizmakerList, questionToAmend,amendChoice);
                                             int answerToRemove = UIMethods.GetUserInputNum() - 1;
                                             QuizmakerList[questionToAmend].AnswersList.RemoveAt(answerToRemove);
                                         }
@@ -96,20 +136,22 @@ namespace P6QuizMaker
                                         amendOrRemoveAnswer = UIMethods.MakeDecisionYorN();
                                     }
                                 }
-                                if (amendChoice == 3 )                                                                  // correct answers
+                                if (amendChoice == 3)                                                                  // correct answers
                                 {
-                                    ManageQuestions.ShowListOfAnswers(QuizmakerList,questionToAmend,amendChoice);
-                          
+                                    ManageQuestions.ShowListOfAnswers(QuizmakerList, questionToAmend, amendChoice);
+
 
 
                                     // ohhhhhhhhhh big ffffffffff , time to stop coppy pasta
 
                                 }
-
                                 Console.WriteLine("Do you want to keep changing Question text, answers or correct answers ?");
-                                amending = UIMethods.MakeDecisionYorN();
+                               amending = UIMethods.MakeDecisionYorN();
 
                             }
+*/
+
+
                         }
 
                         Console.WriteLine("end to test programm");
