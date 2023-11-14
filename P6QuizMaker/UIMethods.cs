@@ -12,12 +12,12 @@
             Console.WriteLine("Would you like to play another question ?");
         }
 
-    /// <summary>
-    /// CW display questions and answers text from object in a list at index of randomQuesitonIndex
-    /// </summary>
-    /// <param name="QuizmakerList"> List with object Question </param>
-    /// <param name="randomQuestionIndex"> random generated number variable </param>
-    public static void DisplayQuestionAndAnswersToPlayer(List<Question> QuizmakerList, int randomQuestionIndex)
+        /// <summary>
+        /// CW display questions and answers text from object in a list at index of randomQuesitonIndex
+        /// </summary>
+        /// <param name="QuizmakerList"> List with object Question </param>
+        /// <param name="randomQuestionIndex"> random generated number variable </param>
+        public static void DisplayQuestionAndAnswersToPlayer(List<Question> QuizmakerList, int randomQuestionIndex)
         {
             Console.WriteLine($"Please answer this Question: {QuizmakerList[randomQuestionIndex].QuestionText}");
             foreach (string answers in QuizmakerList[randomQuestionIndex].AnswersList)
@@ -113,5 +113,39 @@
             Console.Write("Is this correct answer ? : ");
             return MakeDecisionYorN();
         }
+
+
+        /// <summary>
+        /// WriteLine List with object
+        /// </summary>
+        /// <param name="list"> list with/of objects </param>
+        public static void ShowListOfQuestion(List<Question> list)
+        {
+            foreach (Question question in list)
+            {
+                Console.WriteLine($"{list.IndexOf(question) + 1}" + " " + question.QuestionText);
+            }
+        }
+
+        public static void ShowListOfAnswers(List<Question> QuizmakerList, int questionToAmend, int amendChoice)
+        {
+            if (amendChoice == 2)
+            {
+                Console.WriteLine("Here's list of Answers: ");
+                foreach (string answer in QuizmakerList[questionToAmend].AnswersList)
+                {
+                    Console.WriteLine($"{QuizmakerList[questionToAmend].AnswersList.IndexOf(answer) + 1}" + " " + answer);
+                }
+            }
+            if (amendChoice == 3)
+            {
+                Console.WriteLine("Here's list of Correct Answers");
+                foreach (string answer in QuizmakerList[questionToAmend].CorrectAnswersList)
+                {
+                    Console.WriteLine($"{QuizmakerList[questionToAmend].CorrectAnswersList.IndexOf(answer) + 1}" + " " + answer);
+                }
+            }
+        }
+
     }
 }

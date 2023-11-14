@@ -9,62 +9,45 @@
             Amend = 3
         }
 
-        public enum List
+        public enum ListForOptions
         {
             QuestionsText = 1,
             AnswerList = 2,
             CorrectAnswerList = 3
         }
 
-        public static void DisplayList(List<Question> QuizmakerList, int whichQuestiontoAmend, int choice)
+        public static ListForOptions TestMethod(int someint)
         {
-            if (Convert.ToInt32(List.CorrectAnswerList) == choice)
+            switch (someint)
             {
-                foreach (string answer in QuizmakerList[whichQuestiontoAmend].CorrectAnswersList)
-                {
-                    Console.WriteLine($"{QuizmakerList[whichQuestiontoAmend].CorrectAnswersList.IndexOf(answer) + 1}" + " " + answer);
-                }
+                case 1:
+                    return ListForOptions.QuestionsText;
+                case 2:
+                    return ListForOptions.AnswerList;
+                case 3:
+                    return ListForOptions.CorrectAnswerList;
+                default:
+                    {
+                        Console.WriteLine("Invalid number");
+                    }
+                    break;
             }
-            if (Convert.ToInt32(List.AnswerList) == choice)
+            return 0;
+        }
+
+
+
+        public static void Option(ListForOptions list, List<Question> QuizmakerList, int questionToAmend)
+        {
+            switch (list)
             {
-                foreach (string answer in QuizmakerList[whichQuestiontoAmend].AnswersList)
-                {
-                    Console.WriteLine($"{QuizmakerList[whichQuestiontoAmend].AnswersList.IndexOf(answer) + 1}" + " " + answer);
-                }
-            }
-            if (Convert.ToInt32(List.QuestionsText) == choice)
-            {
-                foreach (Question question in QuizmakerList)
-                {
-                    Console.WriteLine(QuizmakerList[whichQuestiontoAmend].QuestionText);
-                }
+                case ListForOptions.QuestionsText:
+                    Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
+                    QuizmakerList[questionToAmend].QuestionText = UIMethods.DisplayAskToTypeQuestionText();
+                    break;
             }
         }
 
-        public static void AddAnswer(Question quizmaker, int answerOrCorrect)
-        {
-            bool addMoreAnswers = true;
-            while (addMoreAnswers)
-            {
-                string answerText = UIMethods.GetAndDisplayTypeAnswerText();
-                if (Convert.ToInt32(List.AnswerList) == 2)
-                {
-                    quizmaker.AnswersList.Add(answerText);
-                    ManageQuestions.AddCorrectAnswersToList(answerText, quizmaker);
-                }
-                if (Convert.ToInt32(List.CorrectAnswerList) == 3)
-                {
-                    quizmaker.CorrectAnswersList.Add(answerText);
-                }
-                addMoreAnswers = UIMethods.GetAdditionalAnswer();
-            }
-        }
-
-        public static void AmendQuestionText(List<Question> QuizmakerList, int questionToAmend)
-        {
-            Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
-            QuizmakerList[questionToAmend].QuestionText = UIMethods.DisplayAskToTypeQuestionText();
-        }
 
     }
 }

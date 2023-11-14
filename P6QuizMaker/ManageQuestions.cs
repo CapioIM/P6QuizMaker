@@ -40,35 +40,5 @@
 
 
 
-        /// <summary>
-        /// WriteLine List with object
-        /// </summary>
-        /// <param name="list"> list with/of objects </param>
-        public static void ShowListOfQuestion(List<Question> list)
-        {
-            foreach (Question question in list)
-            {
-                Console.WriteLine($"{list.IndexOf(question)+1}" + " " + question.QuestionText);
-            }
-        }
-
-        public static void ShowListOfAnswers(List<Question> QuizmakerList, int questionToAmend,int amendChoice)
-        {
-            if (amendChoice == 2)
-            {
-                foreach (string answer in QuizmakerList[questionToAmend].AnswersList)
-                {
-                    Console.WriteLine($"{QuizmakerList[questionToAmend].AnswersList.IndexOf(answer) + 1}" + " " + answer);
-                }
-            }
-            if (amendChoice == 3)
-            {
-                foreach (string answer in QuizmakerList[questionToAmend].CorrectAnswersList)
-                {
-                    Console.WriteLine($"{QuizmakerList[questionToAmend].CorrectAnswersList.IndexOf(answer) + 1}" + " " + answer);
-                }
-            }
-        }
-
     }
 }
