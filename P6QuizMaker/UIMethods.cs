@@ -81,11 +81,9 @@ namespace P6QuizMaker
                     return Enum.GetNames(typeof(ModificaitonTarget)).Length;
                 default:
                     {
-                        Console.WriteLine("Invalid Number");
+                        return 0;
                     }
-                    break;
             }
-            return 0;
         }
         public static int GetUserInputNum(int enumChoice)
         {

@@ -39,7 +39,6 @@ namespace P6QuizMaker
 
                             int amendUserChoice = UIMethods.GetUserInputNum();
                             Options.ModificaitonTarget modificaitonTarget = Options.ModificationTargetChoice(amendUserChoice);
-                            Options.ModificationOptions modificationOptions;
 
                             switch (modificaitonTarget)
                             {
@@ -51,7 +50,12 @@ namespace P6QuizMaker
                                     UIMethods.DisplayAddNumberText();
                                     int userInputMaxValue = UIMethods.EnumLength(Options.EnumChoice.ModificationOptions);
                                     int addRemoveAmendUserChoice = UIMethods.GetUserInputNum(userInputMaxValue);
-
+                                    Options.ModificationOptions modificationOptions = Options.ModificationOptionChoice(addRemoveAmendUserChoice);
+                                    switch (modificationOptions)
+                                    {
+                                        case Options.ModificationOptions.Add:
+                                            break;
+                                    }
                                     break;
                             }
                             /*
