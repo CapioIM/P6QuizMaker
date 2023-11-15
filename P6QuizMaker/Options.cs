@@ -2,30 +2,36 @@
 {
     internal class Options
     {
-        public enum OptionChoice
+        public enum ModificationOptions
         {
-            Add = 1,
-            Remove = 2,
-            Amend = 3
+            Add,
+            Remove,
+            Amend
         }
 
-        public enum ListForOptions
+        public enum ModificaitonTarget
         {
-            QuestionsText = 1,
-            AnswerList = 2,
-            CorrectAnswerList = 3
+            QuestionsText,
+            AnswerList,
+            CorrectAnswerList
         }
 
-        public static ListForOptions TestMethod(int someint)
+        public enum EnumChoice
         {
-            switch (someint)
+            ModificationOptions,
+            ModificationTarget
+        }
+
+        public static ModificaitonTarget ModificationTargetChoice(int modificationTargetChoice)
+        {
+            switch (modificationTargetChoice)
             {
+                case 0:
+                    return ModificaitonTarget.QuestionsText;
                 case 1:
-                    return ListForOptions.QuestionsText;
+                    return ModificaitonTarget.AnswerList;
                 case 2:
-                    return ListForOptions.AnswerList;
-                case 3:
-                    return ListForOptions.CorrectAnswerList;
+                    return ModificaitonTarget.CorrectAnswerList;
                 default:
                     {
                         Console.WriteLine("Invalid number");
@@ -35,19 +41,30 @@
             return 0;
         }
 
-
-
-        public static void Option(ListForOptions list, List<Question> QuizmakerList, int questionToAmend)
+        public static ModificationOptions ModificationOptionChoice(int modificationOptionChoice)
         {
-            switch (list)
+            switch(modificationOptionChoice)
             {
-                case ListForOptions.QuestionsText:
-                    Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
-                    QuizmakerList[questionToAmend].QuestionText = UIMethods.DisplayAskToTypeQuestionText();
+                case 0:
+                    return ModificationOptions.Add;
+                    case 1:
+                    return ModificationOptions.Remove;
+                    case 2:
+                    return ModificationOptions.Amend;
+                    default:
+                    Console.WriteLine("Invalid option!");
                     break;
             }
+            return 0;
         }
 
+
+
+        public static void ModifyQuestionText(List<Question> QuizmakerList, int questionToAmend)
+        {
+                    Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
+                    QuizmakerList[questionToAmend].QuestionText = UIMethods.DisplayAskToTypeQuestionText();
+        }
 
     }
 }

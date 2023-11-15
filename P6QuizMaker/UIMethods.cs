@@ -1,4 +1,7 @@
-﻿namespace P6QuizMaker
+﻿using System.ComponentModel.DataAnnotations;
+using static P6QuizMaker.Options;
+
+namespace P6QuizMaker
 {
     internal class UIMethods
     {
@@ -58,6 +61,46 @@
                 else
                 {
                     Console.WriteLine("Please enter Number !");
+                }
+            }
+            return 0; //not all code paths return a value
+        }
+
+        /// <summary>
+        /// Choice of enum to provide amount of items in enum
+        /// </summary>
+        /// <param name="enumChoice"></param>
+        /// <returns> int of amount of items in enum </returns>
+        public static int EnumLength(EnumChoice enumChoice)
+        {
+            switch (enumChoice)
+            {
+                case Options.EnumChoice.ModificationOptions:
+                    return Enum.GetNames(typeof(ModificationOptions)).Length;
+                case Options.EnumChoice.ModificationTarget:
+                    return Enum.GetNames(typeof(ModificaitonTarget)).Length;
+                default:
+                    {
+                        Console.WriteLine("Invalid Number");
+                    }
+                    break;
+            }
+            return 0;
+        }
+        public static int GetUserInputNum(int enumChoice)
+        {
+            int choiceNumber;
+            bool convertToInt = false;
+            while (!convertToInt)
+            {
+                convertToInt = int.TryParse(Console.ReadLine(), out choiceNumber);
+                if (convertToInt && choiceNumber > 0 && choiceNumber < enumChoice)
+                {
+                    return choiceNumber;
+                }
+                else
+                {
+                    Console.WriteLine($"Please enter number less than {enumChoice}!");
                 }
             }
             return 0; //not all code paths return a value
@@ -145,6 +188,14 @@
                     Console.WriteLine($"{QuizmakerList[questionToAmend].CorrectAnswersList.IndexOf(answer) + 1}" + " " + answer);
                 }
             }
+        }
+
+        public static void DisplayAddRemoveAmend()
+        {
+            Console.WriteLine(
+                                 "Press 1 to amend answer \n" +
+                                 "Press 2 to remove answer" +
+                                 "Press 3 to add answer");
         }
 
     }
