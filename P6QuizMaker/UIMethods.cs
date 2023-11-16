@@ -78,7 +78,7 @@ namespace P6QuizMaker
                 case Options.EnumChoice.ModificationOptions:
                     return Enum.GetNames(typeof(ModificationOptions)).Length;
                 case Options.EnumChoice.ModificationTarget:
-                    return Enum.GetNames(typeof(ModificaitonTarget)).Length;
+                    return Enum.GetNames(typeof(ModificationTarget)).Length;
                 default:
                     {
                         return 0;
@@ -92,13 +92,13 @@ namespace P6QuizMaker
             while (!convertToInt)
             {
                 convertToInt = int.TryParse(Console.ReadLine(), out choiceNumber);
-                if (convertToInt && choiceNumber > 0 && choiceNumber < enumChoice)
+                if (convertToInt && choiceNumber > 0 && choiceNumber < enumChoice +1)
                 {
                     return choiceNumber;
                 }
-                else
+                if (!convertToInt)
                 {
-                    Console.WriteLine($"Please enter number less than {enumChoice}!");
+                    Console.WriteLine($"Please enter number less than {enumChoice+1}!");
                 }
             }
             return 0; //not all code paths return a value
@@ -144,11 +144,19 @@ namespace P6QuizMaker
             Console.Write("Would you like to add additional Answer ? : ");
             return MakeDecisionYorN();
         }
+
+        public static int DiplayGetNumberText()
+        {
+            Console.Write("Type answer Number : ");
+            return GetUserInputNum();
+        }
+
         public static string GetAndDisplayTypeAnswerText()
         {
-            Console.Write("Type answer : ");
+            Console.Write("Type answer to be added: ");
             return GetUserInput();
         }
+
         public static bool IsCorrectAnswer()
         {
             Console.Write("Is this correct answer ? : ");
@@ -169,9 +177,9 @@ namespace P6QuizMaker
             Console.WriteLine("Which question or answers for which question you would like to amend ?");
         }
 
-        public static void ShowListOfAnswers(List<Question> QuizmakerList, int questionToAmend, int amendChoice)
+        public static void ShowListOfAnswers(List<Question> QuizmakerList, int questionToAmend, ModificationTarget amendChoice)
         {
-            if (amendChoice == 2)
+            if (amendChoice == Options.ModificationTarget.AnswerList)
             {
                 Console.WriteLine("Here's list of Answers: ");
                 foreach (string answer in QuizmakerList[questionToAmend].AnswersList)
@@ -179,8 +187,14 @@ namespace P6QuizMaker
                     Console.WriteLine($"{QuizmakerList[questionToAmend].AnswersList.IndexOf(answer) + 1}" + " " + answer);
                 }
             }
-            if (amendChoice == 3)
+            if (amendChoice == Options.ModificationTarget.CorrectAnswerList)
             {
+                Console.WriteLine("Here's list of Answers: ");
+                foreach (string answer in QuizmakerList[questionToAmend].AnswersList)
+                {
+                    Console.WriteLine($"{QuizmakerList[questionToAmend].AnswersList.IndexOf(answer) + 1}" + " " + answer);
+                }
+
                 Console.WriteLine("Here's list of Correct Answers");
                 foreach (int answer in QuizmakerList[questionToAmend].CorrectAnswersList)
                 {

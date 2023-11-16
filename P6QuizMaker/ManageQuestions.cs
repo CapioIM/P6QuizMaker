@@ -18,6 +18,16 @@
             }
         }
 
+        public static void AddCorrectAnswer(Question quizmaker)
+        {
+            bool addMoreAnswers = true;
+            while (addMoreAnswers)
+            {
+                quizmaker.CorrectAnswersList.Add(UIMethods.DiplayGetNumberText());
+                addMoreAnswers = UIMethods.GetAdditionalAnswer();
+            }
+        }
+
         /// <summary>
         /// if true adds index of matching string in AnswersList
         /// </summary>

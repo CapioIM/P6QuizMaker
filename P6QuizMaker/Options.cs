@@ -9,7 +9,7 @@
             Amend
         }
 
-        public enum ModificaitonTarget
+        public enum ModificationTarget
         {
             QuestionsText,
             AnswerList,
@@ -22,16 +22,16 @@
             ModificationTarget
         }
 
-        public static ModificaitonTarget ModificationTargetChoice(int modificationTargetChoice)
+        public static ModificationTarget ModificationTargetChoice(int modificationTargetChoice)
         {
             switch (modificationTargetChoice)
             {
                 case 0:
-                    return ModificaitonTarget.QuestionsText;
+                    return ModificationTarget.QuestionsText;
                 case 1:
-                    return ModificaitonTarget.AnswerList;
+                    return ModificationTarget.AnswerList;
                 case 2:
-                    return ModificaitonTarget.CorrectAnswerList;
+                    return ModificationTarget.CorrectAnswerList;
                 default:
                     {
                         Console.WriteLine("Invalid number");
@@ -45,12 +45,12 @@
         {
             switch (modificationOptionChoice)
             {
-                case 0:
-                    return ModificationOptions.Add;
                 case 1:
-                    return ModificationOptions.Remove;
-                case 2:
                     return ModificationOptions.Amend;
+                case 2:
+                    return ModificationOptions.Remove;
+                case 3:
+                    return ModificationOptions.Add;
                 default:
                     Console.WriteLine("Invalid option!");
                     break;
