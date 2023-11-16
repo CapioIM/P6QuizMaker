@@ -13,9 +13,9 @@
         public static int UserAnswerCheckWithScore(List<Question> QuizmakerList, int score, int randomQuestionPick)
         {
             int userAnswer = UIMethods.GetUserInputNum() -1;
-            foreach (string correctAnswer in QuizmakerList[randomQuestionPick].CorrectAnswersList)
+            foreach (int correctAnswer in QuizmakerList[randomQuestionPick].CorrectAnswersList)
             {
-                if (correctAnswer == QuizmakerList[randomQuestionPick].AnswersList[userAnswer])
+                if (correctAnswer == QuizmakerList[randomQuestionPick].AnswersList.IndexOf(QuizmakerList[randomQuestionPick].AnswersList[userAnswer]) )
                 {
                     score++;
                     Console.WriteLine("You are smartest!");

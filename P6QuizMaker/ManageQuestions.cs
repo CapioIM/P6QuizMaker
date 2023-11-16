@@ -27,7 +27,7 @@
         {
             if (UIMethods.IsCorrectAnswer())
             {
-                quizmaker.CorrectAnswersList.Add(answerText);
+                quizmaker.CorrectAnswersList.Add(quizmaker.AnswersList.IndexOf(answerText));
             }
         }
 

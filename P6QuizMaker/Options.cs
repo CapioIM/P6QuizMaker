@@ -43,15 +43,15 @@
 
         public static ModificationOptions ModificationOptionChoice(int modificationOptionChoice)
         {
-            switch(modificationOptionChoice)
+            switch (modificationOptionChoice)
             {
                 case 0:
                     return ModificationOptions.Add;
-                    case 1:
+                case 1:
                     return ModificationOptions.Remove;
-                    case 2:
+                case 2:
                     return ModificationOptions.Amend;
-                    default:
+                default:
                     Console.WriteLine("Invalid option!");
                     break;
             }
@@ -62,8 +62,8 @@
 
         public static void ModifyQuestionText(List<Question> QuizmakerList, int questionToAmend)
         {
-                    Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
-                    QuizmakerList[questionToAmend].QuestionText = UIMethods.DisplayAskToTypeQuestionText();
+            Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
+            QuizmakerList[questionToAmend].QuestionText = UIMethods.DisplayAskToTypeQuestionText();
         }
 
     }

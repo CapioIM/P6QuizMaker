@@ -5,7 +5,7 @@ namespace P6QuizMaker
 {
     internal class UIMethods
     {
-        public static void DisplayAddNumberText()
+        public static void DisplayTextAnswerNumber()
         {
             Console.WriteLine("Please type number associated with answer");
         }
@@ -157,7 +157,7 @@ namespace P6QuizMaker
 
 
         /// <summary>
-        /// WriteLine List with object
+        /// WriteLine List with object Question text
         /// </summary>
         /// <param name="list"> list with/of objects </param>
         public static void ShowListOfQuestion(List<Question> list)
@@ -166,6 +166,7 @@ namespace P6QuizMaker
             {
                 Console.WriteLine($"{list.IndexOf(question) + 1}" + " " + question.QuestionText);
             }
+            Console.WriteLine("Which question or answers for which question you would like to amend ?");
         }
 
         public static void ShowListOfAnswers(List<Question> QuizmakerList, int questionToAmend, int amendChoice)
@@ -181,18 +182,18 @@ namespace P6QuizMaker
             if (amendChoice == 3)
             {
                 Console.WriteLine("Here's list of Correct Answers");
-                foreach (string answer in QuizmakerList[questionToAmend].CorrectAnswersList)
+                foreach (int answer in QuizmakerList[questionToAmend].CorrectAnswersList)
                 {
-                    Console.WriteLine($"{QuizmakerList[questionToAmend].CorrectAnswersList.IndexOf(answer) + 1}" + " " + answer);
+                    Console.WriteLine($"{answer}  {QuizmakerList[questionToAmend].AnswersList[answer]}");
                 }
             }
         }
 
-        public static void DisplayAddRemoveAmend()
+        public static void DisplayTextAddRemoveAmend()
         {
             Console.WriteLine(
                                  "Press 1 to amend answer \n" +
-                                 "Press 2 to remove answer" +
+                                 "Press 2 to remove answer\n" +
                                  "Press 3 to add answer");
         }
 
