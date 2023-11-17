@@ -2,13 +2,13 @@
 <ArrayOfQuestion xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Question>
     <AnswersList>
-      <string>blue 1</string>
-      <string>green 1</string>
-      <string>yellow 1</string>
+      <string>Blue</string>
+      <string>Green</string>
       <string>Yellow</string>
+      <string>purple</string>
     </AnswersList>
     <CorrectAnswersList>
-      <string>Yellow</string>
+      <int>3</int>
     </CorrectAnswersList>
     <QuestionText>What color is sun?</QuestionText>
   </Question>

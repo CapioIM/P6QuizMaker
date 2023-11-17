@@ -7,7 +7,7 @@ namespace P6QuizMaker
     {
         public static void DisplayTextAnswerNumber()
         {
-            Console.WriteLine("Please type number associated with answer");
+            Console.WriteLine("Please type number associated with answer to modify.");
         }
 
         public static void DisplayPlayAnotherQuestionText()
@@ -19,13 +19,13 @@ namespace P6QuizMaker
         /// CW display questions and answers text from object in a list at index of randomQuesitonIndex
         /// </summary>
         /// <param name="QuizmakerList"> List with object Question </param>
-        /// <param name="randomQuestionIndex"> random generated number variable </param>
-        public static void DisplayQuestionAndAnswersToPlayer(List<Question> QuizmakerList, int randomQuestionIndex)
+        /// <param name="QuestionIndex"> random generated number variable </param>
+        public static void DisplayQuestionAndAnswersToPlayer(List<Question> QuizmakerList, int QuestionIndex)
         {
-            Console.WriteLine($"Please answer this Question: {QuizmakerList[randomQuestionIndex].QuestionText}");
-            foreach (string answers in QuizmakerList[randomQuestionIndex].AnswersList)
+            Console.WriteLine($"Please answer this Question: {QuizmakerList[QuestionIndex].QuestionText}");
+            foreach (string answers in QuizmakerList[QuestionIndex].AnswersList)
             {
-                Console.Write($"{QuizmakerList[randomQuestionIndex].AnswersList.IndexOf(answers) + 1}" + "-");
+                Console.Write($"{QuizmakerList[QuestionIndex].AnswersList.IndexOf(answers) + 1}" + "-");
                 Console.WriteLine(answers);
             }
         }
@@ -49,11 +49,30 @@ namespace P6QuizMaker
         /// <returns> user entered integer </returns>
         public static int GetUserInputNum()
         {
-            int choiceNumber;
+            int choiceNumber = 0;
             bool convertToInt = false;
             while (!convertToInt)
             {
                 convertToInt = int.TryParse(Console.ReadLine(), out choiceNumber);
+                if (convertToInt)
+                {
+                    return choiceNumber;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter Number !");
+                }
+            }
+            return choiceNumber; //not all code paths return a value
+        }
+
+        public static int GetUserInputNum(string askAQuestion)
+        {
+            Console.WriteLine(askAQuestion);
+            bool convertToInt = false;
+            while (!convertToInt)
+            {
+                convertToInt = int.TryParse(Console.ReadLine(), out int choiceNumber);
                 if (convertToInt)
                 {
                     return choiceNumber;
@@ -87,21 +106,21 @@ namespace P6QuizMaker
         }
         public static int GetUserInputNum(int enumChoice)
         {
-            int choiceNumber;
+            int choiceNumber = 0;
             bool convertToInt = false;
             while (!convertToInt)
             {
                 convertToInt = int.TryParse(Console.ReadLine(), out choiceNumber);
-                if (convertToInt && choiceNumber > 0 && choiceNumber < enumChoice +1)
+                if (convertToInt && choiceNumber > 0 && choiceNumber <= enumChoice)
                 {
                     return choiceNumber;
                 }
                 if (!convertToInt)
                 {
-                    Console.WriteLine($"Please enter number less than {enumChoice+1}!");
+                    Console.WriteLine($"Please enter number less than {enumChoice + 1}!");
                 }
             }
-            return 0; //not all code paths return a value
+            return choiceNumber;
         }
 
 
@@ -117,6 +136,15 @@ namespace P6QuizMaker
 
         public static bool MakeDecisionYorN()
         {
+            PrintPressYesOrNo();
+            string answer = Console.ReadLine().ToLower();
+            char[] firstChar = answer.ToCharArray();
+            return (firstChar[0] != 'n');
+        }
+
+        public static bool MakeDecisionYorN(string askAQuestion)
+        {
+            Console.WriteLine(askAQuestion);
             PrintPressYesOrNo();
             string answer = Console.ReadLine().ToLower();
             char[] firstChar = answer.ToCharArray();
@@ -177,28 +205,28 @@ namespace P6QuizMaker
             Console.WriteLine("Which question or answers for which question you would like to amend ?");
         }
 
-        public static void ShowListOfAnswers(List<Question> QuizmakerList, int questionToAmend, ModificationTarget amendChoice)
+        public static void ShowListOfAnswers(Question quizmaker, ModificationTarget amendChoice)
         {
             if (amendChoice == Options.ModificationTarget.AnswerList)
             {
                 Console.WriteLine("Here's list of Answers: ");
-                foreach (string answer in QuizmakerList[questionToAmend].AnswersList)
+                foreach (string answer in quizmaker.AnswersList)
                 {
-                    Console.WriteLine($"{QuizmakerList[questionToAmend].AnswersList.IndexOf(answer) + 1}" + " " + answer);
+                    Console.WriteLine($"{quizmaker.AnswersList.IndexOf(answer) + 1}" + " " + answer);
                 }
             }
             if (amendChoice == Options.ModificationTarget.CorrectAnswerList)
             {
                 Console.WriteLine("Here's list of Answers: ");
-                foreach (string answer in QuizmakerList[questionToAmend].AnswersList)
+                foreach (string answer in quizmaker.AnswersList)
                 {
-                    Console.WriteLine($"{QuizmakerList[questionToAmend].AnswersList.IndexOf(answer) + 1}" + " " + answer);
+                    Console.WriteLine($"{quizmaker.AnswersList.IndexOf(answer) + 1}" + " " + answer);
                 }
 
                 Console.WriteLine("Here's list of Correct Answers");
-                foreach (int answer in QuizmakerList[questionToAmend].CorrectAnswersList)
+                foreach (int answer in quizmaker.CorrectAnswersList)
                 {
-                    Console.WriteLine($"{answer}  {QuizmakerList[questionToAmend].AnswersList[answer]}");
+                    Console.WriteLine($"{quizmaker.CorrectAnswersList.IndexOf(answer) + 1}" + " " + $"{quizmaker.AnswersList[answer]}");
                 }
             }
         }
@@ -210,6 +238,5 @@ namespace P6QuizMaker
                                  "Press 2 to remove answer\n" +
                                  "Press 3 to add answer");
         }
-
     }
 }

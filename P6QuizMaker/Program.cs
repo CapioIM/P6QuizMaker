@@ -14,7 +14,7 @@ namespace P6QuizMaker
             {
                 UIMethods.WelcomeText();                                                                //welcome text
                 UIMethods.DisplayChoiceManagePlay();
-                int manageOrPlay = UIMethods.GetUserInputNum();                                         //choice to manage quesitons or play
+                int manageOrPlay = UIMethods.GetUserInputNum(Enum.GetNames(typeof(StartMode.ManageOrPlay)).Length);                                         //choice to manage quesitons or play
 
                 if (manageOrPlay == Convert.ToInt32(StartMode.ManageOrPlay.Manage))
                 {
@@ -33,7 +33,7 @@ namespace P6QuizMaker
                             Console.WriteLine("Would you like to amend:\n" +
                                 " 1 - Question Text\n" +
                                 " 2 - Answers\n" +
-                                " 3 - Correct Answers\n");
+                                " 3 - Correct Answers");
 
                             int amendUserChoice = UIMethods.GetUserInputNum() - 1;
                             Options.ModificationTarget modificaitonTarget = Options.ModificationTargetChoice(amendUserChoice);
@@ -45,20 +45,19 @@ namespace P6QuizMaker
                                     break;
 
                                 case Options.ModificationTarget.AnswerList:
-                                    UIMethods.DisplayTextAddRemoveAmend();
                                     int maxCountEnumChoice = UIMethods.EnumLength(Options.EnumChoice.ModificationOptions);
+                                    UIMethods.ShowListOfAnswers(QuizmakerList[questionToAmend], modificaitonTarget);
+                                    UIMethods.DisplayTextAddRemoveAmend();
                                     int addRemoveAmendUserChoice = UIMethods.GetUserInputNum(maxCountEnumChoice);
                                     Options.ModificationOptions modificationOptions = Options.ModificationOptionChoice(addRemoveAmendUserChoice);
                                     Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
-                                    UIMethods.ShowListOfAnswers(QuizmakerList, questionToAmend, modificaitonTarget);
-
+                                    Console.WriteLine("Select answer number you want to make changes to!");
                                     switch (modificationOptions)
                                     {
                                         case Options.ModificationOptions.Add:
                                             ManageQuestions.AddAnswersToQuestion(QuizmakerList[questionToAmend]);
                                             break;
                                         case Options.ModificationOptions.Remove:
-                                            Console.WriteLine("Number of answer you want to remove.");
                                             int answerToRemove = UIMethods.GetUserInputNum() - 1;
                                             QuizmakerList[questionToAmend].AnswersList.RemoveAt(answerToRemove);
                                             break;
@@ -75,11 +74,12 @@ namespace P6QuizMaker
 
                                 case Options.ModificationTarget.CorrectAnswerList:
                                     UIMethods.DisplayTextAddRemoveAmend();
+                                    Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
+                                    UIMethods.ShowListOfAnswers(QuizmakerList[questionToAmend], modificaitonTarget);
+
                                     maxCountEnumChoice = UIMethods.EnumLength(Options.EnumChoice.ModificationOptions);
                                     addRemoveAmendUserChoice = UIMethods.GetUserInputNum(maxCountEnumChoice);
                                     modificationOptions = Options.ModificationOptionChoice(addRemoveAmendUserChoice);
-                                    Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
-                                    UIMethods.ShowListOfAnswers(QuizmakerList, questionToAmend, modificaitonTarget);
                                     UIMethods.DisplayTextAnswerNumber();
                                     switch (modificationOptions)
                                     {
@@ -110,25 +110,26 @@ namespace P6QuizMaker
                     }
                 }
 
-                if (manageOrPlay == Convert.ToInt32(StartMode.ManageOrPlay.Play))
+                if (manageOrPlay == (int)StartMode.ManageOrPlay.Play)
                 {
                     QuizmakerList = FileOperations.Deserialize();
+
+                    bool playingQuizMaker = true;
+                    while (playingQuizMaker)
+                    {
+                        int randomQuestionIndex = Logic.GetRandomIndex(QuizmakerList);
+                        UIMethods.DisplayTextAnswerNumber();
+                        UIMethods.DisplayQuestionAndAnswersToPlayer(QuizmakerList, randomQuestionIndex);
+
+                        score += Logic.UserAnswerCheckWithScore(QuizmakerList, randomQuestionIndex);
+                        Console.WriteLine($"Your score: {score}");
+                        playingQuizMaker = UIMethods.MakeDecisionYorN();
+                        Console.Clear();
+                    }
+                    UIMethods.DisplayPlayAnotherQuestionText();
+                    interestedToUseProgramm = UIMethods.MakeDecisionYorN();
                 }
 
-                bool playingQuizMaker = true;
-                while (playingQuizMaker)
-                {
-                    int randomQuestionIndex = Logic.GetRandomIndex(QuizmakerList);
-                    UIMethods.DisplayTextAnswerNumber();
-                    UIMethods.DisplayQuestionAndAnswersToPlayer(QuizmakerList, randomQuestionIndex);
-
-                    score = Logic.UserAnswerCheckWithScore(QuizmakerList, score, randomQuestionIndex);
-
-                    playingQuizMaker = UIMethods.MakeDecisionYorN();
-                    Console.Clear();
-                }
-                UIMethods.DisplayPlayAnotherQuestionText();
-                interestedToUseProgramm = UIMethods.MakeDecisionYorN();
             }
         }
     }
