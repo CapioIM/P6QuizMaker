@@ -13,10 +13,10 @@
         public static int UserAnswerCheckWithScore(List<Question> QuizmakerList, int randomQuestionPick)
         {
             int score = 0;
-            int userAnswer = UIMethods.GetUserInputNum() -1;
+            int userAnswer = UIMethods.GetUserInputNum() - 1;
             foreach (int correctAnswer in QuizmakerList[randomQuestionPick].CorrectAnswersList)
             {
-                if (correctAnswer == QuizmakerList[randomQuestionPick].AnswersList.IndexOf(QuizmakerList[randomQuestionPick].AnswersList[userAnswer]) )
+                if (correctAnswer == QuizmakerList[randomQuestionPick].AnswersList.IndexOf(QuizmakerList[randomQuestionPick].AnswersList[userAnswer]))
                 {
                     score++;
                     Console.WriteLine("You are smartest!");
@@ -25,11 +25,15 @@
             return score;
         }
 
-
-        public static int GetRandomIndex(List<Question> QuizmakerList)
+        /// <summary>
+        /// Returns random number between 0 and max value to use as parametre
+        /// </summary>
+        /// <param name="maxRandomValue"> Int of max value for random to return </param>
+        /// <returns> random number between 0 and (int)variable </returns>
+        public static int GetRandomNumber(int maxRandomValue)
         {
             Random random = new Random();
-            return random.Next(0, QuizmakerList.Count);
+            return random.Next(0, maxRandomValue + 1);
         }
     }
 

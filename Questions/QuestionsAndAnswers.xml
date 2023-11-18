@@ -9,7 +9,8 @@
       <string>Gray</string>
     </AnswersList>
     <CorrectAnswersList>
-      <int>3</int>
+      <int>2</int>
+      <int>2</int>
     </CorrectAnswersList>
     <QuestionText>What color is sun?</QuestionText>
   </Question>

@@ -2,25 +2,7 @@
 {
     internal class Options
     {
-        public enum ModificationOptions
-        {
-            Add,
-            Remove,
-            Amend
-        }
 
-        public enum ModificationTarget
-        {
-            QuestionsText,
-            AnswerList,
-            CorrectAnswerList
-        }
-
-        public enum EnumChoice
-        {
-            ModificationOptions,
-            ModificationTarget
-        }
 
         public static ModificationTarget ModificationTargetChoice(int modificationTargetChoice)
         {
@@ -57,14 +39,5 @@
             }
             return 0;
         }
-
-
-
-        public static void ModifyQuestionText(List<Question> QuizmakerList, int questionToAmend)
-        {
-            Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
-            QuizmakerList[questionToAmend].QuestionText = UIMethods.DisplayAskToTypeQuestionText();
-        }
-
     }
 }

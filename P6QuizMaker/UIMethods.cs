@@ -94,9 +94,9 @@ namespace P6QuizMaker
         {
             switch (enumChoice)
             {
-                case Options.EnumChoice.ModificationOptions:
+                case EnumChoice.ModificationOptions:
                     return Enum.GetNames(typeof(ModificationOptions)).Length;
-                case Options.EnumChoice.ModificationTarget:
+                case EnumChoice.ModificationTarget:
                     return Enum.GetNames(typeof(ModificationTarget)).Length;
                 default:
                     {
@@ -207,7 +207,7 @@ namespace P6QuizMaker
 
         public static void ShowListOfAnswers(Question quizmaker, ModificationTarget amendChoice)
         {
-            if (amendChoice == Options.ModificationTarget.AnswerList)
+            if (amendChoice == ModificationTarget.AnswerList)
             {
                 Console.WriteLine("Here's list of Answers: ");
                 foreach (string answer in quizmaker.AnswersList)
@@ -215,7 +215,7 @@ namespace P6QuizMaker
                     Console.WriteLine($"{quizmaker.AnswersList.IndexOf(answer) + 1}" + " " + answer);
                 }
             }
-            if (amendChoice == Options.ModificationTarget.CorrectAnswerList)
+            if (amendChoice == ModificationTarget.CorrectAnswerList)
             {
                 Console.WriteLine("Here's list of Answers: ");
                 foreach (string answer in quizmaker.AnswersList)
@@ -237,6 +237,11 @@ namespace P6QuizMaker
                                  "Press 1 to Amend answer \n" +
                                  "Press 2 to Remove answer\n" +
                                  "Press 3 to Add answer");
+        }
+        public static void ModifyQuestionText(List<Question> QuizmakerList, int questionToAmend)
+        {
+            Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
+            QuizmakerList[questionToAmend].QuestionText = UIMethods.DisplayAskToTypeQuestionText();
         }
     }
 }

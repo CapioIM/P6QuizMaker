@@ -23,7 +23,7 @@
             bool addMoreAnswers = true;
             while (addMoreAnswers)
             {
-                quizmaker.CorrectAnswersList.Add(UIMethods.DiplayGetNumberText(quizmaker));
+                quizmaker.CorrectAnswersList.Add(UIMethods.DiplayGetNumberText(quizmaker) - 1);
                 addMoreAnswers = UIMethods.GetAdditionalAnswer();
             }
         }
