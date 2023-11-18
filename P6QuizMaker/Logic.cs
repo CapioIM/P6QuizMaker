@@ -2,7 +2,6 @@
 {
     internal class Logic
     {
-
         /// <summary>
         /// user entered integer is compared to values in CorrectAnswers... list and returns score
         /// </summary>
