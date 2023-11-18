@@ -5,7 +5,8 @@
       <string>Blue</string>
       <string>Green</string>
       <string>Yellow</string>
-      <string>purple</string>
+      <string>Purple</string>
+      <string>Gray</string>
     </AnswersList>
     <CorrectAnswersList>
       <int>3</int>
@@ -19,7 +20,7 @@
       <string>red 2</string>
     </AnswersList>
     <CorrectAnswersList />
-    <QuestionText>sky color 2</QuestionText>
+    <QuestionText>What color is sky ?</QuestionText>
   </Question>
   <Question>
     <AnswersList>
@@ -28,6 +29,6 @@
       <string>green 3</string>
     </AnswersList>
     <CorrectAnswersList />
-    <QuestionText>what color are Trees 3</QuestionText>
+    <QuestionText>What color are trees ?</QuestionText>
   </Question>
 </ArrayOfQuestion>

@@ -136,7 +136,7 @@ namespace P6QuizMaker
 
         public static bool MakeDecisionYorN()
         {
-            PrintPressYesOrNo();
+            DisplayTextPressYesOrNo();
             string answer = Console.ReadLine().ToLower();
             char[] firstChar = answer.ToCharArray();
             return (firstChar[0] != 'n');
@@ -145,13 +145,13 @@ namespace P6QuizMaker
         public static bool MakeDecisionYorN(string askAQuestion)
         {
             Console.WriteLine(askAQuestion);
-            PrintPressYesOrNo();
+            DisplayTextPressYesOrNo();
             string answer = Console.ReadLine().ToLower();
             char[] firstChar = answer.ToCharArray();
             return (firstChar[0] != 'n');
         }
 
-        public static void PrintPressYesOrNo()
+        public static void DisplayTextPressYesOrNo()
         {
             Console.Write("Press Y - if Yes or N - if No! : ");
         }
@@ -173,10 +173,10 @@ namespace P6QuizMaker
             return MakeDecisionYorN();
         }
 
-        public static int DiplayGetNumberText()
+        public static int DiplayGetNumberText(Question quizmaker)
         {
             Console.Write("Type answer Number : ");
-            return GetUserInputNum();
+            return GetUserInputNum(quizmaker.AnswersList.Count);
         }
 
         public static string GetAndDisplayTypeAnswerText()
@@ -234,9 +234,9 @@ namespace P6QuizMaker
         public static void DisplayTextAddRemoveAmend()
         {
             Console.WriteLine(
-                                 "Press 1 to amend answer \n" +
-                                 "Press 2 to remove answer\n" +
-                                 "Press 3 to add answer");
+                                 "Press 1 to Amend answer \n" +
+                                 "Press 2 to Remove answer\n" +
+                                 "Press 3 to Add answer");
         }
     }
 }
