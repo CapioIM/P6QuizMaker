@@ -22,21 +22,17 @@ namespace P6QuizMaker
                     bool amendQuestionsAndAnswers = true;
                     while (amendQuestionsAndAnswers)
                     {
-                        QuizmakerList = FileOperations.Deserialize();
-                        UIMethods.ShowListOfQuestion(QuizmakerList);                                                    // show list of questions
-                        int questionToAmend = UIMethods.GetUserInputNum(QuizmakerList.Count) - 1;                        //choice which question to amend
-                        Console.WriteLine($"{QuizmakerList[questionToAmend].QuestionText}");
-
                         bool amending = true;
                         while (amending)
                         {
                             Console.WriteLine("Would you like to amend:\n" +
-                                " 1 - Question and Question Text\n" +
+                                " 1 - Questions \n" +
                                 " 2 - Answers\n" +
                                 " 3 - Correct Answers");
 
                             int amendUserChoice = UIMethods.GetUserInputNum(Enum.GetNames(typeof(ModificationTarget)).Length) - 1;
                             ModificationTarget modificaitonTarget = Options.ModificationTargetChoice(amendUserChoice);
+                            int questionToAmend = UIMethods.GetUserInputNum(QuizmakerList.Count) - 1;                        //choice which question to amend
 
                             switch (modificaitonTarget)
                             {
