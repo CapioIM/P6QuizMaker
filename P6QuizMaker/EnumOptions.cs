@@ -15,7 +15,7 @@
 
     public enum ModificationTarget
     {
-        QuestionsText,
+        Questions,
         AnswerList,
         CorrectAnswerList
     }

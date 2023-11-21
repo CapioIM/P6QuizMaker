@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using static P6QuizMaker.Options;
+﻿using static P6QuizMaker.Options;
 
 namespace P6QuizMaker
 {
@@ -38,7 +37,7 @@ namespace P6QuizMaker
         public static void DisplayChoiceManagePlay()
         {
             Console.WriteLine(
-                "Press 1 to manage Questions\n" +
+                "Press 1 to Manage Questions\n" +
                 "Press 2 to Play Quizmaker"
                 );
         }
@@ -202,7 +201,6 @@ namespace P6QuizMaker
             {
                 Console.WriteLine($"{list.IndexOf(question) + 1}" + " " + question.QuestionText);
             }
-            Console.WriteLine("Which question or answers for which question you would like to amend ?");
         }
 
         public static void ShowListOfAnswers(Question quizmaker, ModificationTarget amendChoice)
@@ -234,14 +232,20 @@ namespace P6QuizMaker
         public static void DisplayTextAddRemoveAmend()
         {
             Console.WriteLine(
-                                 "Press 1 to Amend answer \n" +
-                                 "Press 2 to Remove answer\n" +
-                                 "Press 3 to Add answer");
+                                 "Press 1 to Amend  \n" +
+                                 "Press 2 to Remove \n" +
+                                 "Press 3 to Add ");
         }
         public static void ModifyQuestionText(List<Question> QuizmakerList, int questionToAmend)
         {
             Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
             QuizmakerList[questionToAmend].QuestionText = UIMethods.DisplayAskToTypeQuestionText();
         }
+
+        public static void DisplayTextQuestionToRemoveOrAmend(ModificationOptions modifyOrRemove)
+        {
+            Console.WriteLine($"Type number associated with question to {modifyOrRemove.ToString()}!");
+        }
+
     }
 }

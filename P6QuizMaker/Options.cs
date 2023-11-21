@@ -9,7 +9,7 @@
             switch (modificationTargetChoice)
             {
                 case 0:
-                    return ModificationTarget.QuestionsText;
+                    return ModificationTarget.Questions;
                 case 1:
                     return ModificationTarget.AnswerList;
                 case 2:
