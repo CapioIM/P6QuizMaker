@@ -25,7 +25,7 @@ namespace P6QuizMaker
                         bool amending = true;
                         while (amending)
                         {
-                            Console.WriteLine("Would you like to amend:\n" +
+                            Console.WriteLine("What would you like to amend:\n" +
                                 " 1 - Questions \n" +
                                 " 2 - Answers\n" +
                                 " 3 - Correct Answers");
@@ -42,11 +42,9 @@ namespace P6QuizMaker
                             if (modificaitonTarget != ModificationTarget.Questions)                                             // answers 
                             {
                                 UIMethods.ShowListOfQuestion(QuizmakerList);
+                                Console.WriteLine($"Answers for which question would you like to modify?");
                                 questionToAmend = UIMethods.GetUserInputNum(QuizmakerList.Count) - 1;
-                                if (modificaitonTarget == ModificationTarget.AnswerList)
-                                {
-                                    UIMethods.ShowListOfAnswers(QuizmakerList[questionToAmend], modificaitonTarget);
-                                }
+                                UIMethods.ShowListOfAnswers(QuizmakerList[questionToAmend], modificaitonTarget);
                                 UIMethods.DisplayTextAddRemoveAmend();
                             }
 
