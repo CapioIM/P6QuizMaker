@@ -32,22 +32,37 @@ namespace P6QuizMaker
 
                             int amendUserChoice = UIMethods.GetUserInputNum(Enum.GetNames(typeof(ModificationTarget)).Length) - 1;
                             ModificationTarget modificaitonTarget = Options.ModificationTargetChoice(amendUserChoice);
-                            int questionToAmend = 0;      //choice which question to amend
 
+                            int countEnum = UIMethods.EnumLength(EnumChoice.ModificationOptions);
+                            ModificationOptions modificationOptions;
+
+                            int questionToAmend = 0;
+                            int addRemoveAmendUserChoice;
+
+                            if (modificaitonTarget != ModificationTarget.Questions)                                             // answers 
+                            {
+                                UIMethods.ShowListOfQuestion(QuizmakerList);
+                                questionToAmend = UIMethods.GetUserInputNum(QuizmakerList.Count) - 1;
+                                if (modificaitonTarget == ModificationTarget.AnswerList)
+                                {
+                                    UIMethods.ShowListOfAnswers(QuizmakerList[questionToAmend], modificaitonTarget);
+                                }
+                                UIMethods.DisplayTextAddRemoveAmend();
+                            }
 
                             switch (modificaitonTarget)
-                            {                                                                                      
+                            {
                                 case ModificationTarget.Questions:                                                                      //questions
-                                    int countEnum = UIMethods.EnumLength(EnumChoice.ModificationOptions);
+                                    countEnum = UIMethods.EnumLength(EnumChoice.ModificationOptions);
                                     UIMethods.DisplayTextAddRemoveAmend();
-                                    int addRemoveAmendUserChoice = UIMethods.GetUserInputNum(countEnum);
-                                    ModificationOptions modificationOptions = Options.ModificationOptionChoice(addRemoveAmendUserChoice);
+                                    addRemoveAmendUserChoice = UIMethods.GetUserInputNum(countEnum);
+                                    modificationOptions = Options.ModificationOptionChoice(addRemoveAmendUserChoice);
 
                                     if (modificationOptions != ModificationOptions.Add)
                                     {
-                                        UIMethods.ShowListOfQuestion(QuizmakerList);                                                  
+                                        UIMethods.ShowListOfQuestion(QuizmakerList);
                                         UIMethods.DisplayTextQuestionToRemoveOrAmend(modificationOptions);
-                                        questionToAmend = UIMethods.GetUserInputNum(QuizmakerList.Count) - 1;                      
+                                        questionToAmend = UIMethods.GetUserInputNum(QuizmakerList.Count) - 1;
                                     }
                                     switch (modificationOptions)
                                     {
@@ -63,17 +78,13 @@ namespace P6QuizMaker
                                             UIMethods.ModifyQuestionText(QuizmakerList, questionToAmend);
                                             break;
                                     }
-                                    Console.Clear();
                                     break;
 
                                 case ModificationTarget.AnswerList:
-                                    UIMethods.ShowListOfQuestion(QuizmakerList);
-                                    questionToAmend = UIMethods.GetUserInputNum(QuizmakerList.Count) - 1;
-                                    countEnum = UIMethods.EnumLength(EnumChoice.ModificationOptions);
-                                    UIMethods.ShowListOfAnswers(QuizmakerList[questionToAmend], modificaitonTarget);
-                                    UIMethods.DisplayTextAddRemoveAmend();
+
                                     addRemoveAmendUserChoice = UIMethods.GetUserInputNum(countEnum);
                                     modificationOptions = Options.ModificationOptionChoice(addRemoveAmendUserChoice);
+
                                     Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
                                     Console.WriteLine("Type number of answer you want to make changes to!");
                                     int answerCount = QuizmakerList[questionToAmend].AnswersList.Count;
@@ -92,14 +103,11 @@ namespace P6QuizMaker
                                             QuizmakerList[questionToAmend].AnswersList[answerToAmend] = UIMethods.GetUserInput();
                                             break;
                                     }
-                                    Console.Clear();
                                     break;
 
                                 case ModificationTarget.CorrectAnswerList:
                                     UIMethods.ShowListOfAnswers(QuizmakerList[questionToAmend], modificaitonTarget);
 
-                                    UIMethods.DisplayTextAddRemoveAmend();
-                                    countEnum = UIMethods.EnumLength(EnumChoice.ModificationOptions);
                                     addRemoveAmendUserChoice = UIMethods.GetUserInputNum(countEnum);
                                     modificationOptions = Options.ModificationOptionChoice(addRemoveAmendUserChoice);
                                     UIMethods.DisplayTextAnswerNumber();
@@ -122,7 +130,6 @@ namespace P6QuizMaker
                                             Console.WriteLine("Program is taking a nap");
                                             break;
                                     }
-                                    Console.Clear();
                                     break;
                             }
                             Console.WriteLine("Do you want to keep changing Question text, answers or correct answers ?");
