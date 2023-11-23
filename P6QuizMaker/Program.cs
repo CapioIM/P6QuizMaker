@@ -31,7 +31,7 @@ namespace P6QuizMaker
                                 " 3 - Correct Answers");
 
                             int amendUserChoice = UIMethods.GetUserInputNum(Enum.GetNames(typeof(ModificationTarget)).Length) - 1;
-                            ModificationTarget modificaitonTarget = Options.ModificationTargetChoice(amendUserChoice);
+                            ModificationTarget modificationTarget = Options.ModificationTargetChoice(amendUserChoice);
 
                             int countEnum = UIMethods.EnumLength(EnumChoice.ModificationOptions);
                             ModificationOptions modificationOptions;
@@ -39,16 +39,16 @@ namespace P6QuizMaker
                             int questionToAmend = 0;
                             int addRemoveAmendUserChoice;
 
-                            if (modificaitonTarget != ModificationTarget.Questions)                                             // answers 
+                            if (modificationTarget != ModificationTarget.Questions)                                             // answers 
                             {
                                 UIMethods.ShowListOfQuestion(QuizmakerList);
                                 Console.WriteLine($"Answers for which question would you like to modify?");
                                 questionToAmend = UIMethods.GetUserInputNum(QuizmakerList.Count) - 1;
-                                UIMethods.ShowListOfAnswers(QuizmakerList[questionToAmend], modificaitonTarget);
+                                UIMethods.ShowListOfAnswers(QuizmakerList[questionToAmend], modificationTarget);
                                 UIMethods.DisplayTextAddRemoveAmend();
                             }
 
-                            switch (modificaitonTarget)
+                            switch (modificationTarget)
                             {
                                 case ModificationTarget.Questions:                                                                      //questions
                                     countEnum = UIMethods.EnumLength(EnumChoice.ModificationOptions);
@@ -104,7 +104,7 @@ namespace P6QuizMaker
                                     break;
 
                                 case ModificationTarget.CorrectAnswerList:
-                                    UIMethods.ShowListOfAnswers(QuizmakerList[questionToAmend], modificaitonTarget);
+                                    UIMethods.ShowListOfAnswers(QuizmakerList[questionToAmend], modificationTarget);
 
                                     addRemoveAmendUserChoice = UIMethods.GetUserInputNum(countEnum);
                                     modificationOptions = Options.ModificationOptionChoice(addRemoveAmendUserChoice);
