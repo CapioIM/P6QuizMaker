@@ -1,6 +1,4 @@
-﻿using System.Xml.Serialization;
-
-namespace P6QuizMaker
+﻿namespace P6QuizMaker
 {
     internal class Program
     {
@@ -14,9 +12,9 @@ namespace P6QuizMaker
             {
                 UIMethods.WelcomeText();                                                                              //welcome text
                 UIMethods.DisplayChoiceManagePlay();
-                int manageOrPlay = UIMethods.GetUserInputNum(Enum.GetNames(typeof(ManageOrPlay)).Length);             //choice to manage quesitons or play
+                int manageOrPlay = UIMethods.GetUserInputNum(Enum.GetNames(typeof(ManageOrPlay)).Length) - 1;             //choice to manage quesitons or play
 
-                if (manageOrPlay == Convert.ToInt32(ManageOrPlay.Manage))
+                if (manageOrPlay == (int)ManageOrPlay.Manage)
                 {
                     QuizmakerList = FileOperations.Deserialize();
                     bool amendQuestionsAndAnswers = true;
@@ -30,14 +28,14 @@ namespace P6QuizMaker
                                 " 2 - Answers\n" +
                                 " 3 - Correct Answers");
 
-                            int amendUserChoice = UIMethods.GetUserInputNum(Enum.GetNames(typeof(ModificationTarget)).Length) - 1;
-                            ModificationTarget modificationTarget = Options.ModificationTargetChoice(amendUserChoice);
+                            int amendUserChoice = UIMethods.GetUserInputNum(Enum.GetNames(typeof(ModificationTarget)).Length);
+                            ModificationTarget modificationTarget = UIMethods.ModificationTargetChoice(amendUserChoice);
 
                             int countEnum = UIMethods.EnumLength(EnumChoice.ModificationOptions);
-                            ModificationOptions modificationOptions;
+                            ModificationOptions modificationOptions = ModificationOptions.Add;
 
                             int questionToAmend = 0;
-                            int addRemoveAmendUserChoice;
+                            int addRemoveAmendUserChoice = 0;
 
                             if (modificationTarget != ModificationTarget.Questions)                                             // answers 
                             {
@@ -46,6 +44,8 @@ namespace P6QuizMaker
                                 questionToAmend = UIMethods.GetUserInputNum(QuizmakerList.Count) - 1;
                                 UIMethods.ShowListOfAnswers(QuizmakerList[questionToAmend], modificationTarget);
                                 UIMethods.DisplayTextAddRemoveAmend();
+                                addRemoveAmendUserChoice = UIMethods.GetUserInputNum(countEnum);
+                                modificationOptions = UIMethods.ModificationOptionChoice(addRemoveAmendUserChoice);
                             }
 
                             switch (modificationTarget)
@@ -54,7 +54,7 @@ namespace P6QuizMaker
                                     countEnum = UIMethods.EnumLength(EnumChoice.ModificationOptions);
                                     UIMethods.DisplayTextAddRemoveAmend();
                                     addRemoveAmendUserChoice = UIMethods.GetUserInputNum(countEnum);
-                                    modificationOptions = Options.ModificationOptionChoice(addRemoveAmendUserChoice);
+                                    modificationOptions = UIMethods.ModificationOptionChoice(addRemoveAmendUserChoice);
 
                                     if (modificationOptions != ModificationOptions.Add)
                                     {
@@ -66,22 +66,19 @@ namespace P6QuizMaker
                                     {
                                         case ModificationOptions.Add:                                                                   //add
                                             var question = ManageQuestions.AddNewQuestion(QuizmakerList);
-                                            question.QuestionText = UIMethods.DisplayAskToTypeQuestionText();
+                                            question.QuestionText = UIMethods.GetQuestionText();
                                             ManageQuestions.AddAnswersToQuestion(question);
                                             break;
                                         case ModificationOptions.Remove:                                                                 //remove
                                             QuizmakerList.RemoveAt(questionToAmend);
                                             break;
                                         case ModificationOptions.Amend:                                                                     // amend
-                                            UIMethods.ModifyQuestionText(QuizmakerList, questionToAmend);
+                                            UIMethods.ModifyQuestionText(QuizmakerList[questionToAmend]);
                                             break;
                                     }
                                     break;
 
                                 case ModificationTarget.AnswerList:
-
-                                    addRemoveAmendUserChoice = UIMethods.GetUserInputNum(countEnum);
-                                    modificationOptions = Options.ModificationOptionChoice(addRemoveAmendUserChoice);
 
                                     Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
                                     Console.WriteLine("Type number of answer you want to make changes to!");
@@ -97,18 +94,15 @@ namespace P6QuizMaker
                                             break;
                                         case ModificationOptions.Amend:
                                             int answerToAmend = UIMethods.GetUserInputNum(answerCount) - 1;
-                                            Console.WriteLine("What this answer would you like to change to ?");
+                                            UIMethods.DisplayTextAskWhatToChange();
                                             QuizmakerList[questionToAmend].AnswersList[answerToAmend] = UIMethods.GetUserInput();
                                             break;
                                     }
                                     break;
 
                                 case ModificationTarget.CorrectAnswerList:
-                                    UIMethods.ShowListOfAnswers(QuizmakerList[questionToAmend], modificationTarget);
 
-                                    addRemoveAmendUserChoice = UIMethods.GetUserInputNum(countEnum);
-                                    modificationOptions = Options.ModificationOptionChoice(addRemoveAmendUserChoice);
-                                    UIMethods.DisplayTextAnswerNumber();
+                                    UIMethods.DisplayPlayAnswerNumber();
                                     int correctAnswerCount = QuizmakerList[questionToAmend].CorrectAnswersList.Count;
                                     switch (modificationOptions)
                                     {
@@ -120,12 +114,9 @@ namespace P6QuizMaker
                                             QuizmakerList[questionToAmend].CorrectAnswersList.RemoveAt(answerToRemove);
                                             break;
                                         case ModificationOptions.Amend:
-                                            Console.WriteLine("What this answer would you like to change to ?");
+                                            UIMethods.DisplayTextAskWhatToChange();
                                             int answerToAmend = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
                                             QuizmakerList[questionToAmend].CorrectAnswersList[answerToAmend] = UIMethods.GetUserInputNum(QuizmakerList[questionToAmend].CorrectAnswersList.Count) - 1;
-                                            break;
-                                        default:
-                                            Console.WriteLine("Program is taking a nap");
                                             break;
                                     }
                                     break;
@@ -149,7 +140,7 @@ namespace P6QuizMaker
                     while (playingQuizMaker)
                     {
                         int randomQuestionIndex = Logic.GetRandomNumber(QuizmakerList.Count - 1);
-                        UIMethods.DisplayTextAnswerNumber();
+                        UIMethods.DisplayPlayAnswerNumber();
                         UIMethods.DisplayQuestionAndAnswersToPlayer(QuizmakerList, randomQuestionIndex);
 
                         score += Logic.UserAnswerCheckWithScore(QuizmakerList, randomQuestionIndex);

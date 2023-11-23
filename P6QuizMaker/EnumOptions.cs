@@ -3,8 +3,8 @@
 
     public enum ManageOrPlay
     {
-        Manage = 1,
-        Play = 2
+        Manage,
+        Play
     }
     public enum ModificationOptions
     {
