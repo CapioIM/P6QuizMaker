@@ -4,25 +4,32 @@
     public enum GameMode
     {
         Manage,
-        Play
+        Play,
+        Invalid
     }
     public enum ModificationOptions
     {
         Add,
         Remove,
-        Amend
+        Amend,
+        Invalid,
+        Exit
     }
 
     public enum ModificationTarget
     {
         Questions,
         AnswerList,
-        CorrectAnswerList
+        CorrectAnswerList,
+        Invalid,
+        Exit
     }
 
     public enum EnumChoice
     {
         ModificationOptions,
-        ModificationTarget
+        ModificationTarget,
+        Invalid,
+        Exit
     }
 }

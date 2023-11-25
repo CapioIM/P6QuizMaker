@@ -222,8 +222,11 @@
                     return ModificationTarget.AnswerList;
                 case 3:
                     return ModificationTarget.CorrectAnswerList;
+                case 4:
+                    return ModificationTarget.Exit;
+                default:
+                    return ModificationTarget.Invalid;
             }
-            return 0;
         }
 
         public static ModificationOptions ModificationOptionChoice(int modificationOptionChoice)
@@ -236,8 +239,24 @@
                     return ModificationOptions.Remove;
                 case 3:
                     return ModificationOptions.Add;
+                case 4:
+                    return ModificationOptions.Exit;
+                default:
+                    return ModificationOptions.Invalid;
             }
-            return 0;
+        }
+
+        public static GameMode GameModeChoice(int manageOrPlay)
+        {
+            switch (manageOrPlay)
+            {
+                case 0:
+                    return GameMode.Manage;
+                case 1:
+                    return GameMode.Play;
+                default:
+                    return GameMode.Invalid;
+            }
         }
 
     }

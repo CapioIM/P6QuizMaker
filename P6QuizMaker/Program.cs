@@ -13,8 +13,10 @@
                 UIMethods.WelcomeText();                                                                              //welcome text
                 UIMethods.DisplayChoiceManagePlay();
                 int manageOrPlay = UIMethods.GetUserInputNum(Enum.GetNames(typeof(GameMode)).Length) - 1;             //choice to manage quesitons or play
+                GameMode gameModeChoice = GameMode.Manage;
+            
 
-                if (manageOrPlay == (int)GameMode.Manage)
+                if (gameModeChoice == GameMode.Manage)
                 {
                     QuizmakerList = FileOperations.Deserialize();
                     bool amendQuestionsAndAnswers = true;
@@ -132,7 +134,7 @@
                     }
                 }
 
-                if (manageOrPlay == (int)GameMode.Play)
+                if (gameModeChoice == GameMode.Play)
                 {
                     QuizmakerList = FileOperations.Deserialize();
 
