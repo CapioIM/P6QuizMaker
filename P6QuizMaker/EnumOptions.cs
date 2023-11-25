@@ -1,7 +1,7 @@
 ﻿namespace P6QuizMaker
 {
 
-    public enum ManageOrPlay
+    public enum GameMode
     {
         Manage,
         Play
