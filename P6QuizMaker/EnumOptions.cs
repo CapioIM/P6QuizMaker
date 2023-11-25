@@ -5,14 +5,12 @@
     {
         Manage,
         Play,
-        Invalid
     }
     public enum ModificationOptions
     {
         Add,
         Remove,
         Amend,
-        Invalid,
         Exit
     }
 
@@ -21,7 +19,6 @@
         Questions,
         AnswerList,
         CorrectAnswerList,
-        Invalid,
         Exit
     }
 
@@ -29,7 +26,6 @@
     {
         ModificationOptions,
         ModificationTarget,
-        Invalid,
         Exit
     }
 }

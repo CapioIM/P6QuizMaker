@@ -199,7 +199,8 @@
             Console.WriteLine(
                                  "Press 1 to Amend  \n" +
                                  "Press 2 to Remove \n" +
-                                 "Press 3 to Add ");
+                                 "Press 3 to Add \n" +
+                                 "Press 4 to Return");
         }
         public static void ModifyQuestionText(Question question)
         {
@@ -222,10 +223,8 @@
                     return ModificationTarget.AnswerList;
                 case 3:
                     return ModificationTarget.CorrectAnswerList;
-                case 4:
-                    return ModificationTarget.Exit;
                 default:
-                    return ModificationTarget.Invalid;
+                    return ModificationTarget.Exit;
             }
         }
 
@@ -239,10 +238,8 @@
                     return ModificationOptions.Remove;
                 case 3:
                     return ModificationOptions.Add;
-                case 4:
-                    return ModificationOptions.Exit;
                 default:
-                    return ModificationOptions.Invalid;
+                    return ModificationOptions.Exit;
             }
         }
 
@@ -252,10 +249,8 @@
             {
                 case 0:
                     return GameMode.Manage;
-                case 1:
-                    return GameMode.Play;
                 default:
-                    return GameMode.Invalid;
+                    return GameMode.Play;
             }
         }
 

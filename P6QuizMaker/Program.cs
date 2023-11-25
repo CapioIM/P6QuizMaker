@@ -14,7 +14,7 @@
                 UIMethods.DisplayChoiceManagePlay();
                 int manageOrPlay = UIMethods.GetUserInputNum(Enum.GetNames(typeof(GameMode)).Length) - 1;             //choice to manage quesitons or play
                 GameMode gameModeChoice = GameMode.Manage;
-            
+
 
                 if (gameModeChoice == GameMode.Manage)
                 {
@@ -28,7 +28,8 @@
                             Console.WriteLine("What would you like to amend:\n" +
                                 " 1 - Questions \n" +
                                 " 2 - Answers\n" +
-                                " 3 - Correct Answers");
+                                " 3 - Correct Answers\n" +
+                                " 4 - Return to game mode choice");
 
                             int amendUserChoice = UIMethods.GetUserInputNum(Enum.GetNames(typeof(ModificationTarget)).Length);
                             ModificationTarget modificationTarget = UIMethods.ModificationTargetChoice(amendUserChoice);
@@ -39,7 +40,7 @@
                             int questionToAmend = 0;
                             int addRemoveAmendUserChoice = 0;
 
-                            if (modificationTarget != ModificationTarget.Questions)                                             // answers 
+                            if (modificationTarget == ModificationTarget.AnswerList || modificationTarget == ModificationTarget.CorrectAnswerList)                                             // answers 
                             {
                                 UIMethods.ShowListOfQuestion(QuizmakerList);
                                 Console.WriteLine($"Answers for which question would you like to modify?");
@@ -77,6 +78,9 @@
                                         case ModificationOptions.Amend:                                                                     // amend
                                             UIMethods.ModifyQuestionText(QuizmakerList[questionToAmend]);
                                             break;
+                                        case ModificationOptions.Exit:
+                                            Console.Clear();
+                                            continue;
                                     }
                                     break;
 
@@ -99,11 +103,13 @@
                                             UIMethods.DisplayTextAskWhatToChange();
                                             QuizmakerList[questionToAmend].AnswersList[answerToAmend] = UIMethods.GetUserInput();
                                             break;
+                                        case ModificationOptions.Exit:
+                                            Console.Clear();
+                                            continue;
                                     }
                                     break;
 
                                 case ModificationTarget.CorrectAnswerList:
-
                                     UIMethods.DisplayPlayAnswerNumber();
                                     int correctAnswerCount = QuizmakerList[questionToAmend].CorrectAnswersList.Count;
                                     switch (modificationOptions)
@@ -120,17 +126,33 @@
                                             int answerToAmend = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
                                             QuizmakerList[questionToAmend].CorrectAnswersList[answerToAmend] = UIMethods.GetUserInputNum(QuizmakerList[questionToAmend].CorrectAnswersList.Count) - 1;
                                             break;
+                                        case ModificationOptions.Exit:
+                                            Console.Clear();
+                                            continue;
                                     }
                                     break;
+                                case ModificationTarget.Exit:
+                                    {
+                                        Console.Clear();
+                                        amending = false;
+                                        amendQuestionsAndAnswers = false;
+                                        continue;
+                                    }
                             }
-                            Console.WriteLine("Do you want to keep changing Question text, answers or correct answers ?");
-                            amending = UIMethods.MakeDecisionYorN();
+                            if (amending)
+                            {
+                                Console.WriteLine("Do you want to keep changing Question text, answers or correct answers ?");
+                                amending = UIMethods.MakeDecisionYorN();
+                                Console.Clear();
+                            }
+                        }
+                        if (amendQuestionsAndAnswers)
+                        {
+                            Console.WriteLine("Would you like to continue managing questions and answers ?");
+                            FileOperations.CreateXMLSerializeFile(QuizmakerList);  // create xml
+                            amendQuestionsAndAnswers = UIMethods.MakeDecisionYorN();
                             Console.Clear();
                         }
-                        Console.WriteLine("Would you like to continue managing questions and answers ?");
-                        FileOperations.CreateXMLSerializeFile(QuizmakerList);  // create xml
-                        amendQuestionsAndAnswers = UIMethods.MakeDecisionYorN();
-                        Console.Clear();
                     }
                 }
 
@@ -153,7 +175,6 @@
                     UIMethods.DisplayPlayAnotherQuestionText();
                     interestedToUseProgramm = UIMethods.MakeDecisionYorN();
                 }
-
             }
         }
     }
