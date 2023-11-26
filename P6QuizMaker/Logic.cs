@@ -2,6 +2,7 @@
 {
     internal class Logic
     {
+
         /// <summary>
         /// user entered integer is compared to values in CorrectAnswers... list and returns score
         /// </summary>
@@ -37,7 +38,7 @@
 
         public static void Play(List<Question> QuizmakerList)
         {
-            int score = 0;
+            Score score = new Score();
             QuizmakerList = FileOperations.Deserialize();
 
             bool playingQuizMaker = true;
@@ -47,14 +48,13 @@
                 UIMethods.DisplayPlayAnswerNumber();
                 UIMethods.DisplayQuestionAndAnswersToPlayer(QuizmakerList, randomQuestionIndex);
 
-                 score += Logic.UserAnswerCheckWithScore(QuizmakerList, randomQuestionIndex);
-                Console.WriteLine($"Your score: {score}");
+                score.ScoreCount += Logic.UserAnswerCheckWithScore(QuizmakerList, randomQuestionIndex);
+                Console.WriteLine($"Your score: {score.ScoreCount}");
                 playingQuizMaker = UIMethods.MakeDecisionYorN();
                 Console.Clear();
             }
         }
 
+
     }
-
-
 }
