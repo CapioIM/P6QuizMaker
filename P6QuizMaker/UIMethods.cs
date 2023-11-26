@@ -254,6 +254,23 @@
             }
         }
 
+        public static int ShowAnswersListInfo(List<Question> QuizmakerList, ModificationTarget modificationTarget)
+        {
+            UIMethods.ShowListOfQuestion(QuizmakerList);
+            Console.WriteLine($"Answers for which question would you like to modify?");
+            int questionToAmend = UIMethods.GetUserInputNum(QuizmakerList.Count) - 1;
+            UIMethods.ShowListOfAnswers(QuizmakerList[questionToAmend], modificationTarget);
+            return questionToAmend;
+        }
+        public static ModificationOptions ShowModificationOptionsInfo()
+        {
+            int countEnum = UIMethods.EnumLength(EnumChoice.ModificationOptions);
+            UIMethods.DisplayTextAddRemoveAmend();
+            int addRemoveAmendUserChoice = UIMethods.GetUserInputNum(countEnum);
+            ModificationOptions modificationOptions = UIMethods.ModificationOptionChoice(addRemoveAmendUserChoice);
+            return modificationOptions;
+        }
+
     }
 }
 

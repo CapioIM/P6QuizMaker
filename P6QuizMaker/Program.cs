@@ -13,8 +13,7 @@
                 UIMethods.WelcomeText();                                                                              //welcome text
                 UIMethods.DisplayChoiceManagePlay();
                 int manageOrPlay = UIMethods.GetUserInputNum(Enum.GetNames(typeof(GameMode)).Length) - 1;             //choice to manage quesitons or play
-                GameMode gameModeChoice = GameMode.Manage;
-
+                GameMode gameModeChoice = UIMethods.GameModeChoice(manageOrPlay);
 
                 if (gameModeChoice == GameMode.Manage)
                 {
@@ -33,31 +32,34 @@
 
                             int amendUserChoice = UIMethods.GetUserInputNum(Enum.GetNames(typeof(ModificationTarget)).Length);
                             ModificationTarget modificationTarget = UIMethods.ModificationTargetChoice(amendUserChoice);
-
+                            if (modificationTarget == ModificationTarget.Exit)
+                            {
+                                amending = false;
+                                amendQuestionsAndAnswers = false;
+                                Console.Clear();
+                                continue;
+                            }
                             int countEnum = UIMethods.EnumLength(EnumChoice.ModificationOptions);
                             ModificationOptions modificationOptions = ModificationOptions.Add;
 
                             int questionToAmend = 0;
-                            int addRemoveAmendUserChoice = 0;
 
-                            if (modificationTarget == ModificationTarget.AnswerList || modificationTarget == ModificationTarget.CorrectAnswerList)                                             // answers 
+                            if (modificationTarget == ModificationTarget.AnswerList || modificationTarget == ModificationTarget.CorrectAnswerList)                   // if not questions than do this
                             {
-                                UIMethods.ShowListOfQuestion(QuizmakerList);
-                                Console.WriteLine($"Answers for which question would you like to modify?");
-                                questionToAmend = UIMethods.GetUserInputNum(QuizmakerList.Count) - 1;
-                                UIMethods.ShowListOfAnswers(QuizmakerList[questionToAmend], modificationTarget);
-                                UIMethods.DisplayTextAddRemoveAmend();
-                                addRemoveAmendUserChoice = UIMethods.GetUserInputNum(countEnum);
-                                modificationOptions = UIMethods.ModificationOptionChoice(addRemoveAmendUserChoice);
+                                questionToAmend = UIMethods.ShowAnswersListInfo(QuizmakerList, modificationTarget);
                             }
 
+                            modificationOptions = UIMethods.ShowModificationOptionsInfo();
+                           
                             switch (modificationTarget)
                             {
                                 case ModificationTarget.Questions:                                                                      //questions
-                                    countEnum = UIMethods.EnumLength(EnumChoice.ModificationOptions);
-                                    UIMethods.DisplayTextAddRemoveAmend();
-                                    addRemoveAmendUserChoice = UIMethods.GetUserInputNum(countEnum);
-                                    modificationOptions = UIMethods.ModificationOptionChoice(addRemoveAmendUserChoice);
+
+                                    if (modificationOptions == ModificationOptions.Exit)
+                                    {
+                                        Console.Clear();
+                                        continue;
+                                    }
 
                                     if (modificationOptions != ModificationOptions.Add)
                                     {
@@ -85,7 +87,6 @@
                                     break;
 
                                 case ModificationTarget.AnswerList:
-
                                     Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
                                     Console.WriteLine("Type number of answer you want to make changes to!");
                                     int answerCount = QuizmakerList[questionToAmend].AnswersList.Count;
@@ -149,7 +150,7 @@
                         if (amendQuestionsAndAnswers)
                         {
                             Console.WriteLine("Would you like to continue managing questions and answers ?");
-                            FileOperations.CreateXMLSerializeFile(QuizmakerList);  // create xml
+                            FileOperations.CreateXMLSerializeFile(QuizmakerList);                                           // create xmlSerialization
                             amendQuestionsAndAnswers = UIMethods.MakeDecisionYorN();
                             Console.Clear();
                         }
