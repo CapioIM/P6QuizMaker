@@ -43,12 +43,12 @@
 
         public static Question AddNewQuestion(List<Question> QuizmakerList)
         {
-                Question quizmakerQuestion = new Question();
-                QuizmakerList.Add(quizmakerQuestion);
-                return quizmakerQuestion;
+            Question quizmakerQuestion = new Question();
+            QuizmakerList.Add(quizmakerQuestion);
+            return quizmakerQuestion;
         }
 
-        public static void Manage(List<Question>QuizmakerList)
+        public static void Manage(List<Question> QuizmakerList)
         {
             QuizmakerList = FileOperations.Deserialize();
             bool amendQuestionsAndAnswers = true;
@@ -116,8 +116,7 @@
                             break;
 
                         case ModificationTarget.AnswerList:
-                            Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
-                            Console.WriteLine("Type number of answer you want to make changes to!");
+            
                             int answerCount = QuizmakerList[questionToAmend].AnswersList.Count;
                             switch (modificationOptions)
                             {
@@ -179,10 +178,10 @@
                 if (amendQuestionsAndAnswers)
                 {
                     Console.WriteLine("Would you like to continue managing questions and answers ?");
-                    FileOperations.CreateXMLSerializeFile(QuizmakerList);                                           // create xmlSerialization
                     amendQuestionsAndAnswers = UIMethods.MakeDecisionYorN();
                     Console.Clear();
                 }
+                FileOperations.CreateXMLSerializeFile(QuizmakerList);                                           // create xmlSerialization
             }
         }
     }

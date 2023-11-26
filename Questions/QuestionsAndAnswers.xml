@@ -10,8 +10,6 @@
     </AnswersList>
     <CorrectAnswersList>
       <int>2</int>
-      <int>2</int>
-      <int>2</int>
     </CorrectAnswersList>
     <QuestionText>What color sun is ?</QuestionText>
   </Question>
@@ -21,7 +19,9 @@
       <string>blue 2</string>
       <string>red 2</string>
     </AnswersList>
-    <CorrectAnswersList />
+    <CorrectAnswersList>
+      <int>1</int>
+    </CorrectAnswersList>
     <QuestionText>What color is sky ?</QuestionText>
   </Question>
   <Question>
@@ -30,7 +30,9 @@
       <string>blue 3</string>
       <string>green 3</string>
     </AnswersList>
-    <CorrectAnswersList />
+    <CorrectAnswersList>
+      <int>2</int>
+    </CorrectAnswersList>
     <QuestionText>What color are trees ?</QuestionText>
   </Question>
 </ArrayOfQuestion>

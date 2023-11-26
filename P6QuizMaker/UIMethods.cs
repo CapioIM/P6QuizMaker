@@ -262,6 +262,8 @@
             Console.WriteLine($"Answers for which question would you like to modify?");
             int questionToAmend = UIMethods.GetUserInputNum(QuizmakerList.Count) - 1;
             UIMethods.ShowListOfAnswers(QuizmakerList[questionToAmend], modificationTarget);
+            Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
+            Console.WriteLine("Type number of answer you want to make changes to!");
             return questionToAmend;
         }
         public static ModificationOptions ShowModificationOptionsInfo()
