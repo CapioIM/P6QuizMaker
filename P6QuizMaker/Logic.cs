@@ -34,6 +34,27 @@
             Random random = new Random();
             return random.Next(0, maxRandomValue + 1);
         }
+
+        public static void Play(List<Question> QuizmakerList)
+        {
+            int score = 0;
+            QuizmakerList = FileOperations.Deserialize();
+
+            bool playingQuizMaker = true;
+            while (playingQuizMaker)
+            {
+                int randomQuestionIndex = Logic.GetRandomNumber(QuizmakerList.Count - 1);
+                UIMethods.DisplayPlayAnswerNumber();
+                UIMethods.DisplayQuestionAndAnswersToPlayer(QuizmakerList, randomQuestionIndex);
+
+                 score += Logic.UserAnswerCheckWithScore(QuizmakerList, randomQuestionIndex);
+                Console.WriteLine($"Your score: {score}");
+                playingQuizMaker = UIMethods.MakeDecisionYorN();
+                Console.Clear();
+            }
+            UIMethods.DisplayPlayAnotherQuestionText();
+        }
+
     }
 
 
