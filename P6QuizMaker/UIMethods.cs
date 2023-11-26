@@ -271,6 +271,15 @@
             return modificationOptions;
         }
 
+        public static void DisplayOptionsTargetToModify()
+        {
+            Console.WriteLine("What would you like to amend:\n" +
+                               " 1 - Questions \n" +
+                               " 2 - Answers\n" +
+                               " 3 - Correct Answers\n" +
+                               " 4 - Return to game mode choice");
+        }
+
     }
 }
 

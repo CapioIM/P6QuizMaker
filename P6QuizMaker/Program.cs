@@ -24,11 +24,7 @@
                         bool amending = true;
                         while (amending)
                         {
-                            Console.WriteLine("What would you like to amend:\n" +
-                                " 1 - Questions \n" +
-                                " 2 - Answers\n" +
-                                " 3 - Correct Answers\n" +
-                                " 4 - Return to game mode choice");
+                            UIMethods.DisplayOptionsTargetToModify();
 
                             int amendUserChoice = UIMethods.GetUserInputNum(Enum.GetNames(typeof(ModificationTarget)).Length);
                             ModificationTarget modificationTarget = UIMethods.ModificationTargetChoice(amendUserChoice);
