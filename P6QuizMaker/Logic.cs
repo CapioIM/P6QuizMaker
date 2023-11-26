@@ -52,7 +52,6 @@
                 playingQuizMaker = UIMethods.MakeDecisionYorN();
                 Console.Clear();
             }
-            UIMethods.DisplayPlayAnotherQuestionText();
         }
 
     }

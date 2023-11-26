@@ -187,9 +187,11 @@
                 }
 
                 Console.WriteLine("Here's list of Correct Answers");
+                int index = 1;
                 foreach (int answer in quizmaker.CorrectAnswersList)
                 {
-                    Console.WriteLine($"{quizmaker.CorrectAnswersList.IndexOf(answer) + 1}" + " " + $"{quizmaker.AnswersList[answer]}");
+                    Console.WriteLine($"{index}" + " " + $"{quizmaker.AnswersList[answer]}");
+                    index++;
                 }
             }
         }
