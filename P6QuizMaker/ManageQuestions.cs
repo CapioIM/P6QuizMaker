@@ -99,7 +99,7 @@
 
                     switch (modificationTarget)
                     {
-                        case ModificationTarget.Questions:                                                                      //questions
+                        case ModificationTarget.Questions:                                                                  //questions
 
                             if (modificationOptions == ModificationOptions.Exit)
                             {
@@ -113,17 +113,18 @@
                                 UIMethods.DisplayTextQuestionToRemoveOrAmend(modificationOptions);
                                 questionToAmend = UIMethods.GetUserInputNum(QuizmakerList.Count) - 1;
                             }
+
                             switch (modificationOptions)
                             {
-                                case ModificationOptions.Add:                                                                   //add
+                                case ModificationOptions.Add:                                                               //add
                                     var question = ManageQuestions.AddNewQuestion(QuizmakerList);
                                     question.QuestionText = UIMethods.GetQuestionText();
                                     ManageQuestions.AddAnswersToQuestion(question);
                                     break;
-                                case ModificationOptions.Remove:                                                                 //remove
+                                case ModificationOptions.Remove:                                                            //remove
                                     QuizmakerList.RemoveAt(questionToAmend);
                                     break;
-                                case ModificationOptions.Amend:                                                                     // amend
+                                case ModificationOptions.Amend:                                                             // amend
                                     UIMethods.ModifyQuestionText(QuizmakerList[questionToAmend]);
                                     break;
                                 case ModificationOptions.Exit:                                                              // Exit
@@ -133,7 +134,7 @@
                             break;
 
                         case ModificationTarget.AnswerList:                                                             // Answer List
-
+                            Console.WriteLine("Type number of answer you want to make changes to!");
                             int answerCount = QuizmakerList[questionToAmend].AnswersList.Count;
                             switch (modificationOptions)
                             {
@@ -142,7 +143,8 @@
                                     break;
                                 case ModificationOptions.Remove:                                                        // Remove
                                     int answerToRemove = UIMethods.GetUserInputNum(answerCount) - 1;
-                                    QuizmakerList[questionToAmend].AnswersList.RemoveAt(answerToRemove);
+                                    //     QuizmakerList[questionToAmend].AnswersList.RemoveAt(answerToRemove);
+                                    RemoveAnswerFromAnswerList(answerToRemove, QuizmakerList[questionToAmend]);
                                     break;
                                 case ModificationOptions.Amend:                                                          // Amend
                                     int answerToAmend = UIMethods.GetUserInputNum(answerCount) - 1;
@@ -199,6 +201,19 @@
                     Console.Clear();
                 }
                 FileOperations.CreateXMLSerializeFile(QuizmakerList);                                           // create xmlSerialization
+            }
+        }
+
+        public static void RemoveAnswerFromAnswerList(int answerNumberToRemove,Question quizmaker)
+        {
+            quizmaker.AnswersList.RemoveAt(answerNumberToRemove);
+            foreach (int answer in quizmaker.CorrectAnswersList)
+            {
+                if (answer == answerNumberToRemove)
+                {
+                    quizmaker.CorrectAnswersList.RemoveAt(quizmaker.CorrectAnswersList.IndexOf(answer));
+                    break;
+                }
             }
         }
     }
