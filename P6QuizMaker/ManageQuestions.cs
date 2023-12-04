@@ -20,10 +20,27 @@
 
         public static void AddCorrectAnswer(Question quizmaker)
         {
+            int answerNumber;
+            bool CorrectAnswerDuplicateCheck = true;
             bool addMoreAnswers = true;
             while (addMoreAnswers)
             {
-                quizmaker.CorrectAnswersList.Add(UIMethods.DiplayGetNumberText(quizmaker) - 1);
+                answerNumber = UIMethods.DiplayGetNumberText(quizmaker);
+                foreach (int correctAnswerNumber in quizmaker.CorrectAnswersList)
+                {
+                    if (correctAnswerNumber == (answerNumber - 1))
+                    {
+                        CorrectAnswerDuplicateCheck = false;
+                    }
+                }
+                if (CorrectAnswerDuplicateCheck)
+                {
+                    quizmaker.CorrectAnswersList.Add(answerNumber - 1);
+                }
+                else
+                {
+                    Console.WriteLine("This answer is already in the list");
+                }
                 addMoreAnswers = UIMethods.GetAdditionalAnswer();
             }
         }
@@ -109,55 +126,55 @@
                                 case ModificationOptions.Amend:                                                                     // amend
                                     UIMethods.ModifyQuestionText(QuizmakerList[questionToAmend]);
                                     break;
-                                case ModificationOptions.Exit:
+                                case ModificationOptions.Exit:                                                              // Exit
                                     Console.Clear();
-                                    continue;
+                                    break;
                             }
                             break;
 
-                        case ModificationTarget.AnswerList:
-            
+                        case ModificationTarget.AnswerList:                                                             // Answer List
+
                             int answerCount = QuizmakerList[questionToAmend].AnswersList.Count;
                             switch (modificationOptions)
                             {
-                                case ModificationOptions.Add:
+                                case ModificationOptions.Add:                                                           // Add
                                     ManageQuestions.AddAnswersToQuestion(QuizmakerList[questionToAmend]);
                                     break;
-                                case ModificationOptions.Remove:
+                                case ModificationOptions.Remove:                                                        // Remove
                                     int answerToRemove = UIMethods.GetUserInputNum(answerCount) - 1;
                                     QuizmakerList[questionToAmend].AnswersList.RemoveAt(answerToRemove);
                                     break;
-                                case ModificationOptions.Amend:
+                                case ModificationOptions.Amend:                                                          // Amend
                                     int answerToAmend = UIMethods.GetUserInputNum(answerCount) - 1;
                                     UIMethods.DisplayTextAskWhatToChange();
                                     QuizmakerList[questionToAmend].AnswersList[answerToAmend] = UIMethods.GetUserInput();
                                     break;
-                                case ModificationOptions.Exit:
+                                case ModificationOptions.Exit:                                                          // Exit
                                     Console.Clear();
-                                    continue;
+                                    break;
                             }
                             break;
 
-                        case ModificationTarget.CorrectAnswerList:
+                        case ModificationTarget.CorrectAnswerList:                                                  // Correct Answer List
                             UIMethods.DisplayPlayAnswerNumber();
                             int correctAnswerCount = QuizmakerList[questionToAmend].CorrectAnswersList.Count;
                             switch (modificationOptions)
                             {
-                                case ModificationOptions.Add:
+                                case ModificationOptions.Add:                                                       // Add
                                     ManageQuestions.AddCorrectAnswer(QuizmakerList[questionToAmend]);
                                     break;
-                                case ModificationOptions.Remove:
+                                case ModificationOptions.Remove:                                                    // Remove
                                     int answerToRemove = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
                                     QuizmakerList[questionToAmend].CorrectAnswersList.RemoveAt(answerToRemove);
                                     break;
-                                case ModificationOptions.Amend:
+                                case ModificationOptions.Amend:                                                     // Amend
                                     UIMethods.DisplayTextAskWhatToChange();
                                     int answerToAmend = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
                                     QuizmakerList[questionToAmend].CorrectAnswersList[answerToAmend] = UIMethods.GetUserInputNum(QuizmakerList[questionToAmend].CorrectAnswersList.Count) - 1;
                                     break;
-                                case ModificationOptions.Exit:
+                                case ModificationOptions.Exit:                                                      //Exit
                                     Console.Clear();
-                                    continue;
+                                    break;
                             }
                             break;
                         case ModificationTarget.Exit:
@@ -165,7 +182,7 @@
                                 Console.Clear();
                                 amending = false;
                                 amendQuestionsAndAnswers = false;
-                                continue;
+                                break;
                             }
                     }
                     if (amending)
