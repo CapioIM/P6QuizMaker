@@ -1,4 +1,6 @@
-﻿namespace P6QuizMaker
+﻿using System.Runtime.CompilerServices;
+
+namespace P6QuizMaker
 {
     public class Score
     {
@@ -6,7 +8,7 @@
         {
             _score = 0;
         }
-        private int _score {  get; set; }
+        private int _score { get; set; }
 
         public int ScoreCount
         {
