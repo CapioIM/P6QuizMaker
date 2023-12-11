@@ -10,6 +10,7 @@
     </AnswersList>
     <CorrectAnswersList>
       <int>2</int>
+      <int>1</int>
     </CorrectAnswersList>
     <QuestionText>What color sun is ?</QuestionText>
   </Question>

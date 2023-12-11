@@ -6,7 +6,7 @@
         /// add answer to specified object
         /// </summary>
         /// <param name="quizmaker"> object name, if in list where to find specific object </param>
-        public static void AddAnswersToQuestion(Question quizmaker)
+        private static void AddAnswersToQuestion(Question quizmaker)
         {
             bool addMoreAnswers = true;
             while (addMoreAnswers)
@@ -18,7 +18,7 @@
             }
         }
 
-        public static void AddCorrectAnswer(Question quizmaker)
+        private static void AddCorrectAnswer(Question quizmaker)
         {
             int answerNumber;
             bool CorrectAnswerDuplicateCheck = true;
@@ -50,7 +50,7 @@
         /// </summary>
         /// <param name="answerText">input string of Answer</param>
         /// <param name="quizmaker">Object variable name</param>
-        public static void AddCorrectAnswersToList(string answerText, Question quizmaker)
+        private static void AddCorrectAnswersToList(string answerText, Question quizmaker)
         {
             if (UIMethods.IsCorrectAnswer())
             {
@@ -67,6 +67,7 @@
 
         public static void Manage(List<Question> QuizmakerList)
         {
+            Console.Clear();
             QuizmakerList = FileOperations.Deserialize();
             bool amendQuestionsAndAnswers = true;
             while (amendQuestionsAndAnswers)
@@ -74,6 +75,8 @@
                 bool amending = true;
                 while (amending)
                 {
+                    UIMethods.WelcomeText();
+
                     UIMethods.DisplayOptionsTargetToModify();
 
                     int amendUserChoice = UIMethods.GetUserInputNum(Enum.GetNames(typeof(ModificationTarget)).Length);
@@ -204,7 +207,7 @@
             }
         }
 
-        public static void RemoveAnswerFromAnswerList(int answerNumberToRemove,Question quizmaker)
+        private static void RemoveAnswerFromAnswerList(int answerNumberToRemove,Question quizmaker)
         {
             quizmaker.AnswersList.RemoveAt(answerNumberToRemove);
             foreach (int answer in quizmaker.CorrectAnswersList)

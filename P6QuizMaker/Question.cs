@@ -22,6 +22,5 @@
                 _questionText = value;
             }
         }
-
     }
 }

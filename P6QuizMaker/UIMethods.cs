@@ -32,7 +32,7 @@
                 " You can add questions with answers or you can play Quizmaker and answer questions.\n");
         }
 
-        public static void DisplayChoiceManagePlay()
+        public static void DisplayGameModeChoice()
         {
             Console.WriteLine(
                 "Press 1 to Manage Questions\n" +

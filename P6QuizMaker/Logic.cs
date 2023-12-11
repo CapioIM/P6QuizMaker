@@ -10,7 +10,7 @@
         /// <param name="score"> updates score </param>
         /// <param name="randomQuestionPick"> same variable used to interract with qustions and answers </param>
         /// <returns> updated score </returns>
-        public static int UserAnswerCheckWithScore(List<Question> QuizmakerList, int randomQuestionPick)
+        private static int UserAnswerCheckWithScore(List<Question> QuizmakerList, int randomQuestionPick)
         {
             int score = 0;
             int userAnswer = UIMethods.GetUserInputNum() - 1;
