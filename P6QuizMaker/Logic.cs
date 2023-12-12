@@ -13,6 +13,7 @@
         private static int UserAnswerCheckWithScore(List<Question> QuizmakerList, int randomQuestionPick)
         {
             int score = 0;
+            int incorrectAnswerCheckCount = 0;
             int userAnswer = UIMethods.GetUserInputNum() - 1;
             foreach (int correctAnswer in QuizmakerList[randomQuestionPick].CorrectAnswersList)
             {
@@ -23,8 +24,13 @@
                 }
                 else
                 {
-                    Console.WriteLine("Maybe you will know answer to next question !");
-                }    
+                    incorrectAnswerCheckCount++;
+                }
+            }
+            if (incorrectAnswerCheckCount == QuizmakerList[randomQuestionPick].CorrectAnswersList.Count)
+            {
+                Console.WriteLine("Maybe you will know answer to next question !");
+
             }
             return score;
         }
@@ -34,13 +40,17 @@
         /// </summary>
         /// <param name="maxRandomValue"> Int of max value for random to return </param>
         /// <returns> random number between 0 and (int)variable </returns>
-        public static int GetRandomNumber(int maxRandomValue)
+        private static int GetRandomQuestionIndex(int maxRandomValue)
         {
-            Random random = new Random();
             return random.Next(0, maxRandomValue + 1);
         }
 
-        public static void Play(List<Question> QuizmakerList)
+        /// <summary>
+        /// Initialized random
+        /// </summary>
+        public static readonly Random random = new Random();
+
+        public static void PlayGame(List<Question> QuizmakerList)
         {
             Score score = new Score();
             QuizmakerList = FileOperations.Deserialize();
@@ -50,8 +60,8 @@
             {
                 Console.Clear();
                 UIMethods.DisplayGameDiscription();
-                
-                int randomQuestionIndex = Logic.GetRandomNumber(QuizmakerList.Count - 1);
+
+                int randomQuestionIndex = Logic.GetRandomQuestionIndex(QuizmakerList.Count - 1);
                 UIMethods.DisplayPlayAnswerNumber();
                 UIMethods.DisplayQuestionAndAnswersToPlayer(QuizmakerList, randomQuestionIndex);
 
@@ -59,6 +69,7 @@
                 Console.WriteLine($"Your score: {score.ScoreCount}");
                 UIMethods.DisplayPlayAnotherQuestionText();
                 playingQuizMaker = UIMethods.MakeDecisionYorN();
+                Console.Clear();
             }
         }
 
