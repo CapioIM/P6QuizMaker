@@ -182,9 +182,13 @@
                             {
                                 continue;
                             }
+                        case ModificationTarget.SaveChanges:
+                            {
+                                FileOperations.CreateXMLSerializeFile(QuizmakerList);                                           // create xmlSerialization
+                                continue;
+                            }
                     }
                 }
-                FileOperations.CreateXMLSerializeFile(QuizmakerList);                                           // create xmlSerialization
             }
         }
 

@@ -12,7 +12,6 @@
         Remove,
         Amend,
         Exit,
-        SaveChanges
     }
 
     public enum ModificationTarget

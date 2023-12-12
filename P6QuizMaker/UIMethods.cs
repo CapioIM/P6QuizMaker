@@ -200,8 +200,7 @@
                                  "Press 1 to Amend  \n" +
                                  "Press 2 to Remove \n" +
                                  "Press 3 to Add \n" +
-                                 "Press 4 to Return\n" +
-                                 "Press 5 to Save Changes");
+                                 "Press 4 to Return to previous menu");
         }
         public static void ModifyQuestionText(Question question)
         {
