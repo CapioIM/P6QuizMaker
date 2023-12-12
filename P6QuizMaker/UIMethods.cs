@@ -32,6 +32,12 @@
                 " You can add questions with answers or you can play Quizmaker and answer questions.\n");
         }
 
+        public static void DisplayGameDiscription()
+        {
+            Console.WriteLine("                 Welcome to Quiz Maker Game !\n" +
+                "You are asked question and you need to press number to pick correct answer!");
+        }
+
         public static void DisplayGameModeChoice()
         {
             Console.WriteLine(
@@ -223,6 +229,8 @@
                     return ModificationTarget.AnswerList;
                 case 3:
                     return ModificationTarget.CorrectAnswerList;
+                case 5:
+                    return ModificationTarget.SaveChanges;
                 default:
                     return ModificationTarget.Exit;
             }
@@ -280,6 +288,11 @@
                                " 3 - Correct Answers\n" +
                                " 4 - Return to game mode choice\n" +
                                " 5 - Save Changes");
+        }
+
+        public static void DisplayChangeGameMode()
+        {
+            Console.WriteLine("Would you like to return to game menu ?");
         }
     }
 }

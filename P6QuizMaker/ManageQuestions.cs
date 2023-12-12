@@ -74,10 +74,10 @@
                 bool amending = true;
                 while (amending)
                 {
-                    Console.Clear();
-                    UIMethods.WelcomeText();
+                    Console.Clear();                                                                                                        // loop start
+                    UIMethods.WelcomeText();                                                                                                   // welcome text                 
 
-                    UIMethods.DisplayOptionsTargetToModify();
+                    UIMethods.DisplayOptionsTargetToModify();                                                                                   // print Target to modify 
 
                     int amendUserChoice = UIMethods.GetUserInputNum(Enum.GetNames(typeof(ModificationTarget)).Length);
                     ModificationTarget modificationTarget = UIMethods.ModificationTargetChoice(amendUserChoice);
@@ -98,7 +98,10 @@
                         questionToAmend = UIMethods.ShowAnswersListInfo(QuizmakerList, modificationTarget);
                     }
 
-                    modificationOptions = UIMethods.ShowModificationOptionsInfo();
+                    if (modificationTarget != ModificationTarget.SaveChanges)
+                    {
+                        modificationOptions = UIMethods.ShowModificationOptionsInfo();
+                    }
 
                     switch (modificationTarget)
                     {
@@ -177,13 +180,13 @@
                                     continue;
                             }
                             break;
-                        case ModificationTarget.Exit:
-                            {
-                                continue;
-                            }
                         case ModificationTarget.SaveChanges:
                             {
                                 FileOperations.CreateXMLSerializeFile(QuizmakerList);                                           // create xmlSerialization
+                                continue;
+                            }
+                        case ModificationTarget.Exit:
+                            {
                                 continue;
                             }
                     }

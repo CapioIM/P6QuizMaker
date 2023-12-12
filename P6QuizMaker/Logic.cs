@@ -21,6 +21,10 @@
                     score++;
                     Console.WriteLine("You are smartest!");
                 }
+                else
+                {
+                    Console.WriteLine("Maybe you will know answer to next question !");
+                }    
             }
             return score;
         }
@@ -44,14 +48,17 @@
             bool playingQuizMaker = true;
             while (playingQuizMaker)
             {
+                Console.Clear();
+                UIMethods.DisplayGameDiscription();
+                
                 int randomQuestionIndex = Logic.GetRandomNumber(QuizmakerList.Count - 1);
                 UIMethods.DisplayPlayAnswerNumber();
                 UIMethods.DisplayQuestionAndAnswersToPlayer(QuizmakerList, randomQuestionIndex);
 
                 score.ScoreCount += Logic.UserAnswerCheckWithScore(QuizmakerList, randomQuestionIndex);
                 Console.WriteLine($"Your score: {score.ScoreCount}");
+                UIMethods.DisplayPlayAnotherQuestionText();
                 playingQuizMaker = UIMethods.MakeDecisionYorN();
-                Console.Clear();
             }
         }
 

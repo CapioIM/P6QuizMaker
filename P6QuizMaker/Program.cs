@@ -22,7 +22,7 @@
                 if (gameModeChoice == GameMode.Play)
                 {
                     Logic.Play(QuizmakerList);
-                    UIMethods.DisplayPlayAnotherQuestionText();
+
                     interestedToUseProgramm = UIMethods.MakeDecisionYorN();
                 }
             }
