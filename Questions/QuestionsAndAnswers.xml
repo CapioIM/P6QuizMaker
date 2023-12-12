@@ -16,9 +16,9 @@
   </Question>
   <Question>
     <AnswersList>
-      <string>green 2</string>
-      <string>blue 2</string>
-      <string>red 2</string>
+      <string>Green</string>
+      <string>Blue</string>
+      <string>Red</string>
     </AnswersList>
     <CorrectAnswersList>
       <int>1</int>
@@ -27,9 +27,9 @@
   </Question>
   <Question>
     <AnswersList>
-      <string>red 3</string>
-      <string>blue 3</string>
-      <string>green 3</string>
+      <string>Red</string>
+      <string>Blue</string>
+      <string>Green</string>
     </AnswersList>
     <CorrectAnswersList>
       <int>2</int>

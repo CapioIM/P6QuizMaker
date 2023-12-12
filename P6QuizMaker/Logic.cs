@@ -72,7 +72,5 @@
                 Console.Clear();
             }
         }
-
-
     }
 }
