@@ -67,7 +67,6 @@
 
         public static void Manage(List<Question> QuizmakerList)
         {
-            Console.Clear();
             QuizmakerList = FileOperations.Deserialize();
             bool amendQuestionsAndAnswers = true;
             while (amendQuestionsAndAnswers)
@@ -75,6 +74,7 @@
                 bool amending = true;
                 while (amending)
                 {
+                    Console.Clear();
                     UIMethods.WelcomeText();
 
                     UIMethods.DisplayOptionsTargetToModify();
@@ -106,7 +106,6 @@
 
                             if (modificationOptions == ModificationOptions.Exit)
                             {
-                                Console.Clear();
                                 continue;
                             }
 
@@ -131,8 +130,7 @@
                                     UIMethods.ModifyQuestionText(QuizmakerList[questionToAmend]);
                                     break;
                                 case ModificationOptions.Exit:                                                              // Exit
-                                    Console.Clear();
-                                    break;
+                                    continue;
                             }
                             break;
 
@@ -155,8 +153,7 @@
                                     QuizmakerList[questionToAmend].AnswersList[answerToAmend] = UIMethods.GetUserInput();
                                     break;
                                 case ModificationOptions.Exit:                                                          // Exit
-                                    Console.Clear();
-                                    break;
+                                    continue;
                             }
                             break;
 
@@ -178,36 +175,20 @@
                                     QuizmakerList[questionToAmend].CorrectAnswersList[answerToAmend] = UIMethods.GetUserInputNum(QuizmakerList[questionToAmend].CorrectAnswersList.Count) - 1;
                                     break;
                                 case ModificationOptions.Exit:                                                      //Exit
-                                    Console.Clear();
-                                    break;
+                                    continue;
                             }
                             break;
                         case ModificationTarget.Exit:
                             {
-                                Console.Clear();
-                                amending = false;
-                                amendQuestionsAndAnswers = false;
-                                break;
+                                continue;
                             }
                     }
-                    if (amending)
-                    {
-                        Console.WriteLine("Do you want to keep changing Question text, answers or correct answers ?");
-                        amending = UIMethods.MakeDecisionYorN();
-                        Console.Clear();
-                    }
-                }
-                if (amendQuestionsAndAnswers)
-                {
-                    Console.WriteLine("Would you like to continue managing questions and answers ?");
-                    amendQuestionsAndAnswers = UIMethods.MakeDecisionYorN();
-                    Console.Clear();
                 }
                 FileOperations.CreateXMLSerializeFile(QuizmakerList);                                           // create xmlSerialization
             }
         }
 
-        private static void RemoveAnswerFromAnswerList(int answerNumberToRemove,Question quizmaker)
+        private static void RemoveAnswerFromAnswerList(int answerNumberToRemove, Question quizmaker)
         {
             quizmaker.AnswersList.RemoveAt(answerNumberToRemove);
             foreach (int answer in quizmaker.CorrectAnswersList)

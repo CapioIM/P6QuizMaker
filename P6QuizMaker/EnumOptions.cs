@@ -11,7 +11,8 @@
         Add,
         Remove,
         Amend,
-        Exit
+        Exit,
+        SaveChanges
     }
 
     public enum ModificationTarget
@@ -19,7 +20,8 @@
         Questions,
         AnswerList,
         CorrectAnswerList,
-        Exit
+        Exit,
+        SaveChanges
     }
 
     public enum EnumChoice

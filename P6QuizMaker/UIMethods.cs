@@ -200,7 +200,8 @@
                                  "Press 1 to Amend  \n" +
                                  "Press 2 to Remove \n" +
                                  "Press 3 to Add \n" +
-                                 "Press 4 to Return");
+                                 "Press 4 to Return\n" +
+                                 "Press 5 to Save Changes");
         }
         public static void ModifyQuestionText(Question question)
         {
@@ -278,9 +279,9 @@
                                " 1 - Questions \n" +
                                " 2 - Answers\n" +
                                " 3 - Correct Answers\n" +
-                               " 4 - Return to game mode choice");
+                               " 4 - Return to game mode choice\n" +
+                               " 5 - Save Changes");
         }
-
     }
 }
 
