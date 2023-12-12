@@ -144,7 +144,6 @@
                                     break;
                                 case ModificationOptions.Remove:                                                        // Remove
                                     int answerToRemove = UIMethods.GetUserInputNum(answerCount) - 1;
-                                    //     QuizmakerList[questionToAmend].AnswersList.RemoveAt(answerToRemove);
                                     RemoveAnswerFromAnswerList(answerToRemove, QuizmakerList[questionToAmend]);
                                     break;
                                 case ModificationOptions.Amend:                                                          // Amend
