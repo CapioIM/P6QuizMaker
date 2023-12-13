@@ -3,8 +3,8 @@
     public class Question
     {
         private string _questionText { get; set; }
-        public List<string> AnswersList = new List<string>();
-        public List<int> CorrectAnswersList = new List<int>();
+        private List<string> _answersList = new List<string>();
+        private List<int> _correctAnswersList = new List<int>();
 
         public override string ToString()
         {
@@ -20,6 +20,22 @@
             set
             {
                 _questionText = value;
+            }
+        }
+
+        public List<string> AnswersList
+        {
+            get
+            {
+                return _answersList;
+            }
+        }
+
+        public List<int> CorrectAnswersList
+        {
+            get
+            {
+                return _correctAnswersList;
             }
         }
     }

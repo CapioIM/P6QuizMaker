@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfQuestion xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Question>
+    <QuestionText>What color sun is ?</QuestionText>
     <AnswersList>
       <string>Blue</string>
       <string>Green</string>
       <string>Yellow</string>
       <string>Purple</string>
       <string>Gray</string>
+      <string>Black</string>
     </AnswersList>
     <CorrectAnswersList>
       <int>2</int>
-      <int>4</int>
     </CorrectAnswersList>
-    <QuestionText>What color sun is ?</QuestionText>
   </Question>
   <Question>
+    <QuestionText>What color is sky ?</QuestionText>
     <AnswersList>
       <string>Green</string>
       <string>Blue</string>
@@ -23,9 +24,9 @@
     <CorrectAnswersList>
       <int>1</int>
     </CorrectAnswersList>
-    <QuestionText>What color is sky ?</QuestionText>
   </Question>
   <Question>
+    <QuestionText>What color are trees ?</QuestionText>
     <AnswersList>
       <string>Red</string>
       <string>Blue</string>
@@ -34,6 +35,5 @@
     <CorrectAnswersList>
       <int>2</int>
     </CorrectAnswersList>
-    <QuestionText>What color are trees ?</QuestionText>
   </Question>
 </ArrayOfQuestion>
