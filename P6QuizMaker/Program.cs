@@ -20,9 +20,9 @@
                 if (gameModeChoice == GameMode.Play)
                 {
                     Logic.PlayGame();
+                    UIMethods.DisplayChangeGameMode();
+                    interestedToUseProgramm = UIMethods.MakeDecisionYorN();
                 }
-                UIMethods.DisplayChangeGameMode();
-                interestedToUseProgramm = UIMethods.MakeDecisionYorN();
             }
         }
     }

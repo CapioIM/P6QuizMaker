@@ -6,7 +6,7 @@
         /// add answer to specified object
         /// </summary>
         /// <param name="quizmaker"> object name, if in list where to find specific object </param>
-        private static void AddAnswersToQuestion(Question quizmaker)
+        public static void AddAnswersToQuestion(Question quizmaker)
         {
             bool addMoreAnswers = true;
             while (addMoreAnswers)
@@ -58,7 +58,7 @@
             }
         }
 
-        public static Question AddNewQuestion(List<Question> QuizmakerList)
+        private static Question AddNewQuestion(List<Question> QuizmakerList)
         {
             Question quizmakerQuestion = new Question();
             QuizmakerList.Add(quizmakerQuestion);
@@ -116,9 +116,9 @@
                         switch (modificationOptions)
                         {
                             case ModificationOptions.Add:                                                               //add
-                                var question = ManageQuestions.AddNewQuestion(QuizmakerList);
+                                var question = AddNewQuestion(QuizmakerList);
                                 question.QuestionText = UIMethods.GetQuestionText();
-                                ManageQuestions.AddAnswersToQuestion(question);
+                                AddAnswersToQuestion(question);
                                 break;
                             case ModificationOptions.Remove:                                                            //remove
                                 QuizmakerList.RemoveAt(questionToAmend);
@@ -137,7 +137,7 @@
                         switch (modificationOptions)
                         {
                             case ModificationOptions.Add:                                                           // Add
-                                ManageQuestions.AddAnswersToQuestion(QuizmakerList[questionToAmend]);
+                                AddAnswersToQuestion(QuizmakerList[questionToAmend]);
                                 break;
                             case ModificationOptions.Remove:                                                        // Remove
                                 int answerToRemove = UIMethods.GetUserInputNum(answerCount) - 1;
@@ -159,7 +159,7 @@
                         switch (modificationOptions)
                         {
                             case ModificationOptions.Add:                                                       // Add
-                                ManageQuestions.AddCorrectAnswer(QuizmakerList[questionToAmend]);
+                                AddCorrectAnswer(QuizmakerList[questionToAmend]);
                                 break;
                             case ModificationOptions.Remove:                                                    // Remove
                                 int answerToRemove = UIMethods.GetUserInputNum(correctAnswerCount) - 1;

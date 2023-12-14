@@ -3,8 +3,15 @@
     public class Question
     {
         private string _questionText { get; set; }
-        private List<string> _answersList = new List<string>();
-        private List<int> _correctAnswersList = new List<int>();
+        private List<string> _answersList;
+        private List<int> _correctAnswersList;
+
+
+        public Question()
+        {
+            _answersList = new List<string>();
+            _correctAnswersList = new List<int>();
+        }
 
         public override string ToString()
         {
