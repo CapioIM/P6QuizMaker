@@ -10,7 +10,7 @@
         /// <param name="score"> updates score </param>
         /// <param name="randomQuestionPick"> same variable used to interract with qustions and answers </param>
         /// <returns> updated score </returns>
-        private static int UserAnswerCheckWithScore(List<Question> QuizmakerList, int randomQuestionPick)
+        private static int UserAnswerCheckWithScore(List<QuestionsAndAnswers> QuizmakerList, int randomQuestionPick)
         {
             int score = 0;
             int incorrectAnswerCheckCount = 0;
@@ -53,7 +53,7 @@
         public static void PlayGame()
         {
             Score score = new Score();
-            List<Question> QuizmakerList = FileOperations.Deserialize();
+            List<QuestionsAndAnswers> QuizmakerList = FileOperations.DeserializeTest();
 
             bool playingQuizMaker = true;
             while (playingQuizMaker)

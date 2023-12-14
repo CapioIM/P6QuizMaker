@@ -1,13 +1,13 @@
 ﻿namespace P6QuizMaker
 {
-    public class Question
+    public class QuestionsAndAnswers
     {
         private string _questionText { get; set; }
         private List<string> _answersList;
         private List<int> _correctAnswersList;
 
 
-        public Question()
+        public QuestionsAndAnswers()
         {
             _answersList = new List<string>();
             _correctAnswersList = new List<int>();
@@ -46,7 +46,20 @@
             }
         }
 
-
+        public void AddAnswerToList()
+        {
+            bool addMoreAnswers = true;
+            while (addMoreAnswers)
+            {
+                string answerText = UIMethods.GetAndDisplayTypeAnswerText();
+                _answersList.Add(answerText);
+                if (UIMethods.IsCorrectAnswer())
+                {
+                    _correctAnswersList.Add(_answersList.IndexOf(answerText));
+                }
+                addMoreAnswers = UIMethods.GetAdditionalAnswer();
+            }
+        }
 
 
     }

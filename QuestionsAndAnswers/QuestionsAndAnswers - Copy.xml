@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ArrayOfQuestion xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Question>
-    <QuestionText>What color sun is ?</QuestionText>
+<ArrayOfQuestionsAndAnswerssAndAnswers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <QuestionsAndAnswers>
+    <QuestionsAndAnswersText>What color sun is ?</QuestionsAndAnswersText>
     <AnswersList>
       <string>Blue</string>
       <string>Green</string>
@@ -13,9 +13,9 @@
     <CorrectAnswersList>
       <int>2</int>
     </CorrectAnswersList>
-  </Question>
-  <Question>
-    <QuestionText>What color is sky ?</QuestionText>
+  </QuestionsAndAnswerssAndAnswers>
+  <QuestionsAndAnswerssAndAnswers>
+    <QuestionsAndAnswerssAndAnswersText>What color is sky ?</QuestionsAndAnswerssAndAnswersText>
     <AnswersList>
       <string>Green</string>
       <string>Blue</string>
@@ -24,9 +24,9 @@
     <CorrectAnswersList>
       <int>1</int>
     </CorrectAnswersList>
-  </Question>
-  <Question>
-    <QuestionText>What color are trees ?</QuestionText>
+  </QuestionsAndAnswerssAndAnswers>
+  <QuestionsAndAnswerssAndAnswers>
+    <QuestionsAndAnswerssAndAnswersText>What color are trees ?</QuestionsAndAnswerssAndAnswersText>
     <AnswersList>
       <string>Red</string>
       <string>Blue</string>
@@ -35,9 +35,9 @@
     <CorrectAnswersList>
       <int>2</int>
     </CorrectAnswersList>
-  </Question>
-  <Question>
-    <QuestionText>How many raindeers Santa has ?</QuestionText>
+  </QuestionsAndAnswerssAndAnswers>
+  <QuestionsAndAnswerssAndAnswers>
+    <QuestionsAndAnswerssAndAnswersText>How many raindeers Santa has ?</QuestionsAndAnswerssAndAnswersText>
     <AnswersList>
       <string>3</string>
       <string>6</string>
@@ -47,5 +47,5 @@
     <CorrectAnswersList>
       <int>3</int>
     </CorrectAnswersList>
-  </Question>
-</ArrayOfQuestion>
+  </QuestionsAndAnswerssAndAnswers>
+</ArrayOfQuestionsAndAnswerssAndAnswers>

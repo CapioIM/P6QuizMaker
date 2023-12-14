@@ -6,7 +6,7 @@
         /// add answer to specified object
         /// </summary>
         /// <param name="quizmaker"> object name, if in list where to find specific object </param>
-        public static void AddAnswersToQuestion(Question quizmaker)
+        public static void AddAnswersToQuestion(QuestionsAndAnswers quizmaker)
         {
             bool addMoreAnswers = true;
             while (addMoreAnswers)
@@ -18,7 +18,7 @@
             }
         }
 
-        private static void AddCorrectAnswer(Question quizmaker)
+        private static void AddCorrectAnswer(QuestionsAndAnswers quizmaker)
         {
             int answerNumber;
             bool CorrectAnswerDuplicateCheck = true;
@@ -50,7 +50,7 @@
         /// </summary>
         /// <param name="answerText">input string of Answer</param>
         /// <param name="quizmaker">Object variable name</param>
-        private static void AddCorrectAnswersToList(string answerText, Question quizmaker)
+        private static void AddCorrectAnswersToList(string answerText, QuestionsAndAnswers quizmaker)
         {
             if (UIMethods.IsCorrectAnswer())
             {
@@ -58,16 +58,16 @@
             }
         }
 
-        private static Question AddNewQuestion(List<Question> QuizmakerList)
+        private static QuestionsAndAnswers AddNewQuestion(List<QuestionsAndAnswers> QuizmakerList)
         {
-            Question quizmakerQuestion = new Question();
+            QuestionsAndAnswers quizmakerQuestion = new QuestionsAndAnswers();
             QuizmakerList.Add(quizmakerQuestion);
             return quizmakerQuestion;
         }
 
         public static void Manage()
         {
-            List<Question> QuizmakerList = FileOperations.Deserialize();
+            List<QuestionsAndAnswers> QuizmakerList = FileOperations.DeserializeTest();
 
             bool amending = true;
             while (amending)
@@ -102,6 +102,7 @@
                     continue;
                 }
 
+                QuestionsAndAnswers questionReference = QuizmakerList[questionToAmend];
                 switch (modificationTarget)
                 {
                     case ModificationTarget.Questions:                                                                  //questions
@@ -116,7 +117,7 @@
                         switch (modificationOptions)
                         {
                             case ModificationOptions.Add:                                                               //add
-                                var question = AddNewQuestion(QuizmakerList);
+                                QuestionsAndAnswers question = AddNewQuestion(QuizmakerList);
                                 question.QuestionText = UIMethods.GetQuestionText();
                                 AddAnswersToQuestion(question);
                                 break;
@@ -124,7 +125,7 @@
                                 QuizmakerList.RemoveAt(questionToAmend);
                                 break;
                             case ModificationOptions.Amend:                                                             // amend
-                                UIMethods.ModifyQuestionText(QuizmakerList[questionToAmend]);
+                                UIMethods.ModifyQuestionText(questionReference);
                                 break;
                             case ModificationOptions.Exit:                                                              // Exit
                                 continue;
@@ -133,20 +134,20 @@
 
                     case ModificationTarget.AnswerList:                                                             // Answer List
                         Console.WriteLine("Type number of answer you want to make changes to!");
-                        int answerCount = QuizmakerList[questionToAmend].AnswersList.Count;
+                        int answerCount = questionReference.AnswersList.Count;
                         switch (modificationOptions)
                         {
                             case ModificationOptions.Add:                                                           // Add
-                                AddAnswersToQuestion(QuizmakerList[questionToAmend]);
+                                questionReference.AddAnswerToList();
                                 break;
                             case ModificationOptions.Remove:                                                        // Remove
                                 int answerToRemove = UIMethods.GetUserInputNum(answerCount) - 1;
-                                RemoveAnswerFromAnswerList(answerToRemove, QuizmakerList[questionToAmend]);
+                                RemoveAnswerFromAnswerList(answerToRemove, questionReference);
                                 break;
                             case ModificationOptions.Amend:                                                          // Amend
                                 int answerToAmend = UIMethods.GetUserInputNum(answerCount) - 1;
                                 UIMethods.DisplayTextAskWhatToChange();
-                                QuizmakerList[questionToAmend].AnswersList[answerToAmend] = UIMethods.GetUserInput();
+                                questionReference.AnswersList[answerToAmend] = UIMethods.GetUserInput();
                                 break;
                             case ModificationOptions.Exit:                                                          // Exit
                                 continue;
@@ -155,20 +156,20 @@
 
                     case ModificationTarget.CorrectAnswerList:                                                  // Correct Answer List
                         UIMethods.DisplayPlayAnswerNumber();
-                        int correctAnswerCount = QuizmakerList[questionToAmend].CorrectAnswersList.Count;
+                        int correctAnswerCount = questionReference.CorrectAnswersList.Count;
                         switch (modificationOptions)
                         {
                             case ModificationOptions.Add:                                                       // Add
-                                AddCorrectAnswer(QuizmakerList[questionToAmend]);
+                                AddCorrectAnswer(questionReference);
                                 break;
                             case ModificationOptions.Remove:                                                    // Remove
                                 int answerToRemove = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
-                                QuizmakerList[questionToAmend].CorrectAnswersList.RemoveAt(answerToRemove);
+                                questionReference.CorrectAnswersList.RemoveAt(answerToRemove);
                                 break;
                             case ModificationOptions.Amend:                                                     // Amend
                                 UIMethods.DisplayTextAskWhatToChange();
                                 int answerToAmend = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
-                                QuizmakerList[questionToAmend].CorrectAnswersList[answerToAmend] = UIMethods.GetUserInputNum(QuizmakerList[questionToAmend].CorrectAnswersList.Count) - 1;
+                                questionReference.CorrectAnswersList[answerToAmend] = UIMethods.GetUserInputNum(questionReference.CorrectAnswersList.Count) - 1;
                                 break;
                             case ModificationOptions.Exit:                                                      //Exit
                                 continue;
@@ -188,7 +189,7 @@
         }
 
 
-        private static void RemoveAnswerFromAnswerList(int answerNumberToRemove, Question quizmaker)
+        private static void RemoveAnswerFromAnswerList(int answerNumberToRemove, QuestionsAndAnswers quizmaker)
         {
             quizmaker.AnswersList.RemoveAt(answerNumberToRemove);
             foreach (int answer in quizmaker.CorrectAnswersList)

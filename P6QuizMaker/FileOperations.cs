@@ -4,7 +4,7 @@ namespace P6QuizMaker
 {
     internal class FileOperations
     {
-        private const string _QUESTIONS_FOLDER_PATH = @"..\..\..\..\Questions";
+        private const string _QUESTIONS_FOLDER_PATH = @"..\..\..\..\QuestionsAndAnswers";
         private const string _QUESTIONS_FILE_NAME = @"\QuestionsAndAnswers.xml";
         private const string _QUESTIONS_FILE_PATH = _QUESTIONS_FOLDER_PATH + _QUESTIONS_FILE_NAME;
 
@@ -12,10 +12,10 @@ namespace P6QuizMaker
         /// creates file in text format with values of object ....
         /// </summary>
         /// <param name="QuizmakerList"> List of objects </param>
-        public static void CreateXMLSerializeFile(List<Question> QuizmakerList)
+        public static void CreateXMLSerializeFile(List<QuestionsAndAnswers> QuizmakerList)
         {
             CreateQuestionsFolder(DoesFolderExist(_QUESTIONS_FOLDER_PATH));
-            XmlSerializer writer = new XmlSerializer(typeof(List<Question>));
+            XmlSerializer writer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
             using (FileStream file = File.Create(_QUESTIONS_FILE_PATH))
             {
                 writer.Serialize(file, QuizmakerList);
@@ -41,15 +41,15 @@ namespace P6QuizMaker
             }
         }
 
-        public static List<Question> Deserialize()
+        public static List<QuestionsAndAnswers> DeserializeTest()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Question>));
-            List<Question> quesitonListName;
+            XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
+            List<QuestionsAndAnswers> questionListName;
             using (FileStream file = File.OpenRead(_QUESTIONS_FILE_PATH))
             {
-                quesitonListName = serializer.Deserialize(file) as List<Question>;
+                questionListName = serializer.Deserialize(file) as List<QuestionsAndAnswers>;
             }
-            return quesitonListName;
+            return questionListName;
         }
     }
 }

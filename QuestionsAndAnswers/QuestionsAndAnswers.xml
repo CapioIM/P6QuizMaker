@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfQuestionsAndAnswers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <QuestionsAndAnswers>
+    <QuestionText>What color sun is ?</QuestionText>
+    <AnswersList>
+      <string>Blue</string>
+      <string>Green</string>
+      <string>Yellow</string>
+      <string>Purple</string>
+      <string>Gray</string>
+      <string>Black</string>
+    </AnswersList>
+    <CorrectAnswersList>
+      <int>2</int>
+    </CorrectAnswersList>
+  </QuestionsAndAnswers>
+  <QuestionsAndAnswers>
+    <QuestionText>What color is sky ?</QuestionText>
+    <AnswersList>
+      <string>Green</string>
+      <string>Blue</string>
+      <string>Red</string>
+    </AnswersList>
+    <CorrectAnswersList>
+      <int>1</int>
+    </CorrectAnswersList>
+  </QuestionsAndAnswers>
+  <QuestionsAndAnswers>
+    <QuestionText>What color are trees ?</QuestionText>
+    <AnswersList>
+      <string>Red</string>
+      <string>Blue</string>
+      <string>Green</string>
+    </AnswersList>
+    <CorrectAnswersList>
+      <int>2</int>
+    </CorrectAnswersList>
+  </QuestionsAndAnswers>
+  <QuestionsAndAnswers>
+    <QuestionText>How many raindeers Santa has ?</QuestionText>
+    <AnswersList>
+      <string>3</string>
+      <string>6</string>
+      <string>8</string>
+      <string>9</string>
+    </AnswersList>
+    <CorrectAnswersList>
+      <int>3</int>
+    </CorrectAnswersList>
+  </QuestionsAndAnswers>
+</ArrayOfQuestionsAndAnswers>

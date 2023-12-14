@@ -17,7 +17,7 @@
         /// </summary>
         /// <param name="QuizmakerList"> List with object Question </param>
         /// <param name="QuestionIndex"> random generated number variable </param>
-        public static void DisplayQuestionAndAnswersToPlayer(List<Question> QuizmakerList, int QuestionIndex)
+        public static void DisplayQuestionAndAnswersToPlayer(List<QuestionsAndAnswers> QuizmakerList, int QuestionIndex)
         {
             Console.WriteLine($"Please answer this Question: {QuizmakerList[QuestionIndex].QuestionText}");
             foreach (string answers in QuizmakerList[QuestionIndex].AnswersList)
@@ -138,7 +138,7 @@
             return MakeDecisionYorN();
         }
 
-        public static int DiplayGetNumberText(Question quizmaker)
+        public static int DiplayGetNumberText(QuestionsAndAnswers quizmaker)
         {
             Console.Write("Type answer Number : ");
             return GetUserInputNum(quizmaker.AnswersList.Count);
@@ -166,15 +166,15 @@
         /// WriteLine List with object Question text
         /// </summary>
         /// <param name="list"> list with/of objects </param>
-        public static void ShowListOfQuestion(List<Question> list)
+        public static void ShowListOfQuestion(List<QuestionsAndAnswers> list)
         {
-            foreach (Question question in list)
+            foreach (QuestionsAndAnswers question in list)
             {
                 Console.WriteLine($"{list.IndexOf(question) + 1}" + " " + question.QuestionText);
             }
         }
 
-        public static void ShowListOfAnswers(Question quizmaker, ModificationTarget amendChoice)
+        public static void ShowListOfAnswers(QuestionsAndAnswers quizmaker, ModificationTarget amendChoice)
         {
             if (amendChoice == ModificationTarget.AnswerList)
             {
@@ -208,7 +208,7 @@
                                  "Press 3 to Add \n" +
                                  "Press 4 to Return to previous menu");
         }
-        public static void ModifyQuestionText(Question question)
+        public static void ModifyQuestionText(QuestionsAndAnswers question)
         {
             Console.WriteLine($"Question you are changing is : {question.QuestionText}");
             question.QuestionText = UIMethods.GetQuestionText();
@@ -262,7 +262,7 @@
             }
         }
 
-        public static int ShowAnswersListInfo(List<Question> QuizmakerList, ModificationTarget modificationTarget)
+        public static int ShowAnswersListInfo(List<QuestionsAndAnswers> QuizmakerList, ModificationTarget modificationTarget)
         {
             UIMethods.ShowListOfQuestion(QuizmakerList);
             Console.WriteLine($"Answers for which question would you like to modify?");
