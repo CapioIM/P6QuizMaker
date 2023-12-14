@@ -50,10 +50,10 @@
         /// </summary>
         public static readonly Random random = new Random();
 
-        public static void PlayGame(List<Question> QuizmakerList)
+        public static void PlayGame()
         {
             Score score = new Score();
-            QuizmakerList = FileOperations.Deserialize();
+            List<Question> QuizmakerList = FileOperations.Deserialize();
 
             bool playingQuizMaker = true;
             while (playingQuizMaker)

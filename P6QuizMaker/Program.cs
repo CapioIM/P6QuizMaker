@@ -4,7 +4,6 @@
     {
         static void Main(string[] args)
         {
-            List<Question> QuizmakerList = new List<Question>();
             bool interestedToUseProgramm = true;
             while (interestedToUseProgramm)
             {
@@ -15,15 +14,15 @@
 
                 if (gameModeChoice == GameMode.Manage)
                 {
-                    ManageQuestions.Manage(QuizmakerList);
+                    ManageQuestions.Manage();
                 }
 
                 if (gameModeChoice == GameMode.Play)
                 {
-                    Logic.PlayGame(QuizmakerList);
-                    UIMethods.DisplayChangeGameMode();
-                    interestedToUseProgramm = UIMethods.MakeDecisionYorN();
+                    Logic.PlayGame();
                 }
+                UIMethods.DisplayChangeGameMode();
+                interestedToUseProgramm = UIMethods.MakeDecisionYorN();
             }
         }
     }
