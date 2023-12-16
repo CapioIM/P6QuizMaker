@@ -142,6 +142,13 @@
             }
         }
 
+        /// <summary>
+        /// This method modifies question object , add new question, remove existing question, amend question text
+        /// </summary>
+        /// <param name="modificationOptions"> (user)choice of option </param>
+        /// <param name="QuizmakerList"> List with questions </param>
+        /// <param name="questionReference"> question reference to amend question Text </param>
+        /// <param name="questionToAmend"> variable which question in list to make changes to </param>
         private static void ModifyQuestionsOptions(ModificationOptions modificationOptions, List<QuestionsAndAnswers> QuizmakerList, QuestionsAndAnswers questionReference, int questionToAmend)
         {
 
@@ -170,6 +177,11 @@
             }
         }
 
+        /// <summary>
+        /// modify Answer List Options
+        /// </summary>
+        /// <param name="questionReference"> Question object </param>
+        /// <param name="modificationOptions"> Option choice </param>
         private static void ModifyAnswerListOptions(QuestionsAndAnswers questionReference, ModificationOptions modificationOptions)
         {
             Console.WriteLine("Type number of answer you want to make changes to!");
@@ -193,6 +205,11 @@
             }
         }
 
+        /// <summary>
+        /// Modify Correct answer list
+        /// </summary>
+        /// <param name="questionReference"> Question object </param>
+        /// <param name="modificationOptions"> Option choice </param>
         private static void ModifyCorrectAnswerListOptions(ModificationOptions modificationOptions, QuestionsAndAnswers questionReference)
         {
             UIMethods.DisplayPlayAnswerNumber();
