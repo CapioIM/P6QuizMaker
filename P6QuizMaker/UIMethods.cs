@@ -177,21 +177,15 @@
 
         public static void ShowListOfAnswers(QuestionsAndAnswers quizmaker, ModificationTarget amendChoice)
         {
-            if (amendChoice == ModificationTarget.AnswerList)
+
+            Console.WriteLine("Here's list of Answers: ");
+            foreach (string answer in quizmaker.AnswersList)
             {
-                Console.WriteLine("Here's list of Answers: ");
-                foreach (string answer in quizmaker.AnswersList)
-                {
-                    Console.WriteLine($"{quizmaker.AnswersList.IndexOf(answer) + 1}" + " " + answer);
-                }
+                Console.WriteLine($"{quizmaker.AnswersList.IndexOf(answer) + 1}" + " " + answer);
             }
+
             if (amendChoice == ModificationTarget.CorrectAnswerList)
             {
-                Console.WriteLine("Here's list of Answers: ");
-                foreach (string answer in quizmaker.AnswersList)
-                {
-                    Console.WriteLine($"{quizmaker.AnswersList.IndexOf(answer) + 1}" + " " + answer);
-                }
 
                 Console.WriteLine("Here's list of Correct Answers");
                 foreach (int answer in quizmaker.CorrectAnswersList)
@@ -265,10 +259,10 @@
 
         public static int ShowAnswersListInfo(List<QuestionsAndAnswers> QuizmakerList, ModificationTarget modificationTarget)
         {
-            UIMethods.ShowListOfQuestion(QuizmakerList);
+            ShowListOfQuestion(QuizmakerList);
             Console.WriteLine($"Answers for which question would you like to modify?");
-            int questionToAmend = UIMethods.GetUserInputNum(QuizmakerList.Count) - 1;
-            UIMethods.ShowListOfAnswers(QuizmakerList[questionToAmend], modificationTarget);
+            int questionToAmend = GetUserInputNum(QuizmakerList.Count) - 1;
+            ShowListOfAnswers(QuizmakerList[questionToAmend], modificationTarget);
             Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
             return questionToAmend;
         }
