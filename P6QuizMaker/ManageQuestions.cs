@@ -114,25 +114,7 @@
                         break;
 
                     case ModificationTarget.CorrectAnswerList:                                                  // Correct Answer List
-                        UIMethods.DisplayPlayAnswerNumber();
-                        int correctAnswerCount = questionReference.CorrectAnswersList.Count;
-                        switch (modificationOptions)
-                        {
-                            case ModificationOptions.Add:                                                       // Add
-                                AddCorrectAnswer(questionReference);
-                                break;
-                            case ModificationOptions.Remove:                                                    // Remove
-                                int answerToRemove = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
-                                questionReference.CorrectAnswersList.RemoveAt(answerToRemove);
-                                break;
-                            case ModificationOptions.Amend:                                                     // Amend
-                                UIMethods.DisplayTextAskWhatToChange();
-                                int answerToAmend = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
-                                questionReference.CorrectAnswersList[answerToAmend] = UIMethods.GetUserInputNum(questionReference.CorrectAnswersList.Count) - 1;
-                                break;
-                            case ModificationOptions.Exit:                                                      //Exit
-                                return;
-                        }
+                        ModifyCorrectAnswerList(modificationOptions,questionReference);
                         break;
                     case ModificationTarget.SaveChanges:
                         {
@@ -208,6 +190,29 @@
                     questionReference.AnswersList[answerToAmend] = UIMethods.GetUserInput();
                     break;
                 case ModificationOptions.Exit:                                                          // Exit
+                    return;
+            }
+        }
+
+        private static void ModifyCorrectAnswerList(ModificationOptions modificationOptions,QuestionsAndAnswers questionReference)
+        {
+            UIMethods.DisplayPlayAnswerNumber();
+            int correctAnswerCount = questionReference.CorrectAnswersList.Count;
+            switch (modificationOptions)
+            {
+                case ModificationOptions.Add:                                                       // Add
+                    AddCorrectAnswer(questionReference);
+                    break;
+                case ModificationOptions.Remove:                                                    // Remove
+                    int answerToRemove = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
+                    questionReference.CorrectAnswersList.RemoveAt(answerToRemove);
+                    break;
+                case ModificationOptions.Amend:                                                     // Amend
+                    UIMethods.DisplayTextAskWhatToChange();
+                    int answerToAmend = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
+                    questionReference.CorrectAnswersList[answerToAmend] = UIMethods.GetUserInputNum(questionReference.CorrectAnswersList.Count) - 1;
+                    break;
+                case ModificationOptions.Exit:                                                      //Exit
                     return;
             }
         }
