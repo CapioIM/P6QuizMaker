@@ -72,7 +72,6 @@
             bool amending = true;
             while (amending)
             {
-                Console.Clear();                                                                                                        // loop start
                 UIMethods.WelcomeText();                                                                                                   // welcome text                 
                 UIMethods.DisplayOptionsTargetToModify();                                                                                   // print Target to modify 
                 int amendUserChoice = UIMethods.GetUserInputNum(Enum.GetNames(typeof(ModificationTarget)).Length);

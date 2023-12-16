@@ -7,7 +7,6 @@
             bool interestedToUseProgramm = true;
             while (interestedToUseProgramm)
             {
-                Console.Clear();
                 UIMethods.WelcomeText();                                                                              //welcome text
                 UIMethods.DisplayGameModeChoice();
                 int manageOrPlay = UIMethods.GetUserInputNum(Enum.GetNames(typeof(GameMode)).Length) - 1;             //choice to manage quesitons or play

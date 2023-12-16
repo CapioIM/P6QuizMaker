@@ -28,6 +28,7 @@
         }
         public static void WelcomeText()
         {
+            ClearConcole();
             Console.WriteLine("                 Welcome to Quiz Maker Program !\n" +
                 " You can add questions with answers or you can play Quizmaker and answer questions.\n");
         }
@@ -195,7 +196,7 @@
                 Console.WriteLine("Here's list of Correct Answers");
                 foreach (int answer in quizmaker.CorrectAnswersList)
                 {
-                    Console.WriteLine($"Nr: {quizmaker.CorrectAnswersList.IndexOf(answer)+1} Which is: {quizmaker.AnswersList[answer]} .");
+                    Console.WriteLine($"Nr: {quizmaker.CorrectAnswersList.IndexOf(answer) + 1} Which is: {quizmaker.AnswersList[answer]} .");
                 }
             }
         }
@@ -293,6 +294,10 @@
         public static void DisplayChangeGameMode()
         {
             Console.WriteLine("Would you like to return to game menu ?");
+        }
+        public static void ClearConcole()
+        {
+            Console.Clear();
         }
     }
 }
