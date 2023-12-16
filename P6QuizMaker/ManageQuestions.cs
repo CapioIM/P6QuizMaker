@@ -110,25 +110,7 @@
                         break;
 
                     case ModificationTarget.AnswerList:                                                             // Answer List
-                        Console.WriteLine("Type number of answer you want to make changes to!");
-                        int answerCount = questionReference.AnswersList.Count;
-                        switch (modificationOptions)
-                        {
-                            case ModificationOptions.Add:                                                           // Add
-                                questionReference.AddAnswerToList();
-                                break;
-                            case ModificationOptions.Remove:                                                        // Remove
-                                int answerToRemove = UIMethods.GetUserInputNum(answerCount) - 1;
-                                RemoveAnswerFromAnswerList(answerToRemove, questionReference);
-                                break;
-                            case ModificationOptions.Amend:                                                          // Amend
-                                int answerToAmend = UIMethods.GetUserInputNum(answerCount) - 1;
-                                UIMethods.DisplayTextAskWhatToChange();
-                                questionReference.AnswersList[answerToAmend] = UIMethods.GetUserInput();
-                                break;
-                            case ModificationOptions.Exit:                                                          // Exit
-                                return;
-                        }
+                        ModifyAnswerList(questionReference,modificationOptions);
                         break;
 
                     case ModificationTarget.CorrectAnswerList:                                                  // Correct Answer List
@@ -203,6 +185,29 @@
                     UIMethods.ModifyQuestionText(questionReference);
                     break;
                 case ModificationOptions.Exit:                                                              // Exit
+                    return;
+            }
+        }
+
+        private static void ModifyAnswerList(QuestionsAndAnswers questionReference,ModificationOptions modificationOptions)
+        {
+            Console.WriteLine("Type number of answer you want to make changes to!");
+            int answerCount = questionReference.AnswersList.Count;
+            switch (modificationOptions)
+            {
+                case ModificationOptions.Add:                                                           // Add
+                    questionReference.AddAnswerToList();
+                    break;
+                case ModificationOptions.Remove:                                                        // Remove
+                    int answerToRemove = UIMethods.GetUserInputNum(answerCount) - 1;
+                    RemoveAnswerFromAnswerList(answerToRemove, questionReference);
+                    break;
+                case ModificationOptions.Amend:                                                          // Amend
+                    int answerToAmend = UIMethods.GetUserInputNum(answerCount) - 1;
+                    UIMethods.DisplayTextAskWhatToChange();
+                    questionReference.AnswersList[answerToAmend] = UIMethods.GetUserInput();
+                    break;
+                case ModificationOptions.Exit:                                                          // Exit
                     return;
             }
         }
