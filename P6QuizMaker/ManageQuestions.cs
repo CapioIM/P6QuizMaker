@@ -189,14 +189,14 @@
         }
 
 
-        private static void RemoveAnswerFromAnswerList(int answerNumberToRemove, QuestionsAndAnswers quizmaker)
+        private static void RemoveAnswerFromAnswerList(int answerNumberToRemove, QuestionsAndAnswers question)
         {
-            quizmaker.AnswersList.RemoveAt(answerNumberToRemove);
-            foreach (int answer in quizmaker.CorrectAnswersList)
+            question.AnswersList.RemoveAt(answerNumberToRemove);
+            foreach (int answer in question.CorrectAnswersList)
             {
                 if (answer == answerNumberToRemove)
                 {
-                    quizmaker.CorrectAnswersList.RemoveAt(quizmaker.CorrectAnswersList.IndexOf(answer));
+                    question.CorrectAnswersList.RemoveAt(question.CorrectAnswersList.IndexOf(answer));
                     break;
                 }
             }
