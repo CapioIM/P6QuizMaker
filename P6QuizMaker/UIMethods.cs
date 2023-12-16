@@ -190,9 +190,9 @@
                 Console.WriteLine($"{question.AnswersList.IndexOf(answer) + 1}" + " " + answer);
             }
 
-            bool showCorrectAnswerList = IsCorrectAnswerList(modificationTarget);
+            bool showCorrectAnswers = IsCorrectAnswerList(modificationTarget);
 
-            if (showCorrectAnswerList)
+            if (showCorrectAnswers)
             {
 
                 Console.WriteLine("Here's list of Correct Answers");
