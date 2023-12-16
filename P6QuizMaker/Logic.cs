@@ -2,6 +2,11 @@
 {
     internal class Logic
     {
+        /// <summary>
+        /// Initialized random
+        /// </summary>
+        public static readonly Random random = new Random();
+
 
         /// <summary>
         /// user entered integer is compared to values in CorrectAnswers... list and returns score
@@ -25,7 +30,6 @@
             if (score == 0)
             {
                 Console.WriteLine("Maybe you will know answer to next question !");
-
             }
             return score;
         }
@@ -39,11 +43,6 @@
         {
             return random.Next(0, maxRandomValue + 1);
         }
-
-        /// <summary>
-        /// Initialized random
-        /// </summary>
-        public static readonly Random random = new Random();
 
         public static void PlayGame()
         {
