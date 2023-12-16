@@ -58,7 +58,7 @@
             bool playingQuizMaker = true;
             while (playingQuizMaker)
             {
-                Console.Clear();
+                UIMethods.ClearConcole();
                 UIMethods.DisplayGameDiscription();
 
                 int randomQuestionIndex = Logic.GetRandomQuestionIndex(QuizmakerList.Count - 1);
@@ -69,7 +69,6 @@
                 Console.WriteLine($"Your score: {score.ScoreCount}");
                 UIMethods.DisplayPlayAnotherQuestionText();
                 playingQuizMaker = UIMethods.MakeDecisionYorN();
-                Console.Clear();
             }
         }
     }
