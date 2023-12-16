@@ -175,22 +175,30 @@
             }
         }
 
-        public static void ShowListOfAnswers(QuestionsAndAnswers quizmaker, ModificationTarget amendChoice)
+
+        /// <summary>
+        /// displays list of answers , and correct answers if Correct answer list chosen that option
+        /// </summary>
+        /// <param name="question"></param>
+        /// <param name="modificationTarget"></param>
+        private static void ShowListOfAnswers(QuestionsAndAnswers question, ModificationTarget modificationTarget)
         {
 
             Console.WriteLine("Here's list of Answers: ");
-            foreach (string answer in quizmaker.AnswersList)
+            foreach (string answer in question.AnswersList)
             {
-                Console.WriteLine($"{quizmaker.AnswersList.IndexOf(answer) + 1}" + " " + answer);
+                Console.WriteLine($"{question.AnswersList.IndexOf(answer) + 1}" + " " + answer);
             }
 
-            if (amendChoice == ModificationTarget.CorrectAnswerList)
+            bool showCorrectAnswerList = IsCorrectAnswerList(modificationTarget);
+
+            if (showCorrectAnswerList)
             {
 
                 Console.WriteLine("Here's list of Correct Answers");
-                foreach (int answer in quizmaker.CorrectAnswersList)
+                foreach (int answer in question.CorrectAnswersList)
                 {
-                    Console.WriteLine($"Nr: {quizmaker.CorrectAnswersList.IndexOf(answer) + 1} Which is: {quizmaker.AnswersList[answer]} .");
+                    Console.WriteLine($"Nr: {question.CorrectAnswersList.IndexOf(answer) + 1} Which is: {question.AnswersList[answer]} .");
                 }
             }
         }
@@ -293,6 +301,16 @@
         {
             Console.Clear();
         }
+
+        private static bool IsCorrectAnswerList(ModificationTarget modificationTarget)
+        {
+            if (modificationTarget == ModificationTarget.CorrectAnswerList)
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 }
 
