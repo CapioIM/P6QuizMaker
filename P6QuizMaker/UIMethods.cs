@@ -181,7 +181,7 @@
         /// </summary>
         /// <param name="question"></param>
         /// <param name="modificationTarget"></param>
-        private static void ShowListOfAnswers(QuestionsAndAnswers question, ModificationTarget modificationTarget)
+        public static void ShowListOfAnswers(QuestionsAndAnswers question, bool showCorrectAnswers)
         {
 
             Console.WriteLine("Here's list of Answers: ");
@@ -189,8 +189,6 @@
             {
                 Console.WriteLine($"{question.AnswersList.IndexOf(answer) + 1}" + " " + answer);
             }
-
-            bool showCorrectAnswers = IsCorrectAnswerList(modificationTarget);
 
             if (showCorrectAnswers)
             {
@@ -270,7 +268,7 @@
             ShowListOfQuestion(QuizmakerList);
             Console.WriteLine($"Answers for which question would you like to modify?");
             int questionToAmend = GetUserInputNum(QuizmakerList.Count) - 1;
-            ShowListOfAnswers(QuizmakerList[questionToAmend], modificationTarget);
+            ShowListOfAnswers(QuizmakerList[questionToAmend], IsCorrectAnswerList(modificationTarget));
             Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
             return questionToAmend;
         }

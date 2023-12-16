@@ -1,4 +1,6 @@
-﻿namespace P6QuizMaker
+﻿using System.Runtime.CompilerServices;
+
+namespace P6QuizMaker
 {
     public class QuestionsAndAnswers
     {
@@ -10,6 +12,12 @@
         {
             _answersList = new List<string>();
             _correctAnswersList = new List<int>();
+        }
+
+        public QuestionsAndAnswers(QuestionsAndAnswers questionAndAnswers)
+        {
+            _questionText = questionAndAnswers._questionText;
+            _answersList = questionAndAnswers._answersList;
         }
 
         public override string ToString()
