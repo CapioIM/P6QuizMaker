@@ -99,37 +99,14 @@
 
                 if (modificationOptions == ModificationOptions.Exit)
                 {
-                    continue;
+                    return;
                 }
 
                 QuestionsAndAnswers questionReference = QuizmakerList[questionToAmend];
                 switch (modificationTarget)
                 {
                     case ModificationTarget.Questions:                                                                  //questions
-
-                        if (modificationOptions != ModificationOptions.Add)
-                        {
-                            UIMethods.ShowListOfQuestion(QuizmakerList);
-                            UIMethods.DisplayTextQuestionToRemoveOrAmend(modificationOptions);
-                            questionToAmend = UIMethods.GetUserInputNum(QuizmakerList.Count) - 1;
-                        }
-
-                        switch (modificationOptions)
-                        {
-                            case ModificationOptions.Add:                                                               //add
-                                QuestionsAndAnswers question = AddNewQuestion(QuizmakerList);
-                                question.QuestionText = UIMethods.GetQuestionText();
-                                AddAnswersToQuestion(question);
-                                break;
-                            case ModificationOptions.Remove:                                                            //remove
-                                QuizmakerList.RemoveAt(questionToAmend);
-                                break;
-                            case ModificationOptions.Amend:                                                             // amend
-                                UIMethods.ModifyQuestionText(questionReference);
-                                break;
-                            case ModificationOptions.Exit:                                                              // Exit
-                                continue;
-                        }
+                        ModifyQuestions(modificationOptions,QuizmakerList,questionReference,questionToAmend);
                         break;
 
                     case ModificationTarget.AnswerList:                                                             // Answer List
@@ -150,7 +127,7 @@
                                 questionReference.AnswersList[answerToAmend] = UIMethods.GetUserInput();
                                 break;
                             case ModificationOptions.Exit:                                                          // Exit
-                                continue;
+                                return;
                         }
                         break;
 
@@ -172,7 +149,7 @@
                                 questionReference.CorrectAnswersList[answerToAmend] = UIMethods.GetUserInputNum(questionReference.CorrectAnswersList.Count) - 1;
                                 break;
                             case ModificationOptions.Exit:                                                      //Exit
-                                continue;
+                                return;
                         }
                         break;
                     case ModificationTarget.SaveChanges:
@@ -199,6 +176,34 @@
                     question.CorrectAnswersList.RemoveAt(question.CorrectAnswersList.IndexOf(answer));
                     break;
                 }
+            }
+        }
+
+        private static void ModifyQuestions(ModificationOptions modificationOptions,List<QuestionsAndAnswers> QuizmakerList,QuestionsAndAnswers questionReference, int questionToAmend)
+        {
+
+            if (modificationOptions != ModificationOptions.Add)
+            {
+                UIMethods.ShowListOfQuestion(QuizmakerList);
+                UIMethods.DisplayTextQuestionToRemoveOrAmend(modificationOptions);
+                questionToAmend = UIMethods.GetUserInputNum(QuizmakerList.Count) - 1;
+            }
+
+            switch (modificationOptions)
+            {
+                case ModificationOptions.Add:                                                               //add
+                    QuestionsAndAnswers question = AddNewQuestion(QuizmakerList);
+                    question.QuestionText = UIMethods.GetQuestionText();
+                    AddAnswersToQuestion(question);
+                    break;
+                case ModificationOptions.Remove:                                                            //remove
+                    QuizmakerList.RemoveAt(questionToAmend);
+                    break;
+                case ModificationOptions.Amend:                                                             // amend
+                    UIMethods.ModifyQuestionText(questionReference);
+                    break;
+                case ModificationOptions.Exit:                                                              // Exit
+                    return;
             }
         }
 
