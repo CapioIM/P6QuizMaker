@@ -100,19 +100,19 @@
                     continue;
                 }
 
-                QuestionsAndAnswers questionReference = questionList[questionToAmend];
+                QuestionsAndAnswers questionBeingAmended = questionList[questionToAmend];
                 switch (modificationTarget)
                 {
                     case ModificationTarget.Questions:                                                                  //questions
-                        ModifyQuestionsOptions(modificationOptions, questionList, questionReference, questionToAmend);
+                        ModifyQuestionsOptions(modificationOptions, questionList, questionBeingAmended, questionToAmend);
                         break;
 
                     case ModificationTarget.AnswerList:                                                             // Answer List
-                        ModifyAnswerListOptions(questionReference, modificationOptions);
+                        ModifyAnswerListOptions(questionBeingAmended, modificationOptions);
                         break;
 
                     case ModificationTarget.CorrectAnswerList:                                                  // Correct Answer List
-                        ModifyCorrectAnswerListOptions(modificationOptions, questionReference);
+                        ModifyCorrectAnswerListOptions(modificationOptions, questionBeingAmended);
                         break;
                     case ModificationTarget.SaveChanges:
                         {
@@ -142,11 +142,10 @@
         /// </summary>
         /// <param name="modificationOptions"> (user)choice of option </param>
         /// <param name="questionList"> List with questions </param>
-        /// <param name="questionReference"> question reference to amend question Text </param>
+        /// <param name="questionToMakeChanges"> question reference to amend question Text </param>
         /// <param name="questionToAmend"> variable which question in list to make changes to </param>
-        private static void ModifyQuestionsOptions(ModificationOptions modificationOptions, List<QuestionsAndAnswers> questionList, QuestionsAndAnswers questionReference, int questionToAmend)
+        private static void ModifyQuestionsOptions(ModificationOptions modificationOptions, List<QuestionsAndAnswers> questionList, QuestionsAndAnswers questionToMakeChanges, int questionToAmend)
         {
-
             if (modificationOptions != ModificationOptions.Add)
             {
                 UIMethods.ShowListOfQuestion(questionList);
@@ -165,7 +164,7 @@
                     questionList.RemoveAt(questionToAmend);
                     break;
                 case ModificationOptions.Amend:                                                             // amend
-                    UIMethods.ModifyQuestionText(questionReference);
+                    UIMethods.ModifyQuestionText(questionToMakeChanges);
                     break;
                 case ModificationOptions.Exit:                                                              // Exit
                     return;
@@ -175,25 +174,25 @@
         /// <summary>
         /// modify Answer List Options
         /// </summary>
-        /// <param name="questionReference"> Question object </param>
+        /// <param name="questionToMakeChanges"> Question object </param>
         /// <param name="modificationOptions"> Option choice </param>
-        private static void ModifyAnswerListOptions(QuestionsAndAnswers questionReference, ModificationOptions modificationOptions)
+        private static void ModifyAnswerListOptions(QuestionsAndAnswers questionToMakeChanges, ModificationOptions modificationOptions)
         {
             Console.WriteLine("Type number of answer you want to make changes to!");
-            int answerCount = questionReference.AnswersList.Count;
+            int answerCount = questionToMakeChanges.AnswersList.Count;
             switch (modificationOptions)
             {
                 case ModificationOptions.Add:                                                           // Add
-                    questionReference.AddAnswerToList();
+                    questionToMakeChanges.AddAnswerToList();
                     break;
                 case ModificationOptions.Remove:                                                        // Remove
                     int answerToRemove = UIMethods.GetUserInputNum(answerCount) - 1;
-                    RemoveAnswerFromAnswerList(answerToRemove, questionReference);
+                    RemoveAnswerFromAnswerList(answerToRemove, questionToMakeChanges);
                     break;
                 case ModificationOptions.Amend:                                                          // Amend
                     int answerToAmend = UIMethods.GetUserInputNum(answerCount) - 1;
                     UIMethods.DisplayTextAskWhatToChange();
-                    questionReference.AnswersList[answerToAmend] = UIMethods.GetUserInput();
+                    questionToMakeChanges.AnswersList[answerToAmend] = UIMethods.GetUserInput();
                     break;
                 case ModificationOptions.Exit:                                                          // Exit
                     return;
@@ -203,32 +202,37 @@
         /// <summary>
         /// Modify Correct answer list
         /// </summary>
-        /// <param name="questionReference"> Question object </param>
+        /// <param name="questionToMakeChanges"> Question object </param>
         /// <param name="modificationOptions"> Option choice </param>
-        private static void ModifyCorrectAnswerListOptions(ModificationOptions modificationOptions, QuestionsAndAnswers questionReference)
+        private static void ModifyCorrectAnswerListOptions(ModificationOptions modificationOptions, QuestionsAndAnswers questionToMakeChanges)
         {
             UIMethods.DisplayPlayAnswerNumber();
-            int correctAnswerCount = questionReference.CorrectAnswersList.Count;
-  
+            int correctAnswerCount = questionToMakeChanges.CorrectAnswersList.Count;
+
             switch (modificationOptions)
             {
                 case ModificationOptions.Add:                                                       // Add
-                AddCorrectAnswer(questionReference);
-                break;
-            case ModificationOptions.Remove:                                                    // Remove
-                    int answerToRemove = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
-                    questionReference.CorrectAnswersList.RemoveAt(answerToRemove);
-                break;
-            case ModificationOptions.Amend:                                                     // Amend
-                UIMethods.DisplayTextAskWhatToChange();
-                int answerToAmend = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
-                questionReference.CorrectAnswersList[answerToAmend] = UIMethods.GetUserInputNum(questionReference.CorrectAnswersList.Count) - 1;
-                break;
-            case ModificationOptions.Exit:                                                      //Exit
-                return;
+                    AddCorrectAnswer(questionToMakeChanges);
+                    break;
+                case ModificationOptions.Remove:                                                    // Remove
+                    RemoveAnswer(questionToMakeChanges);
+                    break;
+                case ModificationOptions.Amend:                                                     // Amend
+                    UIMethods.DisplayTextAskWhatToChange();
+                    int answerToAmend = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
+                    questionToMakeChanges.CorrectAnswersList[answerToAmend] = UIMethods.GetUserInputNum(questionToMakeChanges.CorrectAnswersList.Count) - 1;
+                    break;
+                case ModificationOptions.Exit:                                                      //Exit
+                    return;
             }
         }
 
+        private static void RemoveAnswer(QuestionsAndAnswers questionToMakeChanges)
+        {
+            int correctAnswerCount = questionToMakeChanges.CorrectAnswersList.Count;
+            int answerToRemove = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
+            questionToMakeChanges.CorrectAnswersList.RemoveAt(answerToRemove);
+        }
     }
 }
 

@@ -6,7 +6,6 @@
         private List<string> _answersList;
         private List<int> _correctAnswersList;
 
-
         public QuestionsAndAnswers()
         {
             _answersList = new List<string>();
@@ -60,11 +59,5 @@
                 addMoreAnswers = UIMethods.GetAdditionalAnswer();
             }
         }
-/*
-        public void RemoveAnswerFromList()
-        {
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        }
-*/
     }
 }
