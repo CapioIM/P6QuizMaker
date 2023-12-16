@@ -120,10 +120,6 @@
                             FileOperations.CreateXMLSerializeFile(QuizmakerList);                           // create xmlSerialization file
                             continue;
                         }
-                    case ModificationTarget.Exit:
-                        {
-                            continue;
-                        }
                 }
             }
         }
