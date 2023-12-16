@@ -13,7 +13,6 @@
         private static int UserAnswerCheckWithScore(QuestionsAndAnswers Question)
         {
             int score = 0;
-            int incorrectAnswerCheckCount = 0;
             int userAnswer = UIMethods.GetUserInputNum() - 1;
             foreach (int correctAnswer in Question.CorrectAnswersList)
             {
@@ -22,12 +21,8 @@
                     score++;
                     Console.WriteLine("You are smartest!");
                 }
-                else
-                {
-                    incorrectAnswerCheckCount++;
-                }
             }
-            if (incorrectAnswerCheckCount == Question.CorrectAnswersList.Count)
+            if (score == 0)
             {
                 Console.WriteLine("Maybe you will know answer to next question !");
 
