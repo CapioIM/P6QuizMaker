@@ -98,26 +98,26 @@
 
                 if (modificationOptions == ModificationOptions.Exit)
                 {
-                    return;
+                    continue;
                 }
 
                 QuestionsAndAnswers questionReference = QuizmakerList[questionToAmend];
                 switch (modificationTarget)
                 {
                     case ModificationTarget.Questions:                                                                  //questions
-                        ModifyQuestions(modificationOptions,QuizmakerList,questionReference,questionToAmend);
+                        ModifyQuestionsOptions(modificationOptions, QuizmakerList, questionReference, questionToAmend);
                         break;
 
                     case ModificationTarget.AnswerList:                                                             // Answer List
-                        ModifyAnswerList(questionReference,modificationOptions);
+                        ModifyAnswerListOptions(questionReference, modificationOptions);
                         break;
 
                     case ModificationTarget.CorrectAnswerList:                                                  // Correct Answer List
-                        ModifyCorrectAnswerList(modificationOptions,questionReference);
+                        ModifyCorrectAnswerListOptions(modificationOptions, questionReference);
                         break;
                     case ModificationTarget.SaveChanges:
                         {
-                            FileOperations.CreateXMLSerializeFile(QuizmakerList);                                           // create xmlSerialization
+                            FileOperations.CreateXMLSerializeFile(QuizmakerList);                           // create xmlSerialization file
                             continue;
                         }
                     case ModificationTarget.Exit:
@@ -142,7 +142,7 @@
             }
         }
 
-        private static void ModifyQuestions(ModificationOptions modificationOptions,List<QuestionsAndAnswers> QuizmakerList,QuestionsAndAnswers questionReference, int questionToAmend)
+        private static void ModifyQuestionsOptions(ModificationOptions modificationOptions, List<QuestionsAndAnswers> QuizmakerList, QuestionsAndAnswers questionReference, int questionToAmend)
         {
 
             if (modificationOptions != ModificationOptions.Add)
@@ -170,7 +170,7 @@
             }
         }
 
-        private static void ModifyAnswerList(QuestionsAndAnswers questionReference,ModificationOptions modificationOptions)
+        private static void ModifyAnswerListOptions(QuestionsAndAnswers questionReference, ModificationOptions modificationOptions)
         {
             Console.WriteLine("Type number of answer you want to make changes to!");
             int answerCount = questionReference.AnswersList.Count;
@@ -193,26 +193,27 @@
             }
         }
 
-        private static void ModifyCorrectAnswerList(ModificationOptions modificationOptions,QuestionsAndAnswers questionReference)
+        private static void ModifyCorrectAnswerListOptions(ModificationOptions modificationOptions, QuestionsAndAnswers questionReference)
         {
             UIMethods.DisplayPlayAnswerNumber();
             int correctAnswerCount = questionReference.CorrectAnswersList.Count;
+  
             switch (modificationOptions)
             {
                 case ModificationOptions.Add:                                                       // Add
-                    AddCorrectAnswer(questionReference);
-                    break;
-                case ModificationOptions.Remove:                                                    // Remove
+                AddCorrectAnswer(questionReference);
+                break;
+            case ModificationOptions.Remove:                                                    // Remove
                     int answerToRemove = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
                     questionReference.CorrectAnswersList.RemoveAt(answerToRemove);
-                    break;
-                case ModificationOptions.Amend:                                                     // Amend
-                    UIMethods.DisplayTextAskWhatToChange();
-                    int answerToAmend = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
-                    questionReference.CorrectAnswersList[answerToAmend] = UIMethods.GetUserInputNum(questionReference.CorrectAnswersList.Count) - 1;
-                    break;
-                case ModificationOptions.Exit:                                                      //Exit
-                    return;
+                break;
+            case ModificationOptions.Amend:                                                     // Amend
+                UIMethods.DisplayTextAskWhatToChange();
+                int answerToAmend = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
+                questionReference.CorrectAnswersList[answerToAmend] = UIMethods.GetUserInputNum(questionReference.CorrectAnswersList.Count) - 1;
+                break;
+            case ModificationOptions.Exit:                                                      //Exit
+                return;
             }
         }
 
