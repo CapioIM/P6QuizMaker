@@ -15,14 +15,14 @@
         /// <summary>
         /// CW display questions and answers text from object in a list at index of randomQuesitonIndex
         /// </summary>
-        /// <param name="QuizmakerList"> List with object Question </param>
+        /// <param name="question"> List with object Question </param>
         /// <param name="QuestionIndex"> random generated number variable </param>
-        public static void DisplayQuestionAndAnswersToPlayer(List<QuestionsAndAnswers> QuizmakerList, int QuestionIndex)
+        public static void DisplayQuestionAndAnswersToPlayer(QuestionsAndAnswers question)
         {
-            Console.WriteLine($"Please answer this Question: {QuizmakerList[QuestionIndex].QuestionText}");
-            foreach (string answers in QuizmakerList[QuestionIndex].AnswersList)
+            Console.WriteLine($"Please answer this Question: {question.QuestionText}");
+            foreach (string answers in question.AnswersList)
             {
-                Console.Write($"{QuizmakerList[QuestionIndex].AnswersList.IndexOf(answers) + 1}" + "-");
+                Console.Write($"{question.AnswersList.IndexOf(answers) + 1}" + "-");
                 Console.WriteLine(answers);
             }
         }

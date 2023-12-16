@@ -6,18 +6,18 @@
         /// <summary>
         /// user entered integer is compared to values in CorrectAnswers... list and returns score
         /// </summary>
-        /// <param name="QuizmakerList"> Variable name for List of objects </param>
+        /// <param name="Question"> Variable name for List of objects </param>
         /// <param name="score"> updates score </param>
         /// <param name="randomQuestionPick"> same variable used to interract with qustions and answers </param>
         /// <returns> updated score </returns>
-        private static int UserAnswerCheckWithScore(List<QuestionsAndAnswers> QuizmakerList, int randomQuestionPick)
+        private static int UserAnswerCheckWithScore(QuestionsAndAnswers Question)
         {
             int score = 0;
             int incorrectAnswerCheckCount = 0;
             int userAnswer = UIMethods.GetUserInputNum() - 1;
-            foreach (int correctAnswer in QuizmakerList[randomQuestionPick].CorrectAnswersList)
+            foreach (int correctAnswer in Question.CorrectAnswersList)
             {
-                if (correctAnswer == QuizmakerList[randomQuestionPick].AnswersList.IndexOf(QuizmakerList[randomQuestionPick].AnswersList[userAnswer]))
+                if (correctAnswer == Question.AnswersList.IndexOf(Question.AnswersList[userAnswer]))
                 {
                     score++;
                     Console.WriteLine("You are smartest!");
@@ -27,7 +27,7 @@
                     incorrectAnswerCheckCount++;
                 }
             }
-            if (incorrectAnswerCheckCount == QuizmakerList[randomQuestionPick].CorrectAnswersList.Count)
+            if (incorrectAnswerCheckCount == Question.CorrectAnswersList.Count)
             {
                 Console.WriteLine("Maybe you will know answer to next question !");
 
@@ -53,7 +53,7 @@
         public static void PlayGame()
         {
             Score score = new Score();
-            List<QuestionsAndAnswers> QuizmakerList = FileOperations.DeserializeTest();
+            List<QuestionsAndAnswers> questionsList = FileOperations.DeserializeTest();
 
             bool playingQuizMaker = true;
             while (playingQuizMaker)
@@ -61,11 +61,12 @@
                 UIMethods.ClearConcole();
                 UIMethods.DisplayGameDiscription();
 
-                int randomQuestionIndex = Logic.GetRandomQuestionIndex(QuizmakerList.Count - 1);
+                int randomQuestionIndex = GetRandomQuestionIndex(questionsList.Count - 1);
+                QuestionsAndAnswers questionPicked = questionsList[randomQuestionIndex];
                 UIMethods.DisplayPlayAnswerNumber();
-                UIMethods.DisplayQuestionAndAnswersToPlayer(QuizmakerList, randomQuestionIndex);
+                UIMethods.DisplayQuestionAndAnswersToPlayer(questionPicked);
 
-                score.ScoreCount += Logic.UserAnswerCheckWithScore(QuizmakerList, randomQuestionIndex);
+                score.ScoreCount += UserAnswerCheckWithScore(questionPicked);
                 Console.WriteLine($"Your score: {score.ScoreCount}");
                 UIMethods.DisplayPlayAnotherQuestionText();
                 playingQuizMaker = UIMethods.MakeDecisionYorN();
