@@ -9,7 +9,7 @@
             {
                 UIMethods.WelcomeText();                                                                              //welcome text
                 UIMethods.DisplayGameModeChoice();
-                int manageOrPlay = UIMethods.GetUserInputNum(Enum.GetNames(typeof(GameMode)).Length) - 1;             //choice to manage quesitons or play
+                int manageOrPlay = UIMethods.GetUserInputNum(Enum.GetNames(typeof(GameMode)).Length) - 1;             //choice to manage questions or play or exit
                 GameMode gameModeChoice = UIMethods.GameModeChoice(manageOrPlay);
 
                 if (gameModeChoice == GameMode.Manage)
@@ -20,14 +20,12 @@
                 if (gameModeChoice == GameMode.Play)
                 {
                     Logic.PlayGame();
-                    UIMethods.DisplayChangeGameMode();
-                    interestedToUseProgramm = UIMethods.MakeDecisionYorN();
+                }
+                if (gameModeChoice == GameMode.Exit)
+                {
+                    Environment.Exit(0);
                 }
             }
         }
     }
 }
-
-
-
-

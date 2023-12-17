@@ -5,6 +5,7 @@
     {
         Manage,
         Play,
+        Exit
     }
     public enum ModificationOptions
     {

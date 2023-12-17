@@ -29,7 +29,8 @@
         {
             Console.WriteLine(
                 "Press 1 to Manage Questions\n" +
-                "Press 2 to Play Quizmaker"
+                "Press 2 to Play Quizmaker\n" +
+                "Press 3 to Exit Programm"
                 );
         }
 
@@ -199,8 +200,10 @@
             {
                 case 0:
                     return GameMode.Manage;
-                default:
+                case 1:
                     return GameMode.Play;
+                default:
+                    return GameMode.Exit;
             }
         }
 
