@@ -59,15 +59,16 @@
                 UIMethods.DisplayGameDiscription();
 
                 int randomQuestionIndex = GetRandomIndexNumber(questionsList.Count - 1);
-                QuestionsAndAnswers questionPicked = new QuestionsAndAnswers();
+                QuestionsAndAnswers questionPlaying = new QuestionsAndAnswers();
+                QuestionsAndAnswers originalQuestionToCheckAgains = questionsList[randomQuestionIndex];
 
-                CopyAnswerList(questionsList[randomQuestionIndex], questionPicked);
-                CopyQuestionText(questionsList[randomQuestionIndex], questionPicked);
+                CopyAnswerList(originalQuestionToCheckAgains, questionPlaying);
+                CopyQuestionText(originalQuestionToCheckAgains, questionPlaying);
                 UIMethods.DisplayPlayAnswerNumber();
-                Console.WriteLine($"Please answer this Question: {questionPicked.QuestionText}");
-                AnswersShuffler(questionPicked);
-                questionPicked.DisplayAnswers();
-                score.ScoreCount += UserAnswerCheckWithScore(questionPicked, questionsList[randomQuestionIndex]);
+                Console.WriteLine($"Please answer this Question: {questionPlaying.QuestionText}");
+                AnswersShuffler(questionPlaying);
+                questionPlaying.DisplayAnswers();
+                score.ScoreCount += UserAnswerCheckWithScore(questionPlaying, originalQuestionToCheckAgains);
                 Console.WriteLine($"Your score: {score.ScoreCount}");
                 UIMethods.DisplayPlayAnotherQuestionText();
                 playingQuizMaker = UIMethods.MakeDecisionYorN();
@@ -87,7 +88,7 @@
                 questionObject.AnswersList[i] = k;
             }
         }
-        private static void CopyAnswerList(QuestionsAndAnswers originalAnswerList, QuestionsAndAnswers copyOfList )
+        private static void CopyAnswerList(QuestionsAndAnswers originalAnswerList, QuestionsAndAnswers copyOfList)
         {
             foreach (string answer in originalAnswerList.AnswersList)
             {
