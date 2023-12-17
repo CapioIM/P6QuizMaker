@@ -40,7 +40,7 @@
 
         public static void Manage()
         {
-            List<QuestionsAndAnswers> questionList = FileOperations.DeserializeTest();
+            List<QuestionsAndAnswers> questionList = FileOperations.DeserializeFiles();
 
             bool amending = true;
             while (amending)

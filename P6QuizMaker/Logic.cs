@@ -50,7 +50,7 @@
         public static void PlayGame()
         {
             Score score = new Score();
-            List<QuestionsAndAnswers> questionsList = FileOperations.DeserializeTest();
+            List<QuestionsAndAnswers> questionsList = FileOperations.DeserializeFiles();
 
             bool playingQuizMaker = true;
             while (playingQuizMaker)
@@ -75,24 +75,23 @@
             }
         }
 
-
-        private static void ShuffleAnswersInList(QuestionsAndAnswers questionObject)
+        private static void ShuffleAnswersInList(QuestionsAndAnswers questionAndData)
         {
             int j;
             string k;
-            for (int i = 0; i < questionObject.AnswersListCount; i++)
+            for (int i = 0; i < questionAndData.AnswersListCount; i++)
             {
                 j = GetRandomIndexNumber(i);
-                k = questionObject.AnswersList[j];
-                questionObject.AnswersList[j] = questionObject.AnswersList[i];
-                questionObject.AnswersList[i] = k;
+                k = questionAndData.AnswersList[j];
+                questionAndData.AnswersList[j] = questionAndData.AnswersList[i];
+                questionAndData.AnswersList[i] = k;
             }
         }
-        private static void CopyAnswerList(QuestionsAndAnswers originalAnswerList, QuestionsAndAnswers copyOfList)
+        private static void CopyAnswerList(QuestionsAndAnswers originalQuestionAndData, QuestionsAndAnswers copyQuestionAndData)
         {
-            foreach (string answer in originalAnswerList.AnswersList)
+            foreach (string answer in originalQuestionAndData.AnswersList)
             {
-                copyOfList.AnswersList.Add(answer);
+                copyQuestionAndData.AnswersList.Add(answer);
             }
         }
         private static void CopyQuestionText(QuestionsAndAnswers originalQuestion, QuestionsAndAnswers copyOfQuesiton)

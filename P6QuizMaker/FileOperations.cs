@@ -41,7 +41,7 @@ namespace P6QuizMaker
             }
         }
 
-        public static List<QuestionsAndAnswers> DeserializeTest()
+        public static List<QuestionsAndAnswers> DeserializeFiles()
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
             List<QuestionsAndAnswers> questionListName;
