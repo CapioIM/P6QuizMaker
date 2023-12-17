@@ -22,7 +22,7 @@
             int userAnswer = UIMethods.GetUserInputNum(QuestionAtPlay.AnswersListCount) - 1;
             foreach (int correctAnswer in testQuestion.CorrectAnswersList)
             {
-                if (QuestionAtPlay.AnswersList(userAnswer) == testQuestion.AnswersList(correctAnswer))
+                if (QuestionAtPlay.AnswerListValueAtIndex(userAnswer) == testQuestion.AnswerListValueAtIndex(correctAnswer))
                 {
                     score++;
                     Console.WriteLine("You are smartest!");

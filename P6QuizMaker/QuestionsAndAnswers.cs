@@ -107,9 +107,15 @@
                 return _answersList.Count;
             }
         }
-        public string AnswersList(int value)
+
+        public int CorrectAnswersListCount
         {
-                return _answersList[value];
+            get { return _correctAnswersList.Count; }
+        }
+
+        public string AnswerListValueAtIndex(int value)
+        {
+            return _answersList[value];
         }
 
     }

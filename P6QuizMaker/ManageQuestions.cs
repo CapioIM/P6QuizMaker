@@ -140,7 +140,7 @@
         private static void ModifyAnswerListOptions(QuestionsAndAnswers questionToMakeChanges, ModificationOptions modificationOptions)
         {
             Console.WriteLine("Type number of answer you want to make changes to!");
-            int answerCount = questionToMakeChanges.AnswersList.Count;
+            int answerCount = questionToMakeChanges.AnswersListCount;
             switch (modificationOptions)
             {
                 case ModificationOptions.Add:                                                           // Add
@@ -168,7 +168,7 @@
         {
 
             UIMethods.DisplayPlayAnswerNumber();
-            int correctAnswerCount = questionToMakeChanges.CorrectAnswersList.Count;
+            int correctAnswerCount = questionToMakeChanges.CorrectAnswersListCount;
 
             switch (modificationOptions)
             {
@@ -181,7 +181,7 @@
                 case ModificationOptions.Amend:                                                     // Amend
                     UIMethods.DisplayTextAskWhatToChange();
                     int answerToAmend = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
-                    questionToMakeChanges.CorrectAnswersList[answerToAmend] = UIMethods.GetUserInputNum(questionToMakeChanges.CorrectAnswersList.Count) - 1;
+                    questionToMakeChanges.CorrectAnswersList[answerToAmend] = UIMethods.GetUserInputNum(questionToMakeChanges.CorrectAnswersListCount) - 1;
                     break;
                 case ModificationOptions.Exit:                                                      //Exit
                     return;
@@ -190,7 +190,7 @@
 
         private static void RemoveAnswer(QuestionsAndAnswers questionToMakeChanges)
         {
-            int correctAnswerCount = questionToMakeChanges.CorrectAnswersList.Count;
+            int correctAnswerCount = questionToMakeChanges.CorrectAnswersListCount;
             int answerToRemove = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
             questionToMakeChanges.CorrectAnswersList.RemoveAt(answerToRemove);
         }
