@@ -54,15 +54,10 @@
                 _answersList.Add(answerText);
                 if (UIMethods.IsCorrectAnswer())
                 {
-                    AddCorrectAnswerToList(answerText);
+                    _correctAnswersList.Add(_answersList.IndexOf(answerText));
                 }
                 addMoreAnswers = UIMethods.GetAdditionalAnswer();
             }
-        }
-
-        private void AddCorrectAnswerToList(string answerText)
-        {
-            _correctAnswersList.Add(_answersList.IndexOf(answerText));
         }
 
         /// <summary>
@@ -114,7 +109,7 @@
         }
         public string AnswersList(int value)
         {
-            return _answersList[value];
+                return _answersList[value];
         }
 
     }
