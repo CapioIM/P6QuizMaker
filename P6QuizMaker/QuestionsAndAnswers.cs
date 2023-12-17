@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace P6QuizMaker
+﻿namespace P6QuizMaker
 {
     public class QuestionsAndAnswers
     {

@@ -58,10 +58,11 @@
             }
         }
 
-        private static QuestionsAndAnswers AddNewQuestion(List<QuestionsAndAnswers> questionList)
+        private static QuestionsAndAnswers CreateNewQuestion(List<QuestionsAndAnswers> questionList)
         {
             QuestionsAndAnswers newQuestion = new QuestionsAndAnswers();
             questionList.Add(newQuestion);
+            newQuestion.QuestionText = UIMethods.GetQuestionText();
             return newQuestion;
         }
 
@@ -156,8 +157,7 @@
             switch (modificationOptions)
             {
                 case ModificationOptions.Add:                                                               //add
-                    QuestionsAndAnswers question = AddNewQuestion(questionList);
-                    question.QuestionText = UIMethods.GetQuestionText();
+                    QuestionsAndAnswers question = CreateNewQuestion(questionList);
                     AddAnswersToQuestion(question);
                     break;
                 case ModificationOptions.Remove:                                                            //remove
