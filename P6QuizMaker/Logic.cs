@@ -66,7 +66,7 @@
                 CopyQuestionText(originalQuestionToCheckAgains, questionPlaying);
                 UIMethods.DisplayPlayAnswerNumber();
                 Console.WriteLine($"Please answer this Question: {questionPlaying.QuestionText}");
-                AnswersShuffler(questionPlaying);
+                ShuffleAnswersInList(questionPlaying);
                 questionPlaying.DisplayAnswers();
                 score.ScoreCount += UserAnswerCheckWithScore(questionPlaying, originalQuestionToCheckAgains);
                 Console.WriteLine($"Your score: {score.ScoreCount}");
@@ -76,7 +76,7 @@
         }
 
 
-        private static void AnswersShuffler(QuestionsAndAnswers questionObject)
+        private static void ShuffleAnswersInList(QuestionsAndAnswers questionObject)
         {
             int j;
             string k;
