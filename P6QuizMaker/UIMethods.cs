@@ -156,6 +156,10 @@
             Console.WriteLine("What this answer would you like to change to ?");
         }
 
+        /// <summary>
+        /// is this answer Correct ?
+        /// </summary>
+        /// <returns> bool </returns>
         public static bool IsCorrectAnswer()
         {
             Console.Write("Is this correct answer ? : ");
@@ -172,32 +176,6 @@
             foreach (QuestionsAndAnswers question in list)
             {
                 Console.WriteLine($"{list.IndexOf(question) + 1}" + " " + question.QuestionText);
-            }
-        }
-
-
-        /// <summary>
-        /// displays list of answers , and correct answers if Correct answer list chosen that option
-        /// </summary>
-        /// <param name="question"></param>
-        /// <param name="modificationTarget"></param>
-        public static void ShowListOfAnswers(QuestionsAndAnswers question, bool showCorrectAnswers)
-        {
-
-            Console.WriteLine("Here's list of Answers: ");
-            foreach (string answer in question.AnswersList)
-            {
-                Console.WriteLine($"{question.AnswersList.IndexOf(answer) + 1}" + " " + answer);
-            }
-
-            if (showCorrectAnswers)
-            {
-
-                Console.WriteLine("Here's list of Correct Answers");
-                foreach (int answer in question.CorrectAnswersList)
-                {
-                    Console.WriteLine($"Nr: {question.CorrectAnswersList.IndexOf(answer) + 1} Which is: {question.AnswersList[answer]} .");
-                }
             }
         }
 
@@ -268,7 +246,13 @@
             ShowListOfQuestion(QuizmakerList);
             Console.WriteLine($"Answers for which question would you like to modify?");
             int questionToAmend = GetUserInputNum(QuizmakerList.Count) - 1;
-            ShowListOfAnswers(QuizmakerList[questionToAmend], IsCorrectAnswerList(modificationTarget));
+            QuizmakerList[questionToAmend].DisplayAnswers();
+
+            if (IsCorrectAnswerList(modificationTarget))
+            {
+                QuizmakerList[questionToAmend].DisplayCorrectAnswers();
+            }
+
             Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
             return questionToAmend;
         }

@@ -64,9 +64,8 @@
                 CopyQuestionText(questionsList[randomQuestionIndex], questionPicked);
                 UIMethods.DisplayPlayAnswerNumber();
                 Console.WriteLine($"Please answer this Question: {questionPicked.QuestionText}");
-                Shuffler(questionPicked);
-                UIMethods.ShowListOfAnswers(questionPicked, false);
-
+                AnswersShuffler(questionPicked);
+                questionPicked.DisplayAnswers();
                 score.ScoreCount += UserAnswerCheckWithScore(questionPicked, questionsList[randomQuestionIndex]);
                 Console.WriteLine($"Your score: {score.ScoreCount}");
                 UIMethods.DisplayPlayAnotherQuestionText();
@@ -75,7 +74,7 @@
         }
 
 
-        private static void Shuffler(QuestionsAndAnswers questionObject)
+        private static void AnswersShuffler(QuestionsAndAnswers questionObject)
         {
             int j;
             string k;

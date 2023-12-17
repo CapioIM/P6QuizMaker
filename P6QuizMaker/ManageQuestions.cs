@@ -188,8 +188,7 @@
                     questionToMakeChanges.AddAnswerToList();
                     break;
                 case ModificationOptions.Remove:                                                        // Remove
-                    int answerToRemove = UIMethods.GetUserInputNum(answerCount) - 1;
-                    RemoveAnswerFromAnswerList(answerToRemove, questionToMakeChanges);
+                    questionToMakeChanges.RemoveAnswerFromList();
                     break;
                 case ModificationOptions.Amend:                                                          // Amend
                     int answerToAmend = UIMethods.GetUserInputNum(answerCount) - 1;
@@ -208,6 +207,7 @@
         /// <param name="modificationOptions"> Option choice </param>
         private static void ModifyCorrectAnswerListOptions(ModificationOptions modificationOptions, QuestionsAndAnswers questionToMakeChanges)
         {
+
             UIMethods.DisplayPlayAnswerNumber();
             int correctAnswerCount = questionToMakeChanges.CorrectAnswersList.Count;
 
