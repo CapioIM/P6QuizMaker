@@ -160,7 +160,7 @@
             {
                 case ModificationOptions.Add:                                                               //add
                     QuestionsAndAnswers question = CreateNewQuestion(questionList);
-                    AddAnswersToQuestion(question);
+                    question.AddAnswerToList();
                     break;
                 case ModificationOptions.Remove:                                                            //remove
                     questionList.RemoveAt(questionToAmend);
