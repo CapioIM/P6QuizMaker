@@ -158,7 +158,7 @@
 
         public static void DisplayTextQuestionToRemoveOrAmend(ModificationOptions modifyOrRemove)
         {
-            Console.WriteLine($"Type number associated with question to {modifyOrRemove.ToString()}!");
+            Console.WriteLine($"Type number associated with question to {modifyOrRemove}!");
         }
 
         public static ModificationTarget ModificationTargetChoice(int modificationTargetChoice)

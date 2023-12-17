@@ -72,7 +72,6 @@
                 if (answer == indexToRemoveAt)
                 {
                     CorrectAnswersList.RemoveAt(CorrectAnswersList.IndexOf(answer));
-                    break;
                 }
             }
         }
@@ -101,6 +100,17 @@
             }
         }
 
+        public int AnswersListCount
+        {
+            get
+            {
+                return _answersList.Count;
+            }
+        }
+        public string AnswerListValueAtIndex(int value)
+        {
+                return _answersList[value];
+        }
 
     }
 }

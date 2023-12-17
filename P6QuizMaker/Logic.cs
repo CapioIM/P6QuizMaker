@@ -19,10 +19,10 @@
         private static int UserAnswerCheckWithScore(QuestionsAndAnswers QuestionAtPlay, QuestionsAndAnswers testQuestion)
         {
             int score = 0;
-            int userAnswer = UIMethods.GetUserInputNum(QuestionAtPlay.AnswersList.Count) - 1;
+            int userAnswer = UIMethods.GetUserInputNum(QuestionAtPlay.AnswersListCount) - 1;
             foreach (int correctAnswer in testQuestion.CorrectAnswersList)
             {
-                if (QuestionAtPlay.AnswersList[userAnswer] == testQuestion.AnswersList[correctAnswer])
+                if (QuestionAtPlay.AnswerListValueAtIndex(userAnswer) == testQuestion.AnswerListValueAtIndex(correctAnswer))
                 {
                     score++;
                     Console.WriteLine("You are smartest!");
@@ -61,7 +61,7 @@
                 int randomQuestionIndex = GetRandomIndexNumber(questionsList.Count - 1);
                 QuestionsAndAnswers questionPicked = new QuestionsAndAnswers();
 
-                CopyAnswerList(questionsList[randomQuestionIndex].AnswersList, questionPicked.AnswersList);
+                CopyAnswerList(questionsList[randomQuestionIndex], questionPicked);
                 CopyQuestionText(questionsList[randomQuestionIndex], questionPicked);
                 UIMethods.DisplayPlayAnswerNumber();
                 Console.WriteLine($"Please answer this Question: {questionPicked.QuestionText}");
@@ -87,11 +87,11 @@
                 questionObject.AnswersList[i] = k;
             }
         }
-        private static void CopyAnswerList(List<string> originalAnswerList, List<string> copyOfList )
+        private static void CopyAnswerList(QuestionsAndAnswers originalAnswerList, QuestionsAndAnswers copyOfList )
         {
-            foreach (string answer in originalAnswerList)
+            foreach (string answer in originalAnswerList.AnswersList)
             {
-                copyOfList.Add(answer);
+                copyOfList.AnswersList.Add(answer);
             }
         }
         private static void CopyQuestionText(QuestionsAndAnswers originalQuestion, QuestionsAndAnswers copyOfQuesiton)
