@@ -106,7 +106,7 @@
         public static int DiplayGetNumberText(QuestionsAndAnswers quizmaker)
         {
             Console.Write("Type answer Number : ");
-            return GetUserInputNum(quizmaker.AnswersList.Count);
+            return GetUserInputNum(quizmaker.AnswersListCount);
         }
 
         public static string GetAndDisplayTypeAnswerText()

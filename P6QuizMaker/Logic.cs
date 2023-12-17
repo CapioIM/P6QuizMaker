@@ -67,7 +67,7 @@
                 UIMethods.DisplayPlayAnswerNumber();
                 Console.WriteLine($"Please answer this Question: {questionPlaying.QuestionText}");
                 ShuffleAnswersInList(questionPlaying);
-                questionPlaying.DisplayAnswers();
+                UIMethods.DisplayAnswers(questionPlaying);
                 score.ScoreCount += UserAnswerCheckWithScore(questionPlaying, originalQuestionToCheckAgains);
                 Console.WriteLine($"Your score: {score.ScoreCount}");
                 UIMethods.DisplayPlayAnotherQuestionText();

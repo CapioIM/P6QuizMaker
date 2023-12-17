@@ -44,6 +44,24 @@
                 return _correctAnswersList;
             }
         }
+        public int AnswersListCount
+        {
+            get
+            {
+                return _answersList.Count;
+            }
+        }
+
+        public int CorrectAnswersListCount
+        {
+            get { return _correctAnswersList.Count; }
+        }
+
+        public string AnswerListValueAtIndex(int value)
+        {
+            return _answersList[value];
+        }
+
 
         public void AddAnswerToList()
         {
@@ -65,7 +83,7 @@
         /// </summary>
         public void RemoveAnswerFromList()
         {
-            int indexToRemoveAt = UIMethods.GetUserInputNum(AnswersList.Count) - 1;
+            int indexToRemoveAt = UIMethods.GetUserInputNum(AnswersListCount) - 1;
             _answersList.RemoveAt(indexToRemoveAt);
             foreach (int answer in CorrectAnswersList)
             {
@@ -75,24 +93,5 @@
                 }
             }
         }
-
-        public int AnswersListCount
-        {
-            get
-            {
-                return _answersList.Count;
-            }
-        }
-
-        public int CorrectAnswersListCount
-        {
-            get { return _correctAnswersList.Count; }
-        }
-
-        public string AnswerListValueAtIndex(int value)
-        {
-            return _answersList[value];
-        }
-
     }
 }
