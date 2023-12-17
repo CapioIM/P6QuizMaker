@@ -112,7 +112,7 @@
                 return _answersList.Count;
             }
         }
-        public string AnswerListValueAtIndex(int value)
+        public string AnswersList(int value)
         {
             return _answersList[value];
         }

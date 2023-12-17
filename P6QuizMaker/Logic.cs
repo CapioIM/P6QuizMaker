@@ -22,7 +22,7 @@
             int userAnswer = UIMethods.GetUserInputNum(QuestionAtPlay.AnswersListCount) - 1;
             foreach (int correctAnswer in testQuestion.CorrectAnswersList)
             {
-                if (QuestionAtPlay.AnswerListValueAtIndex(userAnswer) == testQuestion.AnswerListValueAtIndex(correctAnswer))
+                if (QuestionAtPlay.AnswersList(userAnswer) == testQuestion.AnswersList(correctAnswer))
                 {
                     score++;
                     Console.WriteLine("You are smartest!");
@@ -79,7 +79,7 @@
         {
             int j;
             string k;
-            for (int i = 0; i < questionObject.AnswersList.Count; i++)
+            for (int i = 0; i < questionObject.AnswersListCount; i++)
             {
                 j = GetRandomIndexNumber(i);
                 k = questionObject.AnswersList[j];
