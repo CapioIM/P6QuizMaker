@@ -76,30 +76,6 @@
             }
         }
 
-        /// <summary>
-        /// takes list of object and display whole list
-        /// </summary>
-        public void DisplayAnswers()
-        {
-            Console.WriteLine("Here's list of Answers: ");
-            foreach (string answer in AnswersList)
-            {
-                Console.WriteLine($"{AnswersList.IndexOf(answer) + 1}" + " " + answer);
-            }
-        }
-
-        /// <summary>
-        /// takes list of object and display whole list
-        /// </summary>
-        public void DisplayCorrectAnswers()
-        {
-            Console.WriteLine("Here's list of Correct Answers");
-            foreach (int answer in CorrectAnswersList)
-            {
-                Console.WriteLine($"Answer Nr: {CorrectAnswersList.IndexOf(answer) + 1} Description of answer: {AnswersList[answer]} .");
-            }
-        }
-
         public int AnswersListCount
         {
             get

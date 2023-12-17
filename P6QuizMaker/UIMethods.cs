@@ -212,11 +212,11 @@
             ShowListOfQuestion(QuizmakerList);
             Console.WriteLine($"Answers for which question would you like to modify?");
             int questionToAmend = GetUserInputNum(QuizmakerList.Count) - 1;
-            QuizmakerList[questionToAmend].DisplayAnswers();
+            UIMethods.DisplayAnswers(QuizmakerList[questionToAmend]);
 
             if (IsCorrectAnswerList(modificationTarget))
             {
-                QuizmakerList[questionToAmend].DisplayCorrectAnswers();
+                UIMethods.DisplayCorrectAnswers(QuizmakerList[questionToAmend]);
             }
 
             Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
@@ -258,6 +258,32 @@
             }
             return false;
         }
+
+
+        /// <summary>
+        /// takes list of object and display whole list
+        /// </summary>
+        public static void DisplayAnswers(QuestionsAndAnswers questionData)
+        {
+            Console.WriteLine("Here's list of Answers: ");
+            foreach (string answer in questionData.AnswersList)
+            {
+                Console.WriteLine($"{questionData.AnswersList.IndexOf(answer) + 1}" + " " + answer);
+            }
+        }
+
+        /// <summary>
+        /// takes list of object and display whole list
+        /// </summary>
+        public static void DisplayCorrectAnswers(QuestionsAndAnswers questionData)
+        {
+            Console.WriteLine("Here's list of Correct Answers");
+            foreach (int answer in questionData.CorrectAnswersList)
+            {
+                Console.WriteLine($"Answer Nr: {questionData.CorrectAnswersList.IndexOf(answer) + 1} Description of answer: {questionData.AnswersList[answer]} .");
+            }
+        }
+
 
     }
 }
