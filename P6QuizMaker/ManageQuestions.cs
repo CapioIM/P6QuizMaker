@@ -127,8 +127,6 @@
                 case ModificationOptions.Amend:                                                             // amend
                     UIMethods.ModifyQuestionText(questionToMakeChanges);
                     break;
-                case ModificationOptions.Exit:                                                              // Exit
-                    return;
             }
         }
 
@@ -154,8 +152,6 @@
                     UIMethods.DisplayTextAskWhatToChange();
                     questionToMakeChanges.AnswersList[answerToAmend] = UIMethods.GetUserInput();
                     break;
-                case ModificationOptions.Exit:                                                          // Exit
-                    return;
             }
         }
 
@@ -183,8 +179,6 @@
                     int answerToAmend = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
                     questionToMakeChanges.CorrectAnswersList[answerToAmend] = UIMethods.GetUserInputNum(questionToMakeChanges.CorrectAnswersListCount) - 1;
                     break;
-                case ModificationOptions.Exit:                                                      //Exit
-                    return;
             }
         }
 
