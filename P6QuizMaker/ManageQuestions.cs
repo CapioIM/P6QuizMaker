@@ -79,6 +79,7 @@
                 ModificationTarget modificationTarget = UIMethods.ModificationTargetChoice(amendUserChoice);
                 if (modificationTarget == ModificationTarget.Exit)
                 {
+                    UIMethods.ClearConcole();
                     return;
                 }
 
@@ -98,6 +99,7 @@
 
                 if (modificationOptions == ModificationOptions.Exit)
                 {
+                    UIMethods.ClearConcole();
                     continue;
                 }
 
