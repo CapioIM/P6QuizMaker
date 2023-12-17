@@ -2,21 +2,6 @@
 {
     internal class ManageQuestions
     {
-        /// <summary>
-        /// add answer to specified object
-        /// </summary>
-        /// <param name="question"> object name, if in list where to find specific object </param>
-        public static void AddAnswersToQuestion(QuestionsAndAnswers question)
-        {
-            bool addMoreAnswers = true;
-            while (addMoreAnswers)
-            {
-                string answerText = UIMethods.GetAndDisplayTypeAnswerText();
-                question.AnswersList.Add(answerText);
-                AddCorrectAnswersToList(answerText, question);
-                addMoreAnswers = UIMethods.GetAdditionalAnswer();
-            }
-        }
 
         private static void AddCorrectAnswer(QuestionsAndAnswers question)
         {
@@ -42,19 +27,6 @@
                     Console.WriteLine("This answer is already in the list");
                 }
                 addMoreAnswers = UIMethods.GetAdditionalAnswer();
-            }
-        }
-
-        /// <summary>
-        /// if true adds index of matching string in AnswersList
-        /// </summary>
-        /// <param name="answerText">input string of Answer</param>
-        /// <param name="question">Object variable name</param>
-        private static void AddCorrectAnswersToList(string answerText, QuestionsAndAnswers question)
-        {
-            if (UIMethods.IsCorrectAnswer())
-            {
-                question.CorrectAnswersList.Add(question.AnswersList.IndexOf(answerText));
             }
         }
 
@@ -126,19 +98,6 @@
             }
         }
 
-
-        private static void RemoveAnswerFromAnswerList(int answerNumberToRemove, QuestionsAndAnswers question)
-        {
-            question.AnswersList.RemoveAt(answerNumberToRemove);
-            foreach (int answer in question.CorrectAnswersList)
-            {
-                if (answer == answerNumberToRemove)
-                {
-                    question.CorrectAnswersList.RemoveAt(question.CorrectAnswersList.IndexOf(answer));
-                    break;
-                }
-            }
-        }
 
         /// <summary>
         /// This method modifies question object , add new question, remove existing question, amend question text

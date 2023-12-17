@@ -12,20 +12,6 @@
             Console.WriteLine("Would you like to play another question ?");
         }
 
-        /// <summary>
-        /// CW display questions and answers text from object in a list at index of randomQuesitonIndex
-        /// </summary>
-        /// <param name="question"> List with object Question </param>
-        /// <param name="QuestionIndex"> random generated number variable </param>
-        public static void DisplayQuestionAndAnswersToPlayer(QuestionsAndAnswers question)
-        {
-            Console.WriteLine($"Please answer this Question: {question.QuestionText}");
-            foreach (string answers in question.AnswersList)
-            {
-                Console.Write($"{question.AnswersList.IndexOf(answers) + 1}" + "-");
-                Console.WriteLine(answers);
-            }
-        }
         public static void WelcomeText()
         {
             ClearConcole();
@@ -45,29 +31,6 @@
                 "Press 1 to Manage Questions\n" +
                 "Press 2 to Play Quizmaker"
                 );
-        }
-
-        /// <summary>
-        /// Asks user to enter integer, untill number is entered
-        /// </summary>
-        /// <returns> user entered integer </returns>
-        public static int GetUserInputNum()
-        {
-            int choiceNumber = 0;
-            bool convertToInt = false;
-            while (!convertToInt)
-            {
-                convertToInt = int.TryParse(Console.ReadLine(), out choiceNumber);
-                if (convertToInt)
-                {
-                    return choiceNumber;
-                }
-                else
-                {
-                    Console.WriteLine("Please enter Number !");
-                }
-            }
-            return choiceNumber; //not all code paths return a value
         }
 
         /// <summary>

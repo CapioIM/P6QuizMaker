@@ -2,6 +2,7 @@
 {
     internal class Logic
     {
+
         /// <summary>
         /// Initialized random
         /// </summary>
@@ -18,7 +19,7 @@
         private static int UserAnswerCheckWithScore(QuestionsAndAnswers QuestionAtPlay, QuestionsAndAnswers testQuestion)
         {
             int score = 0;
-            int userAnswer = UIMethods.GetUserInputNum() - 1;
+            int userAnswer = UIMethods.GetUserInputNum(QuestionAtPlay.AnswersList.Count) - 1;
             foreach (int correctAnswer in testQuestion.CorrectAnswersList)
             {
                 if (QuestionAtPlay.AnswersList[userAnswer] == testQuestion.AnswersList[correctAnswer])
