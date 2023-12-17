@@ -12,12 +12,6 @@
             _correctAnswersList = new List<int>();
         }
 
-        public QuestionsAndAnswers(QuestionsAndAnswers questionAndAnswers)
-        {
-            _questionText = questionAndAnswers._questionText;
-            _answersList = questionAndAnswers._answersList;
-        }
-
         public override string ToString()
         {
             return $"{_questionText}";
@@ -35,7 +29,7 @@
             }
         }
 
-        public List<string> AnswersList
+        public  List<string> AnswersList
         {
             get
             {

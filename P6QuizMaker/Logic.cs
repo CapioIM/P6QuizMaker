@@ -7,7 +7,7 @@
         /// </summary>
         public static readonly Random random = new Random();
 
-/*
+
         /// <summary>
         /// user entered integer is compared to values in CorrectAnswers... list and returns score
         /// </summary>
@@ -15,7 +15,7 @@
         /// <param name="score"> updates score </param>
         /// <param name="randomQuestionPick"> same variable used to interract with qustions and answers </param>
         /// <returns> updated score </returns>
-        private static int UserAnswerCheckWithScore(QuestionsAndAnswers QuestionAtPlay,QuestionsAndAnswers testQuestion)
+        private static int UserAnswerCheckWithScore(QuestionsAndAnswers QuestionAtPlay, QuestionsAndAnswers testQuestion)
         {
             int score = 0;
             int userAnswer = UIMethods.GetUserInputNum() - 1;
@@ -33,7 +33,7 @@
             }
             return score;
         }
-*/
+
 
 
         /// <summary>
@@ -58,15 +58,16 @@
                 UIMethods.DisplayGameDiscription();
 
                 int randomQuestionIndex = GetRandomIndexNumber(questionsList.Count - 1);
-                QuestionsAndAnswers questionPicked = new QuestionsAndAnswers(questionsList[randomQuestionIndex]);
+                QuestionsAndAnswers questionPicked = new QuestionsAndAnswers();
+
+                CopyAnswerList(questionsList[randomQuestionIndex].AnswersList, questionPicked.AnswersList);
+                CopyQuestionText(questionsList[randomQuestionIndex], questionPicked);
                 UIMethods.DisplayPlayAnswerNumber();
                 Console.WriteLine($"Please answer this Question: {questionPicked.QuestionText}");
                 Shuffler(questionPicked);
-                UIMethods.ShowListOfAnswers(questionPicked,false);
+                UIMethods.ShowListOfAnswers(questionPicked, false);
 
-
-
- //     score.ScoreCount += UserAnswerCheckWithScore(questionPicked, questionsList[randomQuestionIndex]);
+                score.ScoreCount += UserAnswerCheckWithScore(questionPicked, questionsList[randomQuestionIndex]);
                 Console.WriteLine($"Your score: {score.ScoreCount}");
                 UIMethods.DisplayPlayAnotherQuestionText();
                 playingQuizMaker = UIMethods.MakeDecisionYorN();
@@ -74,7 +75,6 @@
         }
 
 
-        //time to shuffle
         private static void Shuffler(QuestionsAndAnswers questionObject)
         {
             int j;
@@ -87,8 +87,17 @@
                 questionObject.AnswersList[i] = k;
             }
         }
-
-
+        private static void CopyAnswerList(List<string> originalAnswerList, List<string> copyOfList )
+        {
+            foreach (string answer in originalAnswerList)
+            {
+                copyOfList.Add(answer);
+            }
+        }
+        private static void CopyQuestionText(QuestionsAndAnswers originalQuestion, QuestionsAndAnswers copyOfQuesiton)
+        {
+            copyOfQuesiton.QuestionText = originalQuestion.QuestionText;
+        }
 
     }
 }
