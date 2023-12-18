@@ -172,7 +172,7 @@
                     AddCorrectAnswer(questionToMakeChanges);
                     break;
                 case ModificationOptions.Remove:                                                    // Remove
-                    RemoveAnswer(questionToMakeChanges);
+                    RemoveCorrectAnswerFromList(questionToMakeChanges);
                     break;
                 case ModificationOptions.Amend:                                                     // Amend
                     AmendEntryInCorrectAnswerList(questionToMakeChanges);
@@ -180,7 +180,7 @@
             }
         }
 
-        private static void RemoveAnswer(QuestionsAndAnswers questionToMakeChanges)
+        private static void RemoveCorrectAnswerFromList(QuestionsAndAnswers questionToMakeChanges)
         {
             int correctAnswerCount = questionToMakeChanges.CorrectAnswersListCount;
             int answerToRemove = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
