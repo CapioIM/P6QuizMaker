@@ -61,5 +61,32 @@
         {
             return _answersList[value];
         }
+
+        /// <summary>
+        /// removes answer from answer List and removes correct answer if exists
+        /// </summary>
+        public void RemoveAnswerFromList(int index)
+        {
+            AnswersList.RemoveAt(index);
+            foreach (int answer in CorrectAnswersList)
+            {
+                if (answer == index)
+                {
+                    int answerIndex = CorrectAnswersList.IndexOf(answer);
+                    CorrectAnswersList.RemoveAt(answerIndex);
+                    break;
+                }
+            }
+        }
+
+        public void AddAnswerToList(string answerText)
+        {
+            AnswersList.Add(answerText);
+            if (UIMethods.IsCorrectAnswer())
+            {
+                int answerIndex = AnswersList.IndexOf(answerText);
+                CorrectAnswersList.Add(answerIndex);
+            }
+        }
     }
 }

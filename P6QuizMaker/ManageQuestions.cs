@@ -119,7 +119,7 @@
             {
                 case ModificationOptions.Add:                                                               //add
                     QuestionsAndAnswers question = CreateNewQuestion(questionList);
-                    AddAnswerToList(question);
+                    AddMultipleAnswerToList(question);
                     break;
                 case ModificationOptions.Remove:                                                            //remove
                     questionList.RemoveAt(questionToAmend);
@@ -141,10 +141,11 @@
             switch (modificationOptions)
             {
                 case ModificationOptions.Add:                                                           // Add
-                    AddAnswerToList(questionToMakeChanges);
+                    AddMultipleAnswerToList(questionToMakeChanges);
                     break;
                 case ModificationOptions.Remove:                                                        // Remove
-                    RemoveAnswerFromList(questionToMakeChanges);
+                    int indexToRemoveAt = UIMethods.GetUserInputNum(questionToMakeChanges.AnswersListCount) - 1;
+                    questionToMakeChanges.RemoveAnswerFromList(indexToRemoveAt);
                     break;
                 case ModificationOptions.Amend:                                                          // Amend
                     AmendEntryInAnswerList(questionToMakeChanges);
@@ -198,39 +199,17 @@
             questionToMakeChanges.CorrectAnswersList[answerToAmend] = UIMethods.GetUserInputNum(questionToMakeChanges.CorrectAnswersListCount) - 1;
         }
 
-        private static void AddAnswerToList(QuestionsAndAnswers questionToAmend)
+        private static void AddMultipleAnswerToList(QuestionsAndAnswers questionToAmend)
         {
-            bool addMoreAnswers = true; 
+            bool addMoreAnswers = true;
             while (addMoreAnswers)
             {
                 string answerText = UIMethods.GetAndDisplayTypeAnswerText();
-                questionToAmend.AnswersList.Add(answerText);
-
-                if (UIMethods.IsCorrectAnswer())
-                {
-                    int answerIndex = questionToAmend.AnswersList.IndexOf(answerText);
-                    questionToAmend.CorrectAnswersList.Add(answerIndex);
-                }
+                questionToAmend.AddAnswerToList(answerText);
                 addMoreAnswers = UIMethods.GetAdditionalAnswer();
             }
         }
 
-        /// <summary>
-        /// removes answer from answer List and removes correct answer if exists
-        /// </summary>
-        private static void RemoveAnswerFromList(QuestionsAndAnswers questionToAmend)
-        {
-            int indexToRemoveAt = UIMethods.GetUserInputNum(questionToAmend.AnswersListCount) - 1;
-            questionToAmend.AnswersList.RemoveAt(indexToRemoveAt);
-            foreach (int answer in questionToAmend.CorrectAnswersList)
-            {
-                if (answer == indexToRemoveAt)
-                {
-                    questionToAmend.CorrectAnswersList.RemoveAt(questionToAmend.CorrectAnswersList.IndexOf(answer));
-                    break;
-                }
-            }
-        }
     }
 }
 
