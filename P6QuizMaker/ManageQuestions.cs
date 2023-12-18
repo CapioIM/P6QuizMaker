@@ -137,7 +137,11 @@
         /// <param name="modificationOptions"> Option choice </param>
         private static void ModifyAnswerListOptions(QuestionsAndAnswers questionToMakeChanges, ModificationOptions modificationOptions)
         {
-            Console.WriteLine("Type number of answer you want to make changes to!");
+           if(modificationOptions != ModificationOptions.Add)
+            {
+            Console.WriteLine($"Type number of answer you want to {modificationOptions}!");
+            }
+            
             switch (modificationOptions)
             {
                 case ModificationOptions.Add:                                                           // Add
