@@ -3,41 +3,6 @@
     internal class ManageQuestions
     {
 
-        private static void AddCorrectAnswer(QuestionsAndAnswers question)
-        {
-            int answerNumber;
-            bool CorrectAnswerDuplicateCheck = true;
-            bool addMoreAnswers = true;
-            while (addMoreAnswers)
-            {
-                answerNumber = UIMethods.DiplayGetNumberText(question);
-                foreach (int correctAnswerNumber in question.CorrectAnswersList)
-                {
-                    if (correctAnswerNumber == (answerNumber - 1))
-                    {
-                        CorrectAnswerDuplicateCheck = false;
-                    }
-                }
-                if (CorrectAnswerDuplicateCheck)
-                {
-                    question.CorrectAnswersList.Add(answerNumber - 1);
-                }
-                else
-                {
-                    Console.WriteLine("This answer is already in the list");
-                }
-                addMoreAnswers = UIMethods.GetAdditionalAnswer();
-            }
-        }
-
-        private static QuestionsAndAnswers CreateNewQuestion(List<QuestionsAndAnswers> questionList)
-        {
-            QuestionsAndAnswers newQuestion = new QuestionsAndAnswers();
-            questionList.Add(newQuestion);
-            newQuestion.QuestionText = UIMethods.GetQuestionText();
-            return newQuestion;
-        }
-
         public static void Manage()
         {
             List<QuestionsAndAnswers> questionList = FileOperations.DeserializeFiles();
@@ -96,6 +61,41 @@
                         }
                 }
             }
+        }
+
+        private static void AddCorrectAnswer(QuestionsAndAnswers question)
+        {
+            int answerNumber;
+            bool CorrectAnswerDuplicateCheck = true;
+            bool addMoreAnswers = true;
+            while (addMoreAnswers)
+            {
+                answerNumber = UIMethods.DiplayGetNumberText(question);
+                foreach (int correctAnswerNumber in question.CorrectAnswersList)
+                {
+                    if (correctAnswerNumber == (answerNumber - 1))
+                    {
+                        CorrectAnswerDuplicateCheck = false;
+                    }
+                }
+                if (CorrectAnswerDuplicateCheck)
+                {
+                    question.CorrectAnswersList.Add(answerNumber - 1);
+                }
+                else
+                {
+                    Console.WriteLine("This answer is already in the list");
+                }
+                addMoreAnswers = UIMethods.GetAdditionalAnswer();
+            }
+        }
+
+        private static QuestionsAndAnswers CreateNewQuestion(List<QuestionsAndAnswers> questionList)
+        {
+            QuestionsAndAnswers newQuestion = new QuestionsAndAnswers();
+            questionList.Add(newQuestion);
+            newQuestion.QuestionText = UIMethods.GetQuestionText();
+            return newQuestion;
         }
 
 
