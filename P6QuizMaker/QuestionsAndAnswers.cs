@@ -61,37 +61,5 @@
         {
             return _answersList[value];
         }
-
-
-        public void AddAnswerToList()
-        {
-            bool addMoreAnswers = true;
-            while (addMoreAnswers)
-            {
-                string answerText = UIMethods.GetAndDisplayTypeAnswerText();
-                _answersList.Add(answerText);
-                if (UIMethods.IsCorrectAnswer())
-                {
-                    _correctAnswersList.Add(_answersList.IndexOf(answerText));
-                }
-                addMoreAnswers = UIMethods.GetAdditionalAnswer();
-            }
-        }
-
-        /// <summary>
-        /// removes answer from answer List and removes correct answer if exists
-        /// </summary>
-        public void RemoveAnswerFromList()
-        {
-            int indexToRemoveAt = UIMethods.GetUserInputNum(AnswersListCount) - 1;
-            _answersList.RemoveAt(indexToRemoveAt);
-            foreach (int answer in CorrectAnswersList)
-            {
-                if (answer == indexToRemoveAt)
-                {
-                    CorrectAnswersList.RemoveAt(CorrectAnswersList.IndexOf(answer));
-                }
-            }
-        }
     }
 }
