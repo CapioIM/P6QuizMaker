@@ -144,8 +144,7 @@
                     AddMultipleAnswerToList(questionToMakeChanges);
                     break;
                 case ModificationOptions.Remove:                                                        // Remove
-                    int indexToRemoveAt = UIMethods.GetUserInputNum(questionToMakeChanges.AnswersListCount) - 1;
-                    questionToMakeChanges.RemoveAnswerFromList(indexToRemoveAt);
+                    RemoveAnswerFromList(questionToMakeChanges);
                     break;
                 case ModificationOptions.Amend:                                                          // Amend
                     AmendEntryInAnswerList(questionToMakeChanges);
@@ -199,19 +198,43 @@
             questionToMakeChanges.CorrectAnswersList[answerToAmend] = UIMethods.GetUserInputNum(questionToMakeChanges.CorrectAnswersListCount) - 1;
         }
 
-        private static void AddMultipleAnswerToList(QuestionsAndAnswers questionToAmend)
+        private static void AddMultipleAnswerToList(QuestionsAndAnswers questionToMakeChanges)
         {
             bool addMoreAnswers = true;
             while (addMoreAnswers)
             {
                 string answerText = UIMethods.GetAndDisplayTypeAnswerText();
-                questionToAmend.AddAnswerToList(answerText);
+                questionToMakeChanges.AnswersList.Add(answerText);
+                if (UIMethods.IsCorrectAnswer())
+                {
+                    int answerIndex = questionToMakeChanges.AnswersList.IndexOf(answerText);
+                    questionToMakeChanges.CorrectAnswersList.Add(answerIndex);
+                }
                 addMoreAnswers = UIMethods.GetAdditionalAnswer();
             }
         }
 
+        /// <summary>
+        /// removes answer from answer List and removes correct answer if exists
+        /// </summary>
+        private static void RemoveAnswerFromList(QuestionsAndAnswers questionToMakeChanges)
+        {
+            int indexToRemoveAt = UIMethods.GetUserInputNum(questionToMakeChanges.AnswersListCount) - 1;
+            questionToMakeChanges.AnswersList.RemoveAt(indexToRemoveAt);
+            foreach (int answer in questionToMakeChanges.CorrectAnswersList)
+            {
+                if (answer == indexToRemoveAt)
+                {
+                    int answerIndex = questionToMakeChanges.CorrectAnswersList.IndexOf(answer);
+                    questionToMakeChanges.CorrectAnswersList.RemoveAt(answerIndex);
+                    break;
+                }
+            }
+        }
     }
+
 }
+
 
 
 
