@@ -108,12 +108,7 @@
         /// <param name="questionToAmend"> variable which question in list to make changes to </param>
         private static void ModifyQuestionsOptions(ModificationOptions modificationOptions, List<QuestionsAndAnswers> questionList, QuestionsAndAnswers questionToMakeChanges, int questionToAmend)
         {
-            if (modificationOptions != ModificationOptions.Add)
-            {
-                UIMethods.ShowListOfQuestion(questionList);
-                UIMethods.DisplayTextQuestionToRemoveOrAmend(modificationOptions);
-                questionToAmend = UIMethods.GetUserInputNum(questionList.Count) - 1;
-            }
+            questionToAmend = GetQuestionIndexNotAddOption(modificationOptions,questionList,questionToAmend);
 
             switch (modificationOptions)
             {
@@ -137,11 +132,8 @@
         /// <param name="modificationOptions"> Option choice </param>
         private static void ModifyAnswerListOptions(QuestionsAndAnswers questionToMakeChanges, ModificationOptions modificationOptions)
         {
-           if(modificationOptions != ModificationOptions.Add)
-            {
-                UIMethods.test(modificationOptions);
-            }
-            
+            DisplayTextNotForAddToList(modificationOptions);
+
             switch (modificationOptions)
             {
                 case ModificationOptions.Add:                                                           // Add
@@ -155,6 +147,15 @@
                     break;
             }
         }
+
+        private static void DisplayTextNotForAddToList(ModificationOptions modificationOptions)
+        {
+            if (modificationOptions != ModificationOptions.Add)
+            {
+                UIMethods.DisplayTypeAnswerNumberToModify(modificationOptions);
+            }
+        }
+
 
         /// <summary>
         /// Modify Correct answer list
@@ -235,6 +236,17 @@
                 }
             }
         }
+        private static int GetQuestionIndexNotAddOption(ModificationOptions modificationOptions, List<QuestionsAndAnswers> questionList,int questionToAmend)
+        {
+            if (modificationOptions != ModificationOptions.Add)
+            {
+                UIMethods.ShowListOfQuestion(questionList);
+                UIMethods.DisplayTextQuestionToRemoveOrAmend(modificationOptions);
+                questionToAmend = UIMethods.GetUserInputNum(questionList.Count) - 1;
+            }
+                return questionToAmend;
+        }
+
     }
 
 }

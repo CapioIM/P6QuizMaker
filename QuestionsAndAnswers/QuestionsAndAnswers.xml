@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfQuestionsAndAnswers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <QuestionsAndAnswers>
-    <QuestionText>What color sun is ?</QuestionText>
+    <QuestionText>Which color is Sun?</QuestionText>
     <AnswersList>
       <string>Blue</string>
       <string>Green</string>
