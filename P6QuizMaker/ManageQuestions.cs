@@ -84,7 +84,7 @@
                 }
                 else
                 {
-                    Console.WriteLine("This answer is already in the list");
+                    UIMethods.DisplayCorrectAnswerExists();
                 }
                 addMoreAnswers = UIMethods.GetAdditionalAnswer();
             }
@@ -139,7 +139,7 @@
         {
            if(modificationOptions != ModificationOptions.Add)
             {
-            Console.WriteLine($"Type number of answer you want to {modificationOptions}!");
+                UIMethods.test(modificationOptions);
             }
             
             switch (modificationOptions)

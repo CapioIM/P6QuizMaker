@@ -2,7 +2,7 @@
 {
     public class QuestionsAndAnswers
     {
-        private string _questionText { get; set; }
+        private string _questionText;
         private List<string> _answersList;
         private List<int> _correctAnswersList;
 

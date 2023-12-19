@@ -283,8 +283,15 @@
                 Console.WriteLine($"Answer Nr: {questionData.CorrectAnswersList.IndexOf(answer) + 1} Description of answer: {questionData.AnswersList[answer]} .");
             }
         }
+public static void DisplayCorrectAnswerExists()
+        {
+            Console.WriteLine("This answer is already in the list");
 
-
+        }
+        public static void test(ModificationOptions modificationOptions)
+        {
+            Console.WriteLine($"Type number of answer you want to {modificationOptions}!");
+        }
     }
 }
 
