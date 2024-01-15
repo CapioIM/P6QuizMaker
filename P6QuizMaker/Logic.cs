@@ -75,6 +75,11 @@
             }
         }
 
+
+        /// <summary>
+        /// Cnages order of specific list using Rand and swaps positions of data
+        /// </summary>
+        /// <param name="questionAndData"> Provide object </param>
         private static void ShuffleAnswersInList(QuestionsAndAnswers questionAndData)
         {
             int j;
@@ -87,6 +92,12 @@
                 questionAndData.AnswersList[i] = k;
             }
         }
+
+        /// <summary>
+        /// copy list entries from 1 list to another
+        /// </summary>
+        /// <param name="originalQuestionAndData"> Original object (AnswersList) </param>
+        /// <param name="copyQuestionAndData"> object which list is going to be shuffled </param>
         private static void CopyAnswerList(QuestionsAndAnswers originalQuestionAndData, QuestionsAndAnswers copyQuestionAndData)
         {
             foreach (string answer in originalQuestionAndData.AnswersList)
@@ -94,10 +105,15 @@
                 copyQuestionAndData.AnswersList.Add(answer);
             }
         }
+
+        /// <summary>
+        /// copy Question text from original object to 1 time object
+        /// </summary>
+        /// <param name="originalQuestion"> original object </param>
+        /// <param name="copyOfQuesiton"> Question text receiving object </param>
         private static void CopyQuestionText(QuestionsAndAnswers originalQuestion, QuestionsAndAnswers copyOfQuesiton)
         {
             copyOfQuesiton.QuestionText = originalQuestion.QuestionText;
         }
-
     }
 }

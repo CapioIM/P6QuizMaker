@@ -2,7 +2,9 @@
 {
     internal class ManageQuestions
     {
-
+        /// <summary>
+        /// Method to Manage Object Data,Lists,New objects,Remove objects
+        /// </summary>
         public static void Manage()
         {
             List<QuestionsAndAnswers> questionList = FileOperations.DeserializeFiles();
@@ -62,7 +64,10 @@
                 }
             }
         }
-
+        /// <summary>
+        /// user input number(index of AnswersList) add to Correct Answers List if number is not in the list, ask if user wants to repeat
+        /// </summary>
+        /// <param name="question"> Provided object , which Correct answers list will be modified </param>
         private static void AddCorrectAnswer(QuestionsAndAnswers question)
         {
             int answerNumber;
@@ -89,7 +94,11 @@
                 addMoreAnswers = UIMethods.GetAdditionalAnswer();
             }
         }
-
+        /// <summary>
+        /// bring new object to life and add to List of obejcts
+        /// </summary>
+        /// <param name="questionList"> List where object will be added to </param>
+        /// <returns></returns>
         private static QuestionsAndAnswers CreateNewQuestion(List<QuestionsAndAnswers> questionList)
         {
             QuestionsAndAnswers newQuestion = new QuestionsAndAnswers();
@@ -180,14 +189,20 @@
                     break;
             }
         }
-
+        /// <summary>
+        /// Removes correct answer from list
+        /// </summary>
+        /// <param name="questionToMakeChanges"> provide object </param>
         private static void RemoveCorrectAnswerFromList(QuestionsAndAnswers questionToMakeChanges)
         {
             int correctAnswerCount = questionToMakeChanges.CorrectAnswersListCount;
             int answerToRemove = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
             questionToMakeChanges.CorrectAnswersList.RemoveAt(answerToRemove);
         }
-
+        /// <summary>
+        /// user choose index in list to amend, user input replaces data at index in list
+        /// </summary>
+        /// <param name="questionToMakeChanges"> object which list to modify </param>
         private static void AmendEntryInAnswerList(QuestionsAndAnswers questionToMakeChanges)
         {
             int answerCount = questionToMakeChanges.AnswersListCount;
@@ -195,6 +210,10 @@
             UIMethods.DisplayTextAskWhatToChange();
             questionToMakeChanges.AnswersList[answerToAmend] = UIMethods.GetUserInput();
         }
+        /// <summary>
+        /// Display Text, user choose index in CorrectAnswerList to amend, user input replaces index in list
+        /// </summary>
+        /// <param name="questionToMakeChanges">  object which list to modify  </param>
         private static void AmendEntryInCorrectAnswerList(QuestionsAndAnswers questionToMakeChanges)
         {
             UIMethods.DisplayTextAskWhatToChange();
@@ -202,7 +221,10 @@
             int answerToAmend = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
             questionToMakeChanges.CorrectAnswersList[answerToAmend] = UIMethods.GetUserInputNum(questionToMakeChanges.CorrectAnswersListCount) - 1;
         }
-
+        /// <summary>
+        /// Add user input to AnswerList , ask user if index of added input can be added to Correct Answer List, ask user wants to enter additional input to AnswerList
+        /// </summary>
+        /// <param name="questionToMakeChanges"></param>
         private static void AddMultipleAnswerToList(QuestionsAndAnswers questionToMakeChanges)
         {
             bool addMoreAnswers = true;

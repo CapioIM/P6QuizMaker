@@ -21,7 +21,10 @@ namespace P6QuizMaker
                 writer.Serialize(file, QuizmakerList);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="doesExist"></param>
         private static void CreateQuestionsFolder(bool doesExist)
         {
             if (!doesExist)
