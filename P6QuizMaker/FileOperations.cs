@@ -21,6 +21,7 @@ namespace P6QuizMaker
                 writer.Serialize(file, QuizmakerList);
             }
         }
+
         /// <summary>
         /// create folder
         /// </summary>
@@ -32,6 +33,7 @@ namespace P6QuizMaker
                 Directory.CreateDirectory(_QUESTIONS_FILE_PATH);
             }
         }
+
         /// <summary>
         /// check if folder exist
         /// </summary>

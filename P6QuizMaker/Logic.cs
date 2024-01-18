@@ -8,14 +8,13 @@
         /// </summary>
         public static readonly Random random = new Random();
 
-
         /// <summary>
         /// user entered integer is compared to values in CorrectAnswers... list and returns score
         /// </summary>
         /// <param name="QuestionAtPlay"> Variable name for List of objects </param>
         /// <param name="score"> updates score </param>
         /// <param name="randomQuestionPick"> same variable used to interract with qustions and answers </param>
-        /// <returns> updated score </returns>
+        /// <returns> int updated score </returns>
         private static int UserAnswerCheckWithScore(QuestionsAndAnswers QuestionAtPlay, QuestionsAndAnswers testQuestion)
         {
             int score = 0;
@@ -35,8 +34,6 @@
             return score;
         }
 
-
-
         /// <summary>
         /// Returns random number between 0 and max value to use as parametre
         /// </summary>
@@ -49,9 +46,8 @@
 
         public static void PlayGame()
         {
-            Score score = new Score();
             List<QuestionsAndAnswers> questionsList = FileOperations.DeserializeFiles();
-
+            int score = 0;
             bool playingQuizMaker = true;
             while (playingQuizMaker)
             {
@@ -68,13 +64,12 @@
                 Console.WriteLine($"Please answer this Question: {questionPlaying.QuestionText}");
                 ShuffleAnswersInList(questionPlaying);
                 UIMethods.DisplayAnswers(questionPlaying);
-                score.ScoreCount += UserAnswerCheckWithScore(questionPlaying, originalQuestionToCheckAgains);
-                Console.WriteLine($"Your score: {score.ScoreCount}");
+                score += UserAnswerCheckWithScore(questionPlaying, originalQuestionToCheckAgains);
+                Console.WriteLine($"Your score: {score}");
                 UIMethods.DisplayPlayAnotherQuestionText();
                 playingQuizMaker = UIMethods.MakeDecisionYorN();
             }
         }
-
 
         /// <summary>
         /// Cnages order of specific list using Rand and swaps positions of data
