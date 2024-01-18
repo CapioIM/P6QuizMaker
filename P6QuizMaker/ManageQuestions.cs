@@ -64,6 +64,7 @@
                 }
             }
         }
+
         /// <summary>
         /// user input number(index of AnswersList) add to Correct Answers List if number is not in the list, ask if user wants to repeat
         /// </summary>
@@ -94,6 +95,7 @@
                 addMoreAnswers = UIMethods.GetAdditionalAnswer();
             }
         }
+
         /// <summary>
         /// bring new object to life and add to List of obejcts
         /// </summary>
@@ -106,7 +108,6 @@
             newQuestion.QuestionText = UIMethods.GetQuestionText();
             return newQuestion;
         }
-
 
         /// <summary>
         /// This method modifies question object , add new question, remove existing question, amend question text
@@ -156,7 +157,10 @@
                     break;
             }
         }
-
+        /// <summary>
+        /// Display text as long as != ModificationOptions.Add
+        /// </summary>
+        /// <param name="modificationOptions"></param>
         private static void DisplayTextNotForAddToList(ModificationOptions modificationOptions)
         {
             if (modificationOptions != ModificationOptions.Add)
@@ -164,7 +168,6 @@
                 UIMethods.DisplayTypeAnswerNumberToModify(modificationOptions);
             }
         }
-
 
         /// <summary>
         /// Modify Correct answer list
@@ -258,6 +261,7 @@
                 }
             }
         }
+
         /// <summary>
         /// Display List of questions for all enum options apart from Add
         /// </summary>

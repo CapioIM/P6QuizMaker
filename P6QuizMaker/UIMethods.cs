@@ -125,6 +125,7 @@
             char[] firstChar = answer.ToCharArray();
             return (firstChar[0] != 'n');
         }
+
         /// <summary>
         /// displays text : Press Y - if Yes or N - if No! : 
         /// </summary>
@@ -153,6 +154,7 @@
             Console.Write("Type answer Number : ");
             return GetUserInputNum(questionObject.AnswersListCount);
         }
+
         /// <summary>
         /// Display text : Type answer to be added: and return user input
         /// </summary>
@@ -162,6 +164,7 @@
             Console.Write("Type answer to be added: ");
             return GetUserInput();
         }
+
         /// <summary>
         /// Display text : What this answer would you like to change to ?
         /// </summary>
@@ -180,7 +183,6 @@
             return MakeDecisionYorN();
         }
 
-
         /// <summary>
         /// WriteLine List with object Question text
         /// </summary>
@@ -192,6 +194,7 @@
                 Console.WriteLine($"{list.IndexOf(question) + 1}" + " " + question.QuestionText);
             }
         }
+
         /// <summary>
         /// Display text , options to Amend,Remove,Add,Return to previous menu.
         /// </summary>
@@ -203,6 +206,7 @@
                                  "Press 3 to Add \n" +
                                  "Press 4 to Return to previous menu");
         }
+
         /// <summary>
         /// replace QuestionText data with user input
         /// </summary>
@@ -212,6 +216,7 @@
             Console.WriteLine($"Question you are changing is : {question.QuestionText}");
             question.QuestionText = UIMethods.GetQuestionText();
         }
+
         /// <summary>
         /// Display Text: Type number associated with question to Amend/Remove!
         /// </summary>
@@ -220,6 +225,7 @@
         {
             Console.WriteLine($"Type number associated with question to {modifyOrRemove}!");
         }
+
         /// <summary>
         /// Converts int in to Enum
         /// </summary>
@@ -241,6 +247,7 @@
                     return ModificationTarget.Exit;
             }
         }
+
         /// <summary>
         /// Converts int in to Enum
         /// </summary>
@@ -298,6 +305,7 @@
             Console.WriteLine($"Question you are changing is : {QuizmakerList[questionToAmend].QuestionText}");
             return questionToAmend;
         }
+
         /// <summary>
         /// Display Text of options , await for user input(choice of option) , return user choice enum
         /// </summary>
@@ -310,6 +318,7 @@
             ModificationOptions modificationOptions = UIMethods.ModificationOptionChoice(addRemoveAmendUserChoice);
             return modificationOptions;
         }
+
         /// <summary>
         /// Display text of target for options
         /// </summary>
@@ -322,6 +331,7 @@
                                " 4 - Return to game mode choice\n" +
                                " 5 - Save Changes");
         }
+
         /// <summary>
         /// clears console window
         /// </summary>
@@ -329,6 +339,7 @@
         {
             Console.Clear();
         }
+
         /// <summary>
         /// check if enum provided is correctAnswer list
         /// </summary>
@@ -367,6 +378,7 @@
                 Console.WriteLine($"Answer Nr: {questionData.CorrectAnswersList.IndexOf(answer) + 1} Description of answer: {questionData.AnswersList[answer]} .");
             }
         }
+
         /// <summary>
         /// Displays text : This answer is already in the list
         /// </summary>
@@ -375,6 +387,7 @@
             Console.WriteLine("This answer is already in the list");
 
         }
+
         /// <summary>
         /// Display Text: Type number of answer you want to {modificationOptions}!
         /// </summary>
