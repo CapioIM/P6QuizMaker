@@ -258,6 +258,13 @@
                 }
             }
         }
+        /// <summary>
+        /// Display List of questions for all enum options apart from Add
+        /// </summary>
+        /// <param name="modificationOptions"> enum option </param>
+        /// <param name="questionList"> list of Question objects </param>
+        /// <param name="questionToAmend"> List index int var </param>
+        /// <returns> returns index in list , index is changed if enum != ModificationOptions.Add </returns>
         private static int GetQuestionIndexNotAddOption(ModificationOptions modificationOptions, List<QuestionsAndAnswers> questionList,int questionToAmend)
         {
             if (modificationOptions != ModificationOptions.Add)

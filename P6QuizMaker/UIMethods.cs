@@ -322,9 +322,9 @@
                                " 4 - Return to game mode choice\n" +
                                " 5 - Save Changes");
         }
-/// <summary>
-/// clears console window
-/// </summary>
+        /// <summary>
+        /// clears console window
+        /// </summary>
         public static void ClearConcole()
         {
             Console.Clear();
@@ -367,7 +367,10 @@
                 Console.WriteLine($"Answer Nr: {questionData.CorrectAnswersList.IndexOf(answer) + 1} Description of answer: {questionData.AnswersList[answer]} .");
             }
         }
-public static void DisplayCorrectAnswerExists()
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void DisplayCorrectAnswerExists()
         {
             Console.WriteLine("This answer is already in the list");
 
