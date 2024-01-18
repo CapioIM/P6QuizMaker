@@ -368,13 +368,17 @@
             }
         }
         /// <summary>
-        /// 
+        /// Displays text : This answer is already in the list
         /// </summary>
         public static void DisplayCorrectAnswerExists()
         {
             Console.WriteLine("This answer is already in the list");
 
         }
+        /// <summary>
+        /// Display Text: Type number of answer you want to {modificationOptions}!
+        /// </summary>
+        /// <param name="modificationOptions"> enum text variable </param>
         public static void DisplayTypeAnswerNumberToModify(ModificationOptions modificationOptions)
         {
             Console.WriteLine($"Type number of answer you want to {modificationOptions}!");
