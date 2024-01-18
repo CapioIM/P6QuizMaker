@@ -1,4 +1,6 @@
-﻿namespace P6QuizMaker
+﻿using static System.Formats.Asn1.AsnWriter;
+
+namespace P6QuizMaker
 {
     internal class UIMethods
     {
@@ -395,6 +397,24 @@
         public static void DisplayTypeAnswerNumberToModify(ModificationOptions modificationOptions)
         {
             Console.WriteLine($"Type number of answer you want to {modificationOptions}!");
+        }
+
+        /// <summary>
+        /// Display Game Question Text to player
+        /// </summary>
+        /// <param name="questionPlaying"> Question object reference </param>
+        public static void DisplayQuestionTextToPlayer(QuestionsAndAnswers questionPlaying)
+        {
+            Console.WriteLine($"Please answer this Question: {questionPlaying.QuestionText}");
+        }
+
+        /// <summary>
+        /// Display score text
+        /// </summary>
+        /// <param name="score"> int current score var </param>
+        public static void DisplayUpdatedScore(int score)
+        {
+            Console.WriteLine($"Your score: {score}");
         }
     }
 }

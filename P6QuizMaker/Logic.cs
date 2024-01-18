@@ -61,11 +61,11 @@
                 CopyAnswerList(originalQuestionToCheckAgains, questionPlaying);
                 CopyQuestionText(originalQuestionToCheckAgains, questionPlaying);
                 UIMethods.DisplayPlayAnswerNumber();
-                Console.WriteLine($"Please answer this Question: {questionPlaying.QuestionText}");
+                UIMethods.DisplayQuestionTextToPlayer(questionPlaying);
                 ShuffleAnswersInList(questionPlaying);
                 UIMethods.DisplayAnswers(questionPlaying);
                 score += UserAnswerCheckWithScore(questionPlaying, originalQuestionToCheckAgains);
-                Console.WriteLine($"Your score: {score}");
+                UIMethods.DisplayUpdatedScore(score);
                 UIMethods.DisplayPlayAnotherQuestionText();
                 playingQuizMaker = UIMethods.MakeDecisionYorN();
             }
