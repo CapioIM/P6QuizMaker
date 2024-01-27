@@ -1,5 +1,4 @@
 ﻿using P6QuizMaker.Enums;
-
 namespace P6QuizMaker
 {
     internal class Logic

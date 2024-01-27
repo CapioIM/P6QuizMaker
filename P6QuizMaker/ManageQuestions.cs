@@ -10,7 +10,6 @@ namespace P6QuizMaker
         public static void Manage()
         {
             List<QuestionsAndAnswers> questionList = FileOperations.DeserializeFiles();
-
             bool amending = true;
             while (amending)
             {
@@ -159,6 +158,7 @@ namespace P6QuizMaker
                     break;
             }
         }
+
         /// <summary>
         /// Display text as long as != ModificationOptions.Add
         /// </summary>
@@ -194,6 +194,7 @@ namespace P6QuizMaker
                     break;
             }
         }
+
         /// <summary>
         /// Removes correct answer from list
         /// </summary>
@@ -204,6 +205,7 @@ namespace P6QuizMaker
             int answerToRemove = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
             questionToMakeChanges.CorrectAnswersList.RemoveAt(answerToRemove);
         }
+
         /// <summary>
         /// user choose index in list to amend, user input replaces data at index in list
         /// </summary>
@@ -215,6 +217,7 @@ namespace P6QuizMaker
             UIMethods.DisplayTextAskWhatToChange();
             questionToMakeChanges.AnswersList[answerToAmend] = UIMethods.GetUserInput();
         }
+
         /// <summary>
         /// Display Text, user choose index in CorrectAnswerList to amend, user input replaces index in list
         /// </summary>
@@ -226,6 +229,7 @@ namespace P6QuizMaker
             int answerToAmend = UIMethods.GetUserInputNum(correctAnswerCount) - 1;
             questionToMakeChanges.CorrectAnswersList[answerToAmend] = UIMethods.GetUserInputNum(questionToMakeChanges.CorrectAnswersListCount) - 1;
         }
+
         /// <summary>
         /// Add user input to AnswerList , ask user if index of added input can be added to Correct Answer List, ask user wants to enter additional input to AnswerList
         /// </summary>

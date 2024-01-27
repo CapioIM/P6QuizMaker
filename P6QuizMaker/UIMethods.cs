@@ -5,7 +5,6 @@ namespace P6QuizMaker
 {
     internal class UIMethods
     {
-
         /// <summary>
         /// Displays text : Please type number associated with answer.
         /// </summary>
@@ -250,6 +249,7 @@ namespace P6QuizMaker
                     return ModificationOption.Exit;
             }
         }
+
         /// <summary>
         /// Converts int in to Enum
         /// </summary>
@@ -267,6 +267,7 @@ namespace P6QuizMaker
                     return GameMode.Exit;
             }
         }
+
         /// <summary>
         /// Display List of object.QuestionText data, user choose(input number) object based on list of object, display list of that object based on 'ModificationTarget enum option'
         /// </summary>
