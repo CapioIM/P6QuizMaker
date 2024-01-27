@@ -114,7 +114,7 @@
         /// <summary>
         /// Choice of enum to provide amount of items in enum
         /// </summary>
-        /// <param name="enumChoice"></param>
+        /// <param name="enumChoice"> Enum Called EnumChoice. ... to be used </param>
         /// <returns> int of amount of items in enum </returns>
         public static int GetEnumLengthByType(EnumChoice enumChoice)
         {

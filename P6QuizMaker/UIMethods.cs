@@ -294,9 +294,8 @@ namespace P6QuizMaker
         /// <returns> return user choice </returns>
         public static ModificationOptions ShowModificationOptionsInfo()
         {
-            int countEnum = Logic.GetEnumLengthByType(EnumChoice.ModificationOptions);
             UIMethods.DisplayTextAddRemoveAmend();
-            int addRemoveAmendUserChoice = UIMethods.GetUserInputNum(countEnum);
+            int addRemoveAmendUserChoice = UIMethods.GetUserInputNum(Enum.GetNames(typeof(ModificationOptions)).Length);
             ModificationOptions modificationOptions = UIMethods.ModificationOptionChoice(addRemoveAmendUserChoice);
             return modificationOptions;
         }
