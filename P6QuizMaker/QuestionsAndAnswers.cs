@@ -51,5 +51,16 @@
             return _answersList[value];
         }
 
+        public static QuestionsAndAnswers CopyQuestionObject(QuestionsAndAnswers originalQuestionAndData)
+        {
+            QuestionsAndAnswers copyObj = new QuestionsAndAnswers();
+            copyObj.QuestionText = originalQuestionAndData.QuestionText;
+            foreach (string answer in originalQuestionAndData.AnswersList)
+            {
+                copyObj.AnswersList.Add(answer);
+            }
+            return copyObj;
+        }
+
     }
 }
