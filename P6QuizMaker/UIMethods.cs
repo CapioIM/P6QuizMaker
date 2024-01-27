@@ -53,26 +53,6 @@ namespace P6QuizMaker
         }
 
         /// <summary>
-        /// Choice of enum to provide amount of items in enum
-        /// </summary>
-        /// <param name="enumChoice"></param>
-        /// <returns> int of amount of items in enum </returns>
-        public static int EnumLength(EnumChoice enumChoice)
-        {
-            switch (enumChoice)
-            {
-                case EnumChoice.ModificationOptions:
-                    return Enum.GetNames(typeof(ModificationOptions)).Length;
-                case EnumChoice.ModificationTarget:
-                    return Enum.GetNames(typeof(ModificationTarget)).Length;
-                default:
-                    {
-                        return 0;
-                    }
-            }
-        }
-
-        /// <summary>
         /// parses user input, which is not greater than provided int amount
         /// </summary>
         /// <param name="enumChoice"> Enum name </param>
@@ -314,7 +294,7 @@ namespace P6QuizMaker
         /// <returns> return user choice </returns>
         public static ModificationOptions ShowModificationOptionsInfo()
         {
-            int countEnum = UIMethods.EnumLength(EnumChoice.ModificationOptions);
+            int countEnum = Logic.GetEnumLengthByType(EnumChoice.ModificationOptions);
             UIMethods.DisplayTextAddRemoveAmend();
             int addRemoveAmendUserChoice = UIMethods.GetUserInputNum(countEnum);
             ModificationOptions modificationOptions = UIMethods.ModificationOptionChoice(addRemoveAmendUserChoice);
@@ -355,7 +335,6 @@ namespace P6QuizMaker
             }
             return false;
         }
-
 
         /// <summary>
         /// takes list of object and display whole list

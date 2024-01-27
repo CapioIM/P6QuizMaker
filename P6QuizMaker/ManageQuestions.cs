@@ -24,7 +24,7 @@
 
                 int questionToAmend = 0;
 
-                if (modificationTarget == ModificationTarget.AnswerList || modificationTarget == ModificationTarget.CorrectAnswerList)                   // if not questions than do this
+                if (modificationTarget == ModificationTarget.AnswerList || modificationTarget == ModificationTarget.CorrectAnswerList)                   // if Answer List or Correct Answer List than do this
                 {
                     questionToAmend = UIMethods.ShowAnswersListInfo(questionList, modificationTarget);
                 }
@@ -49,16 +49,16 @@
                         ModifyQuestionsOptions(modificationOptions, questionList, questionBeingAmended, questionToAmend);
                         break;
 
-                    case ModificationTarget.AnswerList:                                                             // Answer List
+                    case ModificationTarget.AnswerList:                                                                  // Answer List
                         ModifyAnswerListOptions(questionBeingAmended, modificationOptions);
                         break;
 
-                    case ModificationTarget.CorrectAnswerList:                                                  // Correct Answer List
+                    case ModificationTarget.CorrectAnswerList:                                                         // Correct Answer List
                         ModifyCorrectAnswerListOptions(modificationOptions, questionBeingAmended);
                         break;
                     case ModificationTarget.SaveChanges:
                         {
-                            FileOperations.CreateXMLSerializeFile(questionList);                           // create xmlSerialization file
+                            FileOperations.CreateXMLSerializeFile(questionList);                                     // create xmlSerialization file
                             continue;
                         }
                 }
@@ -279,9 +279,7 @@
             }
                 return questionToAmend;
         }
-
     }
-
 }
 
 

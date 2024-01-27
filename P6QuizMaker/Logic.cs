@@ -110,5 +110,26 @@
         {
             copyOfQuesiton.QuestionText = originalQuestion.QuestionText;
         }
+
+        /// <summary>
+        /// Choice of enum to provide amount of items in enum
+        /// </summary>
+        /// <param name="enumChoice"></param>
+        /// <returns> int of amount of items in enum </returns>
+        public static int GetEnumLengthByType(EnumChoice enumChoice)
+        {
+            switch (enumChoice)
+            {
+                case EnumChoice.ModificationOptions:
+                    return Enum.GetNames(typeof(ModificationOptions)).Length;
+                case EnumChoice.ModificationTarget:
+                    return Enum.GetNames(typeof(ModificationTarget)).Length;
+                default:
+                    {
+                        return 0;
+                    }
+            }
+        }
+
     }
 }

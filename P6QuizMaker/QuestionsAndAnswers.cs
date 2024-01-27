@@ -12,21 +12,10 @@
             _correctAnswersList = new List<int>();
         }
 
-        public override string ToString()
-        {
-            return $"{_questionText}";
-        }
-
         public string QuestionText
         {
-            get
-            {
-                return _questionText;
-            }
-            set
-            {
-                _questionText = value;
-            }
+            get { return _questionText; }
+            set { _questionText = value; }
         }
 
         public List<string> AnswersList
