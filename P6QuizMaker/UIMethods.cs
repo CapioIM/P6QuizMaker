@@ -367,7 +367,6 @@ namespace P6QuizMaker
         public static void DisplayCorrectAnswerExists()
         {
             Console.WriteLine("This answer is already in the list");
-
         }
 
         /// <summary>

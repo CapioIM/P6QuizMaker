@@ -14,7 +14,7 @@ namespace P6QuizMaker
         /// <param name="QuizmakerList"> List of objects </param>
         public static void CreateXMLSerializeFile(List<QuestionsAndAnswers> QuizmakerList)
         {
-            CreateQuestionsFolder(DoesFolderExist(_QUESTIONS_FOLDER_PATH));
+            CreateQuestionsFolder(Directory.Exists(_QUESTIONS_FOLDER_PATH));
             XmlSerializer writer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
             using (FileStream file = File.Create(_QUESTIONS_FILE_PATH))
             {
@@ -32,16 +32,6 @@ namespace P6QuizMaker
             {
                 Directory.CreateDirectory(_QUESTIONS_FILE_PATH);
             }
-        }
-
-        /// <summary>
-        /// check if folder exist
-        /// </summary>
-        /// <param name="folderPath"> folder path </param>
-        /// <returns> returns bool </returns>
-        private static bool DoesFolderExist(string folderPath)
-        {
-            return (Directory.Exists(folderPath));
         }
 
         /// <summary>
