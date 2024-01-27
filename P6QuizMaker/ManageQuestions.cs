@@ -1,4 +1,6 @@
-﻿namespace P6QuizMaker
+﻿using P6QuizMaker.Enums;
+
+namespace P6QuizMaker
 {
     internal class ManageQuestions
     {
@@ -29,14 +31,14 @@
                     questionToAmend = UIMethods.ShowAnswersListInfo(questionList, modificationTarget);
                 }
 
-                ModificationOptions modificationOptions = ModificationOptions.Add;
+                ModificationOption modificationOptions = ModificationOption.Add;
 
                 if (modificationTarget != ModificationTarget.SaveChanges)
                 {
                     modificationOptions = UIMethods.ShowModificationOptionsInfo();
                 }
 
-                if (modificationOptions == ModificationOptions.Exit)
+                if (modificationOptions == ModificationOption.Exit)
                 {
                     UIMethods.ClearConcole();
                     continue;
@@ -116,20 +118,20 @@
         /// <param name="questionList"> List with questions </param>
         /// <param name="questionToMakeChanges"> question reference to amend question Text </param>
         /// <param name="questionToAmend"> variable which question in list to make changes to </param>
-        private static void ModifyQuestionsOptions(ModificationOptions modificationOptions, List<QuestionsAndAnswers> questionList, QuestionsAndAnswers questionToMakeChanges, int questionToAmend)
+        private static void ModifyQuestionsOptions(ModificationOption modificationOptions, List<QuestionsAndAnswers> questionList, QuestionsAndAnswers questionToMakeChanges, int questionToAmend)
         {
             questionToAmend = GetQuestionIndexNotAddOption(modificationOptions,questionList,questionToAmend);
 
             switch (modificationOptions)
             {
-                case ModificationOptions.Add:                                                               //add
+                case ModificationOption.Add:                                                               //add
                     QuestionsAndAnswers question = CreateNewQuestion(questionList);
                     AddMultipleAnswerToList(question);
                     break;
-                case ModificationOptions.Remove:                                                            //remove
+                case ModificationOption.Remove:                                                            //remove
                     questionList.RemoveAt(questionToAmend);
                     break;
-                case ModificationOptions.Amend:                                                             // amend
+                case ModificationOption.Amend:                                                             // amend
                     UIMethods.ModifyQuestionText(questionToMakeChanges);
                     break;
             }
@@ -140,19 +142,19 @@
         /// </summary>
         /// <param name="questionToMakeChanges"> Question object </param>
         /// <param name="modificationOptions"> Option choice </param>
-        private static void ModifyAnswerListOptions(QuestionsAndAnswers questionToMakeChanges, ModificationOptions modificationOptions)
+        private static void ModifyAnswerListOptions(QuestionsAndAnswers questionToMakeChanges, ModificationOption modificationOptions)
         {
             DisplayTextNotForAddToList(modificationOptions);
 
             switch (modificationOptions)
             {
-                case ModificationOptions.Add:                                                           // Add
+                case ModificationOption.Add:                                                           // Add
                     AddMultipleAnswerToList(questionToMakeChanges);
                     break;
-                case ModificationOptions.Remove:                                                        // Remove
+                case ModificationOption.Remove:                                                        // Remove
                     RemoveAnswerFromList(questionToMakeChanges);
                     break;
-                case ModificationOptions.Amend:                                                          // Amend
+                case ModificationOption.Amend:                                                          // Amend
                     AmendEntryInAnswerList(questionToMakeChanges);
                     break;
             }
@@ -161,9 +163,9 @@
         /// Display text as long as != ModificationOptions.Add
         /// </summary>
         /// <param name="modificationOptions"></param>
-        private static void DisplayTextNotForAddToList(ModificationOptions modificationOptions)
+        private static void DisplayTextNotForAddToList(ModificationOption modificationOptions)
         {
-            if (modificationOptions != ModificationOptions.Add)
+            if (modificationOptions != ModificationOption.Add)
             {
                 UIMethods.DisplayTypeAnswerNumberToModify(modificationOptions);
             }
@@ -174,20 +176,20 @@
         /// </summary>
         /// <param name="questionToMakeChanges"> Question object </param>
         /// <param name="modificationOptions"> Option choice </param>
-        private static void ModifyCorrectAnswerListOptions(ModificationOptions modificationOptions, QuestionsAndAnswers questionToMakeChanges)
+        private static void ModifyCorrectAnswerListOptions(ModificationOption modificationOptions, QuestionsAndAnswers questionToMakeChanges)
         {
 
             UIMethods.DisplayPlayAnswerNumber();
 
             switch (modificationOptions)
             {
-                case ModificationOptions.Add:                                                       // Add
+                case ModificationOption.Add:                                                       // Add
                     AddCorrectAnswer(questionToMakeChanges);
                     break;
-                case ModificationOptions.Remove:                                                    // Remove
+                case ModificationOption.Remove:                                                    // Remove
                     RemoveCorrectAnswerFromList(questionToMakeChanges);
                     break;
-                case ModificationOptions.Amend:                                                     // Amend
+                case ModificationOption.Amend:                                                     // Amend
                     AmendEntryInCorrectAnswerList(questionToMakeChanges);
                     break;
             }
@@ -269,9 +271,9 @@
         /// <param name="questionList"> list of Question objects </param>
         /// <param name="questionToAmend"> List index int var </param>
         /// <returns> returns index in list , index is changed if enum != ModificationOptions.Add </returns>
-        private static int GetQuestionIndexNotAddOption(ModificationOptions modificationOptions, List<QuestionsAndAnswers> questionList,int questionToAmend)
+        private static int GetQuestionIndexNotAddOption(ModificationOption modificationOptions, List<QuestionsAndAnswers> questionList,int questionToAmend)
         {
-            if (modificationOptions != ModificationOptions.Add)
+            if (modificationOptions != ModificationOption.Add)
             {
                 UIMethods.ShowListOfQuestion(questionList);
                 UIMethods.DisplayTextQuestionToRemoveOrAmend(modificationOptions);

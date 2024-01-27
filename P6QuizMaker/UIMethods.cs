@@ -1,4 +1,5 @@
-﻿using static System.Formats.Asn1.AsnWriter;
+﻿using P6QuizMaker.Enums;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace P6QuizMaker
 {
@@ -203,7 +204,7 @@ namespace P6QuizMaker
         /// Display Text: Type number associated with question to Amend/Remove!
         /// </summary>
         /// <param name="modifyOrRemove"></param>
-        public static void DisplayTextQuestionToRemoveOrAmend(ModificationOptions modifyOrRemove)
+        public static void DisplayTextQuestionToRemoveOrAmend(ModificationOption modifyOrRemove)
         {
             Console.WriteLine($"Type number associated with question to {modifyOrRemove}!");
         }
@@ -235,18 +236,18 @@ namespace P6QuizMaker
         /// </summary>
         /// <param name="modificationOptionChoice"> provide int </param>
         /// <returns> returns enum based on number provided </returns>
-        public static ModificationOptions ModificationOptionChoice(int modificationOptionChoice)
+        public static ModificationOption ModificationOptionChoice(int modificationOptionChoice)
         {
             switch (modificationOptionChoice)
             {
                 case 1:
-                    return ModificationOptions.Amend;
+                    return ModificationOption.Amend;
                 case 2:
-                    return ModificationOptions.Remove;
+                    return ModificationOption.Remove;
                 case 3:
-                    return ModificationOptions.Add;
+                    return ModificationOption.Add;
                 default:
-                    return ModificationOptions.Exit;
+                    return ModificationOption.Exit;
             }
         }
         /// <summary>
@@ -292,11 +293,11 @@ namespace P6QuizMaker
         /// Display Text of options , await for user input(choice of option) , return user choice enum
         /// </summary>
         /// <returns> return user choice </returns>
-        public static ModificationOptions ShowModificationOptionsInfo()
+        public static ModificationOption ShowModificationOptionsInfo()
         {
             UIMethods.DisplayTextAddRemoveAmend();
-            int addRemoveAmendUserChoice = UIMethods.GetUserInputNum(Enum.GetNames(typeof(ModificationOptions)).Length);
-            ModificationOptions modificationOptions = UIMethods.ModificationOptionChoice(addRemoveAmendUserChoice);
+            int addRemoveAmendUserChoice = UIMethods.GetUserInputNum(Enum.GetNames(typeof(ModificationOption)).Length);
+            ModificationOption modificationOptions = UIMethods.ModificationOptionChoice(addRemoveAmendUserChoice);
             return modificationOptions;
         }
 
@@ -372,7 +373,7 @@ namespace P6QuizMaker
         /// Display Text: Type number of answer you want to {modificationOptions}!
         /// </summary>
         /// <param name="modificationOptions"> enum text variable </param>
-        public static void DisplayTypeAnswerNumberToModify(ModificationOptions modificationOptions)
+        public static void DisplayTypeAnswerNumberToModify(ModificationOption modificationOptions)
         {
             Console.WriteLine($"Type number of answer you want to {modificationOptions}!");
         }

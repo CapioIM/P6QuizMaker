@@ -1,4 +1,6 @@
-﻿namespace P6QuizMaker
+﻿using P6QuizMaker.Enums;
+
+namespace P6QuizMaker
 {
     internal class Program
     {
